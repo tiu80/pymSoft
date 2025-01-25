@@ -169,7 +169,9 @@ Public Class form_factura
 
         If RTrim(fact.cliente_fijo) <> 0 And RTrim(Me.txt_tipo_fact.Text) <> "PD" Then
 
-            Call carga_registro(fact.cliente_fijo)
+            If Me.txt_remito.Text <> 1 And Me.txt_remito.Text <> 2 Then
+                Call carga_registro(fact.cliente_fijo)
+            End If
 
         End If
 
@@ -925,8 +927,8 @@ Public Class form_factura
         End If
 
         If Trim(Me.txt_cliente.Text) = "CONSUMIDOR FINAL" And fact.Talonario_predeterminado = 1 And Me.txt_remito.Text = 0 Then
-            If Me.txt_total_grilla.Text > 10000 Then
-                MessageBox.Show("El cliente consumidor final no puede superar los $10.000!", "PymSoft", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+            If Me.txt_total_grilla.Text > 172000 Then
+                MessageBox.Show("El cliente consumidor final no puede superar los $172000!", "PymSoft", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
                 Exit Sub
             End If
         End If

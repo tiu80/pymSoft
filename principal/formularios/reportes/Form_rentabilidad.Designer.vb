@@ -156,7 +156,7 @@ Partial Class Form_rentabilidad
         Me.dt_fec_hasta.Name = "dt_fec_hasta"
         Me.dt_fec_hasta.Size = New System.Drawing.Size(219, 20)
         Me.dt_fec_hasta.TabIndex = 2
-        Me.dt_fec_hasta.Value = New Date(2019, 3, 27, 0, 0, 0, 0)
+        Me.dt_fec_hasta.Value = New Date(2023, 6, 11, 0, 0, 0, 0)
         '
         'dt_fec_desde
         '
@@ -165,7 +165,7 @@ Partial Class Form_rentabilidad
         Me.dt_fec_desde.Name = "dt_fec_desde"
         Me.dt_fec_desde.Size = New System.Drawing.Size(219, 20)
         Me.dt_fec_desde.TabIndex = 1
-        Me.dt_fec_desde.Value = New Date(2019, 3, 27, 0, 0, 0, 0)
+        Me.dt_fec_desde.Value = New Date(2023, 6, 11, 0, 0, 0, 0)
         '
         'Label8
         '

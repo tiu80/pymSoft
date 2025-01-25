@@ -71,7 +71,7 @@ Public Class Form_tipo_pago
                 End If
 
                 If Me.txt_tipo_cobro.Text = 3 Then
-                    Me.lbl_tipo.Text = "Tickets..."
+                    Me.lbl_tipo.Text = "PosNet..."
                     desabilita_textos()
                     If form_factura.txt_estado_form.Text = 1 Then Me.txt_descripcion.Text = form_factura.txt_cliente.Text
                     If (Form_recibos.txt_estado_form.Text = 1 Or Form_recibos.txt_estado_form.Text = 2) Then Me.txt_descripcion.Text = Form_recibos.txt_cliente.Text

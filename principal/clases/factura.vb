@@ -739,7 +739,7 @@ Namespace pymsoft
 
             Dim param As String = ""
 
-            comando = New SqlCommand("select *from menu_usu where usuario = '" & Trim(Form_login.cmb_usuario.Text) & "'", conex)
+            comando = New SqlCommand("select * from menu_usu where usuario = '" & Trim(Form_login.cmb_usuario.Text) & "'", conex)
             If conex.State = ConnectionState.Closed Then conex.Open()
 
             Dim reader As SqlDataReader = comando.ExecuteReader
@@ -755,7 +755,7 @@ Namespace pymsoft
 
             Dim i As Integer
 
-            comando1 = New SqlDataAdapter("select *from parametro_01 where id_parametro like '" + param + "'", conex)
+            comando1 = New SqlDataAdapter("select cod_pra,id_parametro,descripcion,nom_param,estado,cod_interno from parametro_01 where id_parametro like '" + param + "'", conex)
             comando1.Fill(midataset, "parametro_01")
             comando1.Dispose()
 
@@ -766,62 +766,62 @@ Namespace pymsoft
 
             For i = 0 To midataset.Tables("parametro_01").Rows.Count - 1
 
-                If RTrim(midataset.Tables("parametro_01").Rows(i).Item(4)) = "CANTIDAD DETALLE" Then Me.cantidad_item_factura = midataset.Tables("parametro_01").Rows(i).Item(5)
-                If RTrim(midataset.Tables("parametro_01").Rows(i).Item(4)) = "PIDE TIPO PAGO" Then Me.muestra_tipo_pago = midataset.Tables("parametro_01").Rows(i).Item(5)
-                If RTrim(midataset.Tables("parametro_01").Rows(i).Item(4)) = "PIDE PREFIJO FACTURA" Then Me.prefijo_factura = midataset.Tables("parametro_01").Rows(i).Item(5)
-                If RTrim(midataset.Tables("parametro_01").Rows(i).Item(4)) = "PIDE NUMERO FACTURA" Then Me.numero_factura = midataset.Tables("parametro_01").Rows(i).Item(5)
-                If RTrim(midataset.Tables("parametro_01").Rows(i).Item(4)) = "PIDE FECHA EMISION" Then Me.muestra_fecha_emi = midataset.Tables("parametro_01").Rows(i).Item(5)
-                If RTrim(midataset.Tables("parametro_01").Rows(i).Item(4)) = "PIDE FECHA VENCIMIENTO" Then Me.muestra_fecha_vto = midataset.Tables("parametro_01").Rows(i).Item(5)
-                If RTrim(midataset.Tables("parametro_01").Rows(i).Item(4)) = "PIDE MARCADOR IMPORTE" Then Me.muestra_marcador_total = midataset.Tables("parametro_01").Rows(i).Item(5)
-                If RTrim(midataset.Tables("parametro_01").Rows(i).Item(4)) = "VALIDA RENTABILIDAD" Then Me.valida_rentabilidad = midataset.Tables("parametro_01").Rows(i).Item(5)
-                If RTrim(midataset.Tables("parametro_01").Rows(i).Item(4)) = "RENTABILIDAD MINIMA" Then Me.importe_rentabilidad = midataset.Tables("parametro_01").Rows(i).Item(5)
-                If RTrim(midataset.Tables("parametro_01").Rows(i).Item(4)) = "PIDE DESCUENTO" Then Me.habilita_descuento = midataset.Tables("parametro_01").Rows(i).Item(5)
-                If RTrim(midataset.Tables("parametro_01").Rows(i).Item(4)) = "PIDE VENDEDOR" Then Me.habilita_vendedor = midataset.Tables("parametro_01").Rows(i).Item(5)
-                If RTrim(midataset.Tables("parametro_01").Rows(i).Item(4)) = "HABILITA IMPRESION FACTURA" Then Me.habilita_impresora_factura = midataset.Tables("parametro_01").Rows(i).Item(5)
-                If RTrim(midataset.Tables("parametro_01").Rows(i).Item(4)) = "PIDE PRECIO" Then Me.pide_precio = midataset.Tables("parametro_01").Rows(i).Item(5)
-                If RTrim(midataset.Tables("parametro_01").Rows(i).Item(4)) = "HABILITA IMPRESION REMITO" Then Me.habilita_impresion_remito = midataset.Tables("parametro_01").Rows(i).Item(5)
-                If RTrim(midataset.Tables("parametro_01").Rows(i).Item(4)) = "LONGITUD CODIGO BARRA" Then Me.longitud_codigo_barra = midataset.Tables("parametro_01").Rows(i).Item(5)
-                If RTrim(midataset.Tables("parametro_01").Rows(i).Item(4)) = "LISTA PREDETERMINADA" Then Me.lista_predeterminada = midataset.Tables("parametro_01").Rows(i).Item(5)
-                If RTrim(midataset.Tables("parametro_01").Rows(i).Item(4)) = "MUEVE STOCK" Then Me.mueve_stock = midataset.Tables("parametro_01").Rows(i).Item(5)
-                If RTrim(midataset.Tables("parametro_01").Rows(i).Item(4)) = "BAUDE RATE" Then Me.baude_rate = midataset.Tables("parametro_01").Rows(i).Item(5)
-                If RTrim(midataset.Tables("parametro_01").Rows(i).Item(4)) = "COM" Then Me.Puerto_Com = midataset.Tables("parametro_01").Rows(i).Item(5)
-                If RTrim(midataset.Tables("parametro_01").Rows(i).Item(4)) = "IMPRIME TICKET" Then Me.imprime_tikets = midataset.Tables("parametro_01").Rows(i).Item(5)
-                If RTrim(midataset.Tables("parametro_01").Rows(i).Item(4)) = "IMPRIME FACTURA" Then Me.imprime_factura = midataset.Tables("parametro_01").Rows(i).Item(5)
-                If RTrim(midataset.Tables("parametro_01").Rows(i).Item(4)) = "AUTO DETECTA MODELO" Then Me.detecta_modelo = midataset.Tables("parametro_01").Rows(i).Item(5)
-                If RTrim(midataset.Tables("parametro_01").Rows(i).Item(4)) = "CANTIDAD COPIAS FISCALES" Then Me.copias_fiscales = midataset.Tables("parametro_01").Rows(i).Item(5)
-                If RTrim(midataset.Tables("parametro_01").Rows(i).Item(4)) = "HABILITA PUERTO COM" Then Me.habilita_puerto_com = midataset.Tables("parametro_01").Rows(i).Item(5)
-                If RTrim(midataset.Tables("parametro_01").Rows(i).Item(4)) = "HABILITA TCP/IP" Then Me.habilita_tcp = midataset.Tables("parametro_01").Rows(i).Item(5)
-                If RTrim(midataset.Tables("parametro_01").Rows(i).Item(4)) = "DIRECCION IP" Then Me.Direccion_Ip = midataset.Tables("parametro_01").Rows(i).Item(5)
-                If RTrim(midataset.Tables("parametro_01").Rows(i).Item(4)) = "TALONARIO PREDETERMINADO" Then Me.Talonario_predeterminado = midataset.Tables("parametro_01").Rows(i).Item(5)
-                If RTrim(midataset.Tables("parametro_01").Rows(i).Item(4)) = "PIDE FORMA COBRO" Then Me.forma_cobro = midataset.Tables("parametro_01").Rows(i).Item(5)
-                If RTrim(midataset.Tables("parametro_01").Rows(i).Item(4)) = "PIDE TALONARIO" Then Me.Pide_talonario_factura = midataset.Tables("parametro_01").Rows(i).Item(5)
-                If RTrim(midataset.Tables("parametro_01").Rows(i).Item(4)) = "PIDE PREFIJO RECIBO" Then Me.Pide_prefijo_recibo = midataset.Tables("parametro_01").Rows(i).Item(5)
-                If RTrim(midataset.Tables("parametro_01").Rows(i).Item(4)) = "PIDE NUMERO RECIBO" Then Me.Pide_numero_recibo = midataset.Tables("parametro_01").Rows(i).Item(5)
-                If RTrim(midataset.Tables("parametro_01").Rows(i).Item(4)) = "PIDE LISTA" Then Me.Pide_lista = midataset.Tables("parametro_01").Rows(i).Item(5)
-                If RTrim(midataset.Tables("parametro_01").Rows(i).Item(4)) = "CANTIDAD AUTOMATICA" Then Me.cantidad_automatica = midataset.Tables("parametro_01").Rows(i).Item(5)
-                If RTrim(midataset.Tables("parametro_01").Rows(i).Item(4)) = "MUESTRA CUADRO IMPRESION" Then Me.muestra_cuadro_impresion = midataset.Tables("parametro_01").Rows(i).Item(5)
-                If RTrim(midataset.Tables("parametro_01").Rows(i).Item(4)) = "PUNTO VENTA" Then Me.punto_venta = midataset.Tables("parametro_01").Rows(i).Item(5)
-                If RTrim(midataset.Tables("parametro_01").Rows(i).Item(4)) = "FISCAL HASAR" Then Me.fiscal_hasar = midataset.Tables("parametro_01").Rows(i).Item(5)
-                If RTrim(midataset.Tables("parametro_01").Rows(i).Item(4)) = "FISCAL EPSON" Then Me.fiscal_epson = midataset.Tables("parametro_01").Rows(i).Item(5)
-                If RTrim(midataset.Tables("parametro_01").Rows(i).Item(4)) = "FACTURA EN C" Then Me.factura_en_c = midataset.Tables("parametro_01").Rows(i).Item(5)
-                If RTrim(midataset.Tables("parametro_01").Rows(i).Item(4)) = "IMPRIME EN FISCAL" Then Me.Imprime_en_fiscal = midataset.Tables("parametro_01").Rows(i).Item(5)
-                If RTrim(midataset.Tables("parametro_01").Rows(i).Item(4)) = "VENDEDOR" Then Me.vendedor_x_defecto = midataset.Tables("parametro_01").Rows(i).Item(5)
-                If RTrim(midataset.Tables("parametro_01").Rows(i).Item(4)) = "PIDE VENDEDOR RECIBO" Then Me.pide_vendedor_recibo = midataset.Tables("parametro_01").Rows(i).Item(5)
-                If RTrim(midataset.Tables("parametro_01").Rows(i).Item(4)) = "USA UTILIDAD ARTICULO" Then Me.usa_utilidad_en_articulo = midataset.Tables("parametro_01").Rows(i).Item(5)
-                If RTrim(midataset.Tables("parametro_01").Rows(i).Item(4)) = "MUESTRA COSTO REMITO" Then Me.muestra_costo_remito = midataset.Tables("parametro_01").Rows(i).Item(5)
-                If RTrim(midataset.Tables("parametro_01").Rows(i).Item(4)) = "PIDE OPCION COMPROBANTE" Then Me.opcion_comprobante = midataset.Tables("parametro_01").Rows(i).Item(5)
-                If RTrim(midataset.Tables("parametro_01").Rows(i).Item(4)) = "CLIENTE FIJO" Then Me.cliente_fijo = midataset.Tables("parametro_01").Rows(i).Item(5)
-                If RTrim(midataset.Tables("parametro_01").Rows(i).Item(4)) = "SI O NO EN FACTURA" Then Me.si_o_no_factura = midataset.Tables("parametro_01").Rows(i).Item(5)
-                If RTrim(midataset.Tables("parametro_01").Rows(i).Item(4)) = "CONDICION DE VENTA(1-CONTADO,2-CTA CTE)" Then Me.condicion_venta = midataset.Tables("parametro_01").Rows(i).Item(5)
-                If RTrim(midataset.Tables("parametro_01").Rows(i).Item(4)) = "HABILITA CONSULTA MIXTA" Then Me.habilita_consulta_mixta = midataset.Tables("parametro_01").Rows(i).Item(5)
-                If RTrim(midataset.Tables("parametro_01").Rows(i).Item(4)) = "PIDE Nº CARGA" Then Me.pide_n_carga = midataset.Tables("parametro_01").Rows(i).Item(5)
-                If RTrim(midataset.Tables("parametro_01").Rows(i).Item(4)) = "COPIAS INPRESORA COMUN" Then Me.copias_impresora_comun = midataset.Tables("parametro_01").Rows(i).Item(5)
-                If RTrim(midataset.Tables("parametro_01").Rows(i).Item(4)) = "VENTANA IMPRIME FACTURA" Then Me.ventana_imprime_factura = midataset.Tables("parametro_01").Rows(i).Item(5)
-                If RTrim(midataset.Tables("parametro_01").Rows(i).Item(4)) = "FACTURA ELECTRONICA AFIP" Then Me.Factura_electronica_AFIP = midataset.Tables("parametro_01").Rows(i).Item(5)
-                If RTrim(midataset.Tables("parametro_01").Rows(i).Item(4)) = "GRABA AFIP" Then Me.Graba_AFIP = midataset.Tables("parametro_01").Rows(i).Item(5)
-                If RTrim(midataset.Tables("parametro_01").Rows(i).Item(4)) = "ACTUALIZA PRECIO EN FACTURA" Then Me.Actualiza_precio_en_factura = midataset.Tables("parametro_01").Rows(i).Item(5)
-                If RTrim(midataset.Tables("parametro_01").Rows(i).Item(4)) = "HABILITA DESCUENTO GRAL" Then Me.Habilita_descuento_gral = midataset.Tables("parametro_01").Rows(i).Item(5)
-                If RTrim(midataset.Tables("parametro_01").Rows(i).Item(4)) = "HABILITA ESPECIAL" Then Me.Habilita_facturacion_especial = midataset.Tables("parametro_01").Rows(i).Item(5)
+                If RTrim(midataset.Tables("parametro_01").Rows(i).Item(3)) = "CANTIDAD DETALLE" Then Me.cantidad_item_factura = midataset.Tables("parametro_01").Rows(i).Item(4)
+                If RTrim(midataset.Tables("parametro_01").Rows(i).Item(3)) = "PIDE TIPO PAGO" Then Me.muestra_tipo_pago = midataset.Tables("parametro_01").Rows(i).Item(4)
+                If RTrim(midataset.Tables("parametro_01").Rows(i).Item(3)) = "PIDE PREFIJO FACTURA" Then Me.prefijo_factura = midataset.Tables("parametro_01").Rows(i).Item(4)
+                If RTrim(midataset.Tables("parametro_01").Rows(i).Item(3)) = "PIDE NUMERO FACTURA" Then Me.numero_factura = midataset.Tables("parametro_01").Rows(i).Item(4)
+                If RTrim(midataset.Tables("parametro_01").Rows(i).Item(3)) = "PIDE FECHA EMISION" Then Me.muestra_fecha_emi = midataset.Tables("parametro_01").Rows(i).Item(4)
+                If RTrim(midataset.Tables("parametro_01").Rows(i).Item(3)) = "PIDE FECHA VENCIMIENTO" Then Me.muestra_fecha_vto = midataset.Tables("parametro_01").Rows(i).Item(4)
+                If RTrim(midataset.Tables("parametro_01").Rows(i).Item(3)) = "PIDE MARCADOR IMPORTE" Then Me.muestra_marcador_total = midataset.Tables("parametro_01").Rows(i).Item(4)
+                If RTrim(midataset.Tables("parametro_01").Rows(i).Item(3)) = "VALIDA RENTABILIDAD" Then Me.valida_rentabilidad = midataset.Tables("parametro_01").Rows(i).Item(4)
+                If RTrim(midataset.Tables("parametro_01").Rows(i).Item(3)) = "RENTABILIDAD MINIMA" Then Me.importe_rentabilidad = midataset.Tables("parametro_01").Rows(i).Item(4)
+                If RTrim(midataset.Tables("parametro_01").Rows(i).Item(3)) = "PIDE DESCUENTO" Then Me.habilita_descuento = midataset.Tables("parametro_01").Rows(i).Item(4)
+                If RTrim(midataset.Tables("parametro_01").Rows(i).Item(3)) = "PIDE VENDEDOR" Then Me.habilita_vendedor = midataset.Tables("parametro_01").Rows(i).Item(4)
+                If RTrim(midataset.Tables("parametro_01").Rows(i).Item(3)) = "HABILITA IMPRESION FACTURA" Then Me.habilita_impresora_factura = midataset.Tables("parametro_01").Rows(i).Item(4)
+                If RTrim(midataset.Tables("parametro_01").Rows(i).Item(3)) = "PIDE PRECIO" Then Me.pide_precio = midataset.Tables("parametro_01").Rows(i).Item(4)
+                If RTrim(midataset.Tables("parametro_01").Rows(i).Item(3)) = "HABILITA IMPRESION REMITO" Then Me.habilita_impresion_remito = midataset.Tables("parametro_01").Rows(i).Item(4)
+                If RTrim(midataset.Tables("parametro_01").Rows(i).Item(3)) = "LONGITUD CODIGO BARRA" Then Me.longitud_codigo_barra = midataset.Tables("parametro_01").Rows(i).Item(4)
+                If RTrim(midataset.Tables("parametro_01").Rows(i).Item(3)) = "LISTA PREDETERMINADA" Then Me.lista_predeterminada = midataset.Tables("parametro_01").Rows(i).Item(4)
+                If RTrim(midataset.Tables("parametro_01").Rows(i).Item(3)) = "MUEVE STOCK" Then Me.mueve_stock = midataset.Tables("parametro_01").Rows(i).Item(4)
+                If RTrim(midataset.Tables("parametro_01").Rows(i).Item(3)) = "BAUDE RATE" Then Me.baude_rate = midataset.Tables("parametro_01").Rows(i).Item(4)
+                If RTrim(midataset.Tables("parametro_01").Rows(i).Item(3)) = "COM" Then Me.Puerto_Com = midataset.Tables("parametro_01").Rows(i).Item(4)
+                If RTrim(midataset.Tables("parametro_01").Rows(i).Item(3)) = "IMPRIME TICKET" Then Me.imprime_tikets = midataset.Tables("parametro_01").Rows(i).Item(4)
+                If RTrim(midataset.Tables("parametro_01").Rows(i).Item(3)) = "IMPRIME FACTURA" Then Me.imprime_factura = midataset.Tables("parametro_01").Rows(i).Item(4)
+                If RTrim(midataset.Tables("parametro_01").Rows(i).Item(3)) = "AUTO DETECTA MODELO" Then Me.detecta_modelo = midataset.Tables("parametro_01").Rows(i).Item(4)
+                If RTrim(midataset.Tables("parametro_01").Rows(i).Item(3)) = "CANTIDAD COPIAS FISCALES" Then Me.copias_fiscales = midataset.Tables("parametro_01").Rows(i).Item(4)
+                If RTrim(midataset.Tables("parametro_01").Rows(i).Item(3)) = "HABILITA PUERTO COM" Then Me.habilita_puerto_com = midataset.Tables("parametro_01").Rows(i).Item(4)
+                If RTrim(midataset.Tables("parametro_01").Rows(i).Item(3)) = "HABILITA TCP/IP" Then Me.habilita_tcp = midataset.Tables("parametro_01").Rows(i).Item(4)
+                If RTrim(midataset.Tables("parametro_01").Rows(i).Item(3)) = "DIRECCION IP" Then Me.Direccion_Ip = midataset.Tables("parametro_01").Rows(i).Item(4)
+                If RTrim(midataset.Tables("parametro_01").Rows(i).Item(3)) = "TALONARIO PREDETERMINADO" Then Me.Talonario_predeterminado = midataset.Tables("parametro_01").Rows(i).Item(4)
+                If RTrim(midataset.Tables("parametro_01").Rows(i).Item(3)) = "PIDE FORMA COBRO" Then Me.forma_cobro = midataset.Tables("parametro_01").Rows(i).Item(4)
+                If RTrim(midataset.Tables("parametro_01").Rows(i).Item(3)) = "PIDE TALONARIO" Then Me.Pide_talonario_factura = midataset.Tables("parametro_01").Rows(i).Item(4)
+                If RTrim(midataset.Tables("parametro_01").Rows(i).Item(3)) = "PIDE PREFIJO RECIBO" Then Me.Pide_prefijo_recibo = midataset.Tables("parametro_01").Rows(i).Item(4)
+                If RTrim(midataset.Tables("parametro_01").Rows(i).Item(3)) = "PIDE NUMERO RECIBO" Then Me.Pide_numero_recibo = midataset.Tables("parametro_01").Rows(i).Item(4)
+                If RTrim(midataset.Tables("parametro_01").Rows(i).Item(3)) = "PIDE LISTA" Then Me.Pide_lista = midataset.Tables("parametro_01").Rows(i).Item(4)
+                If RTrim(midataset.Tables("parametro_01").Rows(i).Item(3)) = "CANTIDAD AUTOMATICA" Then Me.cantidad_automatica = midataset.Tables("parametro_01").Rows(i).Item(4)
+                If RTrim(midataset.Tables("parametro_01").Rows(i).Item(3)) = "MUESTRA CUADRO IMPRESION" Then Me.muestra_cuadro_impresion = midataset.Tables("parametro_01").Rows(i).Item(4)
+                If RTrim(midataset.Tables("parametro_01").Rows(i).Item(3)) = "PUNTO VENTA" Then Me.punto_venta = midataset.Tables("parametro_01").Rows(i).Item(4)
+                If RTrim(midataset.Tables("parametro_01").Rows(i).Item(3)) = "FISCAL HASAR" Then Me.fiscal_hasar = midataset.Tables("parametro_01").Rows(i).Item(4)
+                If RTrim(midataset.Tables("parametro_01").Rows(i).Item(3)) = "FISCAL EPSON" Then Me.fiscal_epson = midataset.Tables("parametro_01").Rows(i).Item(4)
+                If RTrim(midataset.Tables("parametro_01").Rows(i).Item(3)) = "FACTURA EN C" Then Me.factura_en_c = midataset.Tables("parametro_01").Rows(i).Item(4)
+                If RTrim(midataset.Tables("parametro_01").Rows(i).Item(3)) = "IMPRIME EN FISCAL" Then Me.Imprime_en_fiscal = midataset.Tables("parametro_01").Rows(i).Item(4)
+                If RTrim(midataset.Tables("parametro_01").Rows(i).Item(3)) = "VENDEDOR" Then Me.vendedor_x_defecto = midataset.Tables("parametro_01").Rows(i).Item(4)
+                If RTrim(midataset.Tables("parametro_01").Rows(i).Item(3)) = "PIDE VENDEDOR RECIBO" Then Me.pide_vendedor_recibo = midataset.Tables("parametro_01").Rows(i).Item(4)
+                If RTrim(midataset.Tables("parametro_01").Rows(i).Item(3)) = "USA UTILIDAD ARTICULO" Then Me.usa_utilidad_en_articulo = midataset.Tables("parametro_01").Rows(i).Item(4)
+                If RTrim(midataset.Tables("parametro_01").Rows(i).Item(3)) = "MUESTRA COSTO REMITO" Then Me.muestra_costo_remito = midataset.Tables("parametro_01").Rows(i).Item(4)
+                If RTrim(midataset.Tables("parametro_01").Rows(i).Item(3)) = "PIDE OPCION COMPROBANTE" Then Me.opcion_comprobante = midataset.Tables("parametro_01").Rows(i).Item(4)
+                If RTrim(midataset.Tables("parametro_01").Rows(i).Item(3)) = "CLIENTE FIJO" Then Me.cliente_fijo = midataset.Tables("parametro_01").Rows(i).Item(4)
+                If RTrim(midataset.Tables("parametro_01").Rows(i).Item(3)) = "SI O NO EN FACTURA" Then Me.si_o_no_factura = midataset.Tables("parametro_01").Rows(i).Item(4)
+                If RTrim(midataset.Tables("parametro_01").Rows(i).Item(3)) = "CONDICION DE VENTA(1-CONTADO,2-CTA CTE)" Then Me.condicion_venta = midataset.Tables("parametro_01").Rows(i).Item(4)
+                If RTrim(midataset.Tables("parametro_01").Rows(i).Item(3)) = "HABILITA CONSULTA MIXTA" Then Me.habilita_consulta_mixta = midataset.Tables("parametro_01").Rows(i).Item(4)
+                If RTrim(midataset.Tables("parametro_01").Rows(i).Item(3)) = "PIDE Nº CARGA" Then Me.pide_n_carga = midataset.Tables("parametro_01").Rows(i).Item(4)
+                If RTrim(midataset.Tables("parametro_01").Rows(i).Item(3)) = "COPIAS INPRESORA COMUN" Then Me.copias_impresora_comun = midataset.Tables("parametro_01").Rows(i).Item(4)
+                If RTrim(midataset.Tables("parametro_01").Rows(i).Item(3)) = "VENTANA IMPRIME FACTURA" Then Me.ventana_imprime_factura = midataset.Tables("parametro_01").Rows(i).Item(4)
+                If RTrim(midataset.Tables("parametro_01").Rows(i).Item(3)) = "FACTURA ELECTRONICA AFIP" Then Me.Factura_electronica_AFIP = midataset.Tables("parametro_01").Rows(i).Item(4)
+                If RTrim(midataset.Tables("parametro_01").Rows(i).Item(3)) = "GRABA AFIP" Then Me.Graba_AFIP = midataset.Tables("parametro_01").Rows(i).Item(4)
+                If RTrim(midataset.Tables("parametro_01").Rows(i).Item(3)) = "ACTUALIZA PRECIO EN FACTURA" Then Me.Actualiza_precio_en_factura = midataset.Tables("parametro_01").Rows(i).Item(4)
+                If RTrim(midataset.Tables("parametro_01").Rows(i).Item(3)) = "HABILITA DESCUENTO GRAL" Then Me.Habilita_descuento_gral = midataset.Tables("parametro_01").Rows(i).Item(4)
+                If RTrim(midataset.Tables("parametro_01").Rows(i).Item(3)) = "HABILITA ESPECIAL" Then Me.Habilita_facturacion_especial = midataset.Tables("parametro_01").Rows(i).Item(4)
 
             Next
 
@@ -1227,6 +1227,15 @@ Namespace pymsoft
                         End If
 
                         If entra = False Then
+                            x = reporte.carga_datos("Fact_A_afip_erica")
+
+                            If x = "Fact_A_afip_erica" Then
+                                rep = New Fact_A_afip_erica
+                                entra = True
+                            End If
+                        End If
+
+                        If entra = False Then
                             x = reporte.carga_datos("Fact_A_afip_gama")
 
                             If x = "Fact_A_afip_gama" Then
@@ -1340,6 +1349,15 @@ Namespace pymsoft
 
                             If x = "fact_B_afip_bodrito" Then
                                 rep = New fact_B_afip_bodrito
+                                entra = True
+                            End If
+                        End If
+
+                        If entra = False Then
+                            x = reporte.carga_datos("fact_B_afip_erica")
+
+                            If x = "fact_B_afip_erica" Then
+                                rep = New fact_B_afip_erica
                                 entra = True
                             End If
                         End If

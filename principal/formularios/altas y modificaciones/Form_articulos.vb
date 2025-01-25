@@ -128,12 +128,12 @@ Public Class Form_articulos
 
             Dim tb As New DataTable
             'comando = New SqlDataAdapter("select MAX(CONVERT(INT,id_art)) from art_01", conex)
-            comando = New SqlDataAdapter("select top 1 auto,id_art from art_01 where id_lista = 1 order by auto desc", conex)
+            comando = New SqlDataAdapter("select top 1 id_art from art_01 where id_lista = 1 order by fec_alta desc,id_art", conex)
             comando.Fill(tb)
             comando.Dispose()
 
             Dim pos As Integer = tb.Rows.Count - 1
-            Me.txt_codigo.Text = tb.Rows(pos).Item(1)
+            Me.txt_codigo.Text = tb.Rows(pos).Item(0)
 
             art.formulario = Me
             Call cargar_datos(Me.txt_lista.Text, Me.txt_codigo.Text)
@@ -572,7 +572,7 @@ Public Class Form_articulos
             trans = conex.BeginTransaction(IsolationLevel.RepeatableRead)
         End If
 
-        coman = New SqlCommand("update art_01 with (rowlock,xlock) set id_art= '" & Me.txt_codigo.Text & "', nombre = '" & Me.txt_nombre.Text & "', id_rubro = '" & Me.txt_rubro.Text & "',rubro ='" & Me.lbl_rubro.Text & "',codigo_barra='" & Me.txt_codigo_barra.Text & "',cantidad ='" & Me.txt_cantidad.Text & "',cantidad_bulto ='" & Me.txt_cantidad_bulto.Text & "',id_proveedor ='" & Me.txt_proveedor.Text & "',proveedor='" & Me.lbl_proveedor.Text & "',id_lista='" & Me.txt_lista.Text & "',lista='" & Me.lbl_lista.Text & "',mueve_stok ='" & Me.cmb_mueve_stok.Text & "',cod_imp_compras ='" & Me.txt_inputacion_compras.Text & "',nom_imp_compras = '" & Me.lbl_input_compras.Text & "',cod_imp_ventas= '" & Me.txt_inputacion_ventas.Text & "', nom_imp_ventas='" & Me.lbl_input_ventas.Text & "',fec_alta='" & Me.dt_fec_alta.Text & "',fec_modi='" & Me.dt_fec_modificacion.Text & "',estado='" & Me.cmb_estado.Text & "',cant_ant= '" & Me.txt_cantidad.Text & "',unidad_secundaria = '" & Trim(Me.cmb_unid_med_secundaria.Text) & "',peso_promedio = '" & Val(Me.txt_peso_promedio.Text) & "' where id_art = '" & Me.txt_interno.Text & "' and id_lista = '" & Me.txt_lista.Text & "'", conex)
+        coman = New SqlCommand("update art_01 with (rowlock,xlock) set id_art= '" & Me.txt_codigo.Text & "', nombre = '" & Me.txt_nombre.Text & "', id_rubro = '" & Me.txt_rubro.Text & "',rubro ='" & Me.lbl_rubro.Text & "',codigo_barra='" & Me.txt_codigo_barra.Text & "',cantidad ='" & Me.txt_cantidad.Text & "',cantidad_bulto ='" & Me.txt_cantidad_bulto.Text & "',id_proveedor ='" & Me.txt_proveedor.Text & "',proveedor='" & Me.lbl_proveedor.Text & "',id_lista='" & Me.txt_lista.Text & "',lista='" & Me.lbl_lista.Text & "',mueve_stok ='" & Me.cmb_mueve_stok.Text & "',cod_imp_compras ='" & Me.txt_inputacion_compras.Text & "',nom_imp_compras = '" & Me.lbl_input_compras.Text & "',cod_imp_ventas= '" & Me.txt_inputacion_ventas.Text & "', nom_imp_ventas='" & Me.lbl_input_ventas.Text & "',fec_modi='" & CDate(Date.Now).ToString("dd/MM/yyyy") & "',estado='" & Me.cmb_estado.Text & "',cant_ant= '" & Me.txt_cantidad.Text & "',unidad_secundaria = '" & Trim(Me.cmb_unid_med_secundaria.Text) & "',peso_promedio = '" & Val(Me.txt_peso_promedio.Text) & "' where id_art = '" & Me.txt_interno.Text & "' and id_lista = '" & Me.txt_lista.Text & "'", conex)
         coman.Transaction = trans
         coman.ExecuteNonQuery()
         coman.Dispose()
@@ -829,6 +829,9 @@ Public Class Form_articulos
                         precio_siva = Format(p_siva * utilidad / 100 + p_siva, "0.000")
                         precio_civa = Format(precio_siva * lista_origen.Rows(i).Item(6) / 100 + precio_siva + impuestos, "0.000")
 
+                        exp.instruccion = "update art_01 set fec_modi = '" & CDate(Date.Now).ToString("dd/MM/yyyy") & "' where id_lista = '" & RTrim(Me.txt_destino.Text) & "' and id_art = '" & lista_destino.Rows(i).Item(0) & "'"
+                        exp.abm()
+
                         exp.instruccion = "update art_precio set utilidad = '" & utilidad & "', precio_siva = '" & precio_siva & "', precio_civa = '" & precio_civa & "' where id_lista1 = '" & RTrim(Me.txt_destino.Text) & "' and id_art1 = '" & lista_destino.Rows(i).Item(0) & "'"
                         exp.abm()
 
@@ -846,6 +849,9 @@ Public Class Form_articulos
                         impuestos = lista_origen.Rows(i).Item(8)
                         precio_civa = Format((p_siva * utilidad) / 100 + p_siva + impuestos, "0.00")
                         precio_siva = Format(precio_civa, "0.00")
+
+                        exp.instruccion = "update art_01 set fec_modi = '" & CDate(Date.Now).ToString("dd/MM/yyyy") & "' where id_lista = '" & RTrim(Me.txt_destino.Text) & "' and id_art = '" & lista_destino.Rows(i).Item(0) & "'"
+                        exp.abm()
 
                         exp.instruccion = "update art_precio set utilidad = '" & utilidad & "', precio_siva = '" & precio_siva & "', precio_civa = '" & precio_civa & "' where id_lista1 = '" & RTrim(Me.txt_destino.Text) & "' and id_art1 = '" & lista_destino.Rows(i).Item(0) & "'"
                         exp.abm()
@@ -872,6 +878,9 @@ Public Class Form_articulos
                         precio_siva = Format(p_siva * utilidad / 100 + p_siva, "0.000")
                         precio_civa = Format(precio_siva * lista_origen.Rows(i).Item(6) / 100 + precio_siva + impuestos, "0.000")
 
+                        exp.instruccion = "update art_01 set fec_modi = '" & CDate(Date.Now).ToString("dd/MM/yyyy") & "' where id_lista = '" & RTrim(Me.txt_destino.Text) & "' and id_art = '" & lista_destino.Rows(i).Item(0) & "'"
+                        exp.abm()
+
                         exp.instruccion = "update art_precio set utilidad = '" & utilidad & "', precio_siva = '" & precio_siva & "', precio_civa = '" & precio_civa & "' where id_lista1 = '" & RTrim(Me.txt_destino.Text) & "' and id_art1 = '" & lista_destino.Rows(i).Item(0) & "'"
                         exp.abm()
 
@@ -889,6 +898,9 @@ Public Class Form_articulos
                         impuestos = lista_origen.Rows(i).Item(8)
                         precio_civa = Format((p_siva * utilidad) / 100 + p_siva + impuestos, "0.000")
                         precio_siva = Format(precio_civa, "0.000")
+
+                        exp.instruccion = "update art_01 set fec_modi = '" & CDate(Date.Now).ToString("dd/MM/yyyy") & "' where id_lista = '" & RTrim(Me.txt_destino.Text) & "' and id_art = '" & lista_destino.Rows(i).Item(0) & "'"
+                        exp.abm()
 
                         exp.instruccion = "update art_precio set utilidad = '" & utilidad & "', precio_siva = '" & precio_siva & "', precio_civa = '" & precio_civa & "' where id_lista1 = '" & RTrim(Me.txt_destino.Text) & "' and id_art1 = '" & lista_destino.Rows(i).Item(0) & "'"
                         exp.abm()
@@ -920,6 +932,9 @@ Public Class Form_articulos
                         precio_civa = Format(precio_siva * lista_origen.Rows(i).Item(6) / 100 + precio_siva + impuestos, "0.000")
                         iva_ins = Format(precio_siva * lista_origen.Rows(i).Item(6) / 100, "0.000")
 
+                        exp.instruccion = "update art_01 set fec_modi = '" & CDate(Date.Now).ToString("dd/MM/yyyy") & "' where id_lista = '" & RTrim(Me.txt_destino.Text) & "' and id_art = '" & lista_destino.Rows(i).Item(0) & "'"
+                        exp.abm()
+
                         exp.instruccion = "update art_precio set costo = '" & precio_costo & "', precio_siva = '" & precio_siva & "', precio_civa = '" & precio_civa & "', iva_insc = '" & iva_ins & "' where id_lista1 = '" & RTrim(Me.txt_destino.Text) & "' and id_art1 = '" & lista_destino.Rows(i).Item(0) & "'"
                         exp.abm()
 
@@ -938,6 +953,9 @@ Public Class Form_articulos
                         precio_civa = Format((precio_costo * lista_origen.Rows(i).Item(5)) / 100 + precio_costo, "0.000")
                         precio_siva = Format(precio_civa, "0.000")
                         iva_ins = Format(precio_civa - precio_siva, "0.000")
+
+                        exp.instruccion = "update art_01 set fec_modi = '" & CDate(Date.Now).ToString("dd/MM/yyyy") & "' where id_lista = '" & RTrim(Me.txt_destino.Text) & "' and id_art = '" & lista_destino.Rows(i).Item(0) & "'"
+                        exp.abm()
 
                         exp.instruccion = "update art_precio set costo = '" & precio_costo & "', precio_siva = '" & precio_siva & "', precio_civa = '" & precio_civa & "', iva_insc = '" & iva_ins & "' where id_lista1 = '" & RTrim(Me.txt_destino.Text) & "' and id_art1 = '" & lista_destino.Rows(i).Item(0) & "'"
                         exp.abm()
@@ -963,6 +981,9 @@ Public Class Form_articulos
                         precio_siva = Format((precio_costo * lista_origen.Rows(i).Item(5) / 100) + precio_costo, "0.000")
                         precio_civa = Format(precio_siva * lista_origen.Rows(i).Item(6) / 100 + precio_siva + impuestos, "0.000")
                         iva_ins = Format(precio_siva * lista_origen.Rows(i).Item(6) / 100, "0.000")
+
+                        exp.instruccion = "update art_01 set fec_modi = '" & CDate(Date.Now).ToString("dd/MM/yyyy") & "' where id_lista = '" & RTrim(Me.txt_destino.Text) & "' and id_art = '" & lista_destino.Rows(i).Item(0) & "'"
+                        exp.abm()
 
                         exp.instruccion = "update art_precio set costo = '" & precio_costo & "', precio_siva = '" & precio_siva & "', precio_civa = '" & precio_civa & "', iva_insc = '" & iva_ins & "' where id_lista1 = '" & RTrim(Me.txt_destino.Text) & "' and id_art1 = '" & lista_destino.Rows(i).Item(0) & "'"
                         exp.abm()

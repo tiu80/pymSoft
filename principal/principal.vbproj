@@ -73,6 +73,8 @@
     <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=10.2.3600.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
+    <Reference Include="CrystalDecisions.Enterprise.Framework, Version=10.2.3600.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.Enterprise.InfoStore, Version=10.2.3600.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
     <Reference Include="CrystalDecisions.ReportSource, Version=10.2.3600.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
@@ -99,6 +101,10 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.Services, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\WINDOWS\assembly\GAC_MSIL\System.Web.Services\2.0.0.0__b03f5f7f11d50a3a\System.Web.Services.dll</HintPath>
+    </Reference>
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="text_solo_num, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -891,6 +897,24 @@
       <DependentUpon>consulta_comp.rpt</DependentUpon>
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="reportes %28rpt%29\fact_B_afip_erica.vb">
+      <DependentUpon>fact_B_afip_erica.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="reportes %28rpt%29\Fact_A_afip_erica.vb">
+      <DependentUpon>Fact_A_afip_erica.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="reportes %28rpt%29\precios_desactualizados.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>precios_desactualizados.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="reportes %28rpt%29\presupuestoBV.vb">
@@ -1729,6 +1753,18 @@
     <EmbeddedResource Include="reportes %28rpt%29\consulta_comp.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>consulta_comp.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="reportes %28rpt%29\fact_B_afip_erica.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>fact_B_afip_erica.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="reportes %28rpt%29\Fact_A_afip_erica.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Fact_A_afip_erica.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="reportes %28rpt%29\precios_desactualizados.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>precios_desactualizados.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="reportes %28rpt%29\presupuestoBV.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

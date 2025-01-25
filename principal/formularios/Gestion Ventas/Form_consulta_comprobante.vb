@@ -5,7 +5,7 @@ Public Class Form_consulta_comprobante
 
     Dim conex As New SqlConnection
     Public midataset As New DataSet
-    Public talonario As Integer
+    Public talonario, index As Integer
     Dim fact As New pymsoft.factura
     Dim comando As SqlDataAdapter
 
@@ -32,6 +32,13 @@ Public Class Form_consulta_comprobante
         fact.carga_parametro()
         If fact.habilita_consulta_mixta = "NO" Then Me.Check_talonario.Visible = False
         conex = conecta()
+
+        If Trim(principal.lbl_usu.Text) <> "Administrador" Then
+
+            Me.cmb_modalidad.Text = Me.cmb_modalidad.Items(2)
+            Me.cmb_modalidad.Enabled = False
+
+        End If
 
     End Sub
 
@@ -73,12 +80,22 @@ Public Class Form_consulta_comprobante
             Me.cmb_cliente_total.Visible = True
             Me.Label7.Visible = True
 
-            comando = New SqlDataAdapter("select nombre from vend_01 ORDER BY nombre ASC", conex)
-            comando.Fill(midataset, "vend_01")
-            comando.Dispose()
+            If Trim(principal.lbl_usu.Text) <> "Administrador" Then
 
-            Me.cmb_cliente_total.DataSource = midataset.Tables("vend_01")
-            Me.cmb_cliente_total.ValueMember = "nombre"
+                Me.cmb_cliente_total.Items.Add(principal.lbl_usu.Text)
+                Me.cmb_cliente_total.Text = Me.cmb_cliente_total.Items(0)
+                Me.cmb_cliente_total.Enabled = False
+
+            Else
+
+                comando = New SqlDataAdapter("select nombre from vend_01 ORDER BY nombre ASC", conex)
+                comando.Fill(midataset, "vend_01")
+                comando.Dispose()
+
+                Me.cmb_cliente_total.DataSource = midataset.Tables("vend_01")
+                Me.cmb_cliente_total.ValueMember = "nombre"
+
+            End If
 
             a = False
 

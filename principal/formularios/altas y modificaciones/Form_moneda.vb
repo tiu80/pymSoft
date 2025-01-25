@@ -18,7 +18,36 @@ Public Class Form_moneda
 
         Me.cmb_moneda.Text = Me.cmb_moneda.Items(0)
 
+        selecciona_lista()
         selecciona_datos()
+
+    End Sub
+
+    Private Sub selecciona_lista()
+
+        tb = New DataTable
+        tb.Clear()
+        Me.cmb_lista.Items.Clear()
+
+        Try
+
+            conex = conecta()
+
+            comando = New SqlDataAdapter("Select * from lista_01", conex)
+            comando.Fill(tb)
+            comando.Dispose()
+
+            For i = 0 To tb.Rows.Count - 1
+                Me.cmb_lista.Items.Add(tb.Rows(i).Item(0))
+            Next
+
+            Me.cmb_lista.Text = Me.cmb_lista.Items(0)
+
+        Catch ex As Exception
+
+            tb.Dispose()
+
+        End Try
 
     End Sub
 
@@ -189,11 +218,9 @@ Public Class Form_moneda
         End If
     End Sub
 
-    
     Private Sub cmd_ajusta_precio_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmd_ajusta_precio.Click
 
-
-        Dim x As Short = MessageBox.Show("Actualiza Precios moneda seleccionada??", "PyMsoft", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1)
+        Dim x As Short = MessageBox.Show("Actualiza Precios moneda seleccionada " & Me.DataGridView1.SelectedCells.Item(1).Value & "" & Me.DataGridView1.SelectedCells.Item(2).Value & " ??", "PyMsoft", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1)
 
         If x = 6 Then
 
@@ -204,7 +231,7 @@ Public Class Form_moneda
 
                 conex = conecta()
 
-                comando = New SqlDataAdapter("select id_art1,precio_civa,iva,cod_imp,ABS(utilidad),desc1,desc2,desc3,flete,pago_total,valor_moneda from art_precio where moneda = '" & Me.DataGridView1.SelectedCells(1).Value & "'", conex)
+                comando = New SqlDataAdapter("select id_art1,precio_civa,iva,cod_imp,ABS(utilidad),desc1,desc2,desc3,flete,pago_total,valor_moneda,costo from art_precio where moneda = '" & Me.DataGridView1.SelectedCells(1).Value & "' and id_lista1 = '" & Trim(Me.cmb_lista.Text) & "'", conex)
                 comando.Fill(tb)
                 comando.Dispose()
 
@@ -215,20 +242,31 @@ Public Class Form_moneda
 
                 For i = 0 To tb.Rows.Count - 1
 
-                    ' si el producto no tiene valor_moneda lo calculo en base a la seleccionada
-                    If tb.Rows(i).Item(10) = 0 Then
-                        art.precio_civa = Val(tb.Rows(i).Item(1)) * Val(Me.DataGridView1.SelectedCells(2).Value)
-                    Else
-                        art.precio_civa = (Val(tb.Rows(i).Item(1)) / Val(tb.Rows(i).Item(10))) * Val(Me.DataGridView1.SelectedCells(2).Value)
+                    ' si el valor de la moneda seleccionada es igual al del producto no hago nada porque ya fue actualizado
+                    If Trim(tb.Rows(i).Item(10)) <> Trim(Me.DataGridView1.SelectedCells.Item(2).Value) Then
+
+                        ' si el producto no tiene valor_moneda lo calculo en base a la seleccionada
+                        If tb.Rows(i).Item(10) = 0 Then
+                            art.precio_civa = Val(tb.Rows(i).Item(1)) * Val(Me.DataGridView1.SelectedCells(2).Value)
+                        Else
+                            art.precio_civa = (Val(tb.Rows(i).Item(1)) / Val(tb.Rows(i).Item(10))) * Val(Me.DataGridView1.SelectedCells(2).Value)
+                        End If
+
+                        If tb.Rows(i).Item(2) = 21 Then
+                            art.precio_siva = art.precio_civa / ("1." & tb.Rows(i).Item(2))
+                            art.costo = art.precio_siva / ("1." & Replace(tb.Rows(i).Item(4), ".", ""))
+                        ElseIf tb.Rows(i).Item(2) = 10.5 Then
+                            art.precio_siva = art.precio_civa / (tb.Rows(i).Item(2) * 10)
+                            art.costo = art.precio_siva / (Replace((tb.Rows(i).Item(4) * 10), ".", ""))
+                        End If
+
+                        art.iva_insc = art.precio_civa - art.precio_siva
+
+                        coman = New SqlCommand("update art_precio with (rowlock,xlock) set costo ='" & Format(art.costo, "0.00") & "',precio_siva='" & Format(art.precio_siva, "0.00") & "',precio_civa='" & Format(art.precio_civa, "0.00") & "',exento= '" & Format(art.exento, "0.00") & "',iva_insc= '" & Format(art.iva_insc, "0.00") & "',valor_moneda= '" & Format(Val(Me.DataGridView1.SelectedCells(2).Value), "0.00") & "' where id_art1 = '" & Trim(tb.Rows(i).Item(0)) & "'", conex)
+                        coman.ExecuteNonQuery()
+                        coman.Dispose()
+
                     End If
-
-                    art.precio_siva = art.precio_civa / ("1." & tb.Rows(i).Item(2))
-                    art.costo = art.precio_siva / ("1." & Replace(tb.Rows(i).Item(4), ".", ""))
-                    art.iva_insc = art.precio_civa - art.precio_siva
-
-                    coman = New SqlCommand("update art_precio with (rowlock,xlock) set costo ='" & Format(art.costo, "0.00") & "',precio_siva='" & Format(art.precio_siva, "0.00") & "',precio_civa='" & Format(art.precio_civa, "0.00") & "',exento= '" & Format(art.exento, "0.00") & "',iva_insc= '" & Format(art.iva_insc, "0.00") & "',valor_moneda= '" & Format(Val(Me.DataGridView1.SelectedCells(2).Value), "0.00") & "' where id_art1 = '" & Trim(tb.Rows(i).Item(0)) & "'", conex)
-                    coman.ExecuteNonQuery()
-                    coman.Dispose()
 
                 Next
 
@@ -236,7 +274,7 @@ Public Class Form_moneda
 
             Catch ex As Exception
 
-                MessageBox.Show(ex.Message, "PyMsoft", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                MessageBox.Show(ex.Message + "-" + tb.Rows(i).Item(0), "PyMsoft", MessageBoxButtons.OK, MessageBoxIcon.Error)
 
             Finally
 
@@ -245,6 +283,7 @@ Public Class Form_moneda
                 End If
 
                 tb.Dispose()
+                Me.Close()
 
             End Try
 

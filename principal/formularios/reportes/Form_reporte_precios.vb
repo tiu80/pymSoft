@@ -6,37 +6,12 @@ Public Class Form_reporte_precios
     Dim xxx As New pymsoft.prov_vend_list_bco
     Dim reporte As New pymsoft.reporte
     Dim fact As New pymsoft.factura
-    Dim tabla As New DataTable
+    Dim tabla As DataTable
     Dim comando As SqlDataAdapter
     Dim coman As SqlCommand
     Dim conex As New SqlConnection
     Dim i As Integer
     Dim rubros As String
-
-    Private Sub txt_cod_list_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles txt_cod_list.KeyDown
-        If e.KeyCode = Keys.Tab Or e.KeyCode = Keys.Return Then
-
-            xxx.instruccion = "select *from lista_01 where id_lis like '" & Me.txt_cod_list.Text & "'"
-            xxx.codigo = "id_lis"
-            xxx.nombre = "nombre"
-            xxx.cargar()
-            Me.txt_cod_list.Text = xxx.text
-            Me.lbl_lista.Text = xxx.text2
-
-            If xxx.validar = False Then
-                Me.txt_cod_list.Focus()
-                Exit Sub
-            End If
-
-            Me.txt_cod_prov.Focus()
-
-        End If
-
-        If e.KeyCode = Keys.F1 Then
-            busc_lista.Show()
-        End If
-
-    End Sub
 
     Private Sub txt_cod_prov_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles txt_cod_prov.KeyDown
         If e.KeyCode = Keys.Tab Or e.KeyCode = Keys.Return Then
@@ -116,6 +91,7 @@ Public Class Form_reporte_precios
         Me.cmb_ordena.Text = Me.cmb_ordena.Items(0)
         fact.carga_parametro()
         Call carga_lista_definida()
+        Me.txt_cod_list.Focus()
 
     End Sub
 
@@ -137,10 +113,47 @@ Public Class Form_reporte_precios
 
     End Sub
 
-    Private Sub cmd_acepta1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmd_acepta1.Click
+    Private Sub cmd_acepta_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmd_acepta1.Click
 
-        If Me.chk_inluye_rubro.Checked = True Then llena_string_rubro()
-        Call carga_precios()
+        If Me.TabControl1.SelectedTab.Name = "TabPage1" Then
+
+            If Me.chk_inluye_rubro.Checked = True Then llena_string_rubro()
+            Call carga_precios()
+
+        Else
+
+            carga_precios_desactualizados()
+
+        End If
+
+    End Sub
+
+    Private Sub carga_precios_desactualizados()
+
+        Dim fecha As Date
+        Dim rep As New precios_desactualizados
+
+        fecha = CDate(Date.Now).ToString("dd/MM/yyyy")
+        fecha = fecha.AddDays(Me.txt_dias_a_revisar.Text * -1)
+
+        Dim txt As CrystalDecisions.CrystalReports.Engine.TextObject
+
+        txt = rep.Section2.ReportObjects.Item("txt_fecha")
+        txt.Text = fecha
+
+        rep.DataSourceConnections(0).SetConnection(conexion.server, conexion.db, False)
+        rep.SetDatabaseLogon(conexion.usuario, "")
+
+        barra_carga.Show()
+        barra_carga.PictureBox1.Refresh()
+
+        rep.RecordSelectionFormula = "{art_01.estado} = 'Activo' and {art_01.id_lista} = " & Trim(Me.txt_cod_list.Text) & " and {art_01.fec_modi} <= date('" & fecha & "')"
+
+        Form_repcli_01.CrystalReportViewer1.ReportSource = rep
+        Form_repcli_01.CrystalReportViewer1.RefreshReport()
+        Form_repcli_01.Show()
+
+        barra_carga.Timer1.Enabled = True
 
     End Sub
 
@@ -194,6 +207,7 @@ Public Class Form_reporte_precios
         barra_carga.Show()
         barra_carga.PictureBox1.Refresh()
 
+        tabla = New DataTable
         tabla.Clear()
 
         If Me.txt_cod_list.Text <> 0 And Me.txt_cod_prov.Text = 0 And Me.txt_cod_rub.Text = 0 And Me.chk_inluye_rubro.Checked = False Then
@@ -343,6 +357,8 @@ Public Class Form_reporte_precios
 
         barra_carga.Timer1.Enabled = True
 
+        tabla.Dispose()
+
         Form_repcli_01.CrystalReportViewer1.RefreshReport()
         Form_repcli_01.Show()
 
@@ -376,7 +392,50 @@ Public Class Form_reporte_precios
         End If
     End Sub
 
-    Private Sub chk_exluye_rubro_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chk_inluye_rubro.CheckedChanged
+    Private Sub chk_exluye_rubro_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs)
+        If Me.chk_inluye_rubro.Checked = True Then
+            Me.DataGridView1.Visible = True
+            Me.DataGridView1.Rows.Clear()
+        Else
+            Me.DataGridView1.Visible = False
+            Me.DataGridView1.Rows.Clear()
+        End If
+    End Sub
+
+    Private Sub txt_cod_list_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles txt_cod_list.KeyDown
+
+        If e.KeyCode = Keys.Tab Or e.KeyCode = Keys.Return Then
+
+            xxx.instruccion = "select *from lista_01 where id_lis like '" & Me.txt_cod_list.Text & "'"
+            xxx.codigo = "id_lis"
+            xxx.nombre = "nombre"
+            xxx.cargar()
+            Me.txt_cod_list.Text = xxx.text
+            Me.lbl_lista.Text = xxx.text2
+
+            If xxx.validar = False Then
+                Me.txt_cod_list.Focus()
+                Exit Sub
+            End If
+
+            Me.txt_cod_prov.Focus()
+
+        End If
+
+        If e.KeyCode = Keys.F1 Then
+            busc_lista.Show()
+        End If
+
+    End Sub
+
+    Private Sub TabControl1_Selected(ByVal sender As Object, ByVal e As System.Windows.Forms.TabControlEventArgs) Handles TabControl1.Selected
+        If Me.TabControl1.SelectedIndex = 1 Then
+            Me.txt_dias_a_revisar.SelectAll()
+            Me.txt_dias_a_revisar.Focus()
+        End If
+    End Sub
+
+    Private Sub chk_inluye_rubro_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chk_inluye_rubro.CheckedChanged
         If Me.chk_inluye_rubro.Checked = True Then
             Me.DataGridView1.Visible = True
             Me.DataGridView1.Rows.Clear()

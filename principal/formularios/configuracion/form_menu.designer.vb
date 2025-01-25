@@ -502,7 +502,7 @@ Partial Class form_menu
         'Label3
         '
         Me.Label3.ForeColor = System.Drawing.Color.Blue
-        Me.Label3.Location = New System.Drawing.Point(12, 224)
+        Me.Label3.Location = New System.Drawing.Point(12, 226)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(418, 22)
         Me.Label3.TabIndex = 6

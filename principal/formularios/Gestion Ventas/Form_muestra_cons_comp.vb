@@ -5,6 +5,7 @@ Public Class Form_muestra_cons_comp
 
     Dim i As Integer = 0
     Dim acu As Single = 0
+    Dim acu_posnet, acu_vale, acu_debito, acu_credito, acu_cheque As Single
     Dim valida As Boolean = True
     Dim valida1 As Boolean = True
     Public es_recibo As Boolean = True
@@ -682,6 +683,48 @@ Public Class Form_muestra_cons_comp
 
     End Sub
 
+    Private Sub obtiene_medios_pago(ByVal tipo, ByVal letra, ByVal prefijo, ByVal numero, ByVal talon)
+
+        Dim tbx As New DataTable
+        conex = conecta()
+
+        tbx.Clear()
+        comando = New SqlDataAdapter("select isnull(total,0) from cheque_01 where numero = '" & Trim(numero) & "' and tc = '" & Trim(tipo) & "' and lt = '" & Trim(letra) & "' and prefijo = '" & Trim(prefijo) & "' and talon = '" & Trim(talon) & "'", conex)
+        comando.Fill(tbx)
+        comando.Dispose()
+
+        If tbx.Rows.Count > 0 Then acu_cheque = acu_cheque + tbx.Rows(0).Item(0)
+
+        tbx.Clear()
+        comando = New SqlDataAdapter("select isnull(total,0) from vale_01 where numero = '" & Trim(numero) & "' and tc = '" & Trim(tipo) & "' and lt = '" & Trim(letra) & "' and prefijo = '" & Trim(prefijo) & "' and talon = '" & Trim(talon) & "'", conex)
+        comando.Fill(tbx)
+        comando.Dispose()
+
+        If tbx.Rows.Count > 0 Then acu_vale = acu_vale + tbx.Rows(0).Item(0)
+
+        tbx.Clear()
+        comando = New SqlDataAdapter("select isnull(total,0) from ticket_01 where id_tiket = '" & Trim(numero) & "' and tc = '" & Trim(tipo) & "' and lt = '" & Trim(letra) & "' and prefijo = '" & Trim(prefijo) & "' and talon = '" & Trim(talon) & "'", conex)
+        comando.Fill(tbx)
+        comando.Dispose()
+
+        If tbx.Rows.Count > 0 Then acu_posnet = acu_posnet + tbx.Rows(0).Item(0)
+
+        tbx.Clear()
+        comando = New SqlDataAdapter("select isnull(importe,0) from t_credito where id_credito = '" & RTrim(numero) & "' and tc = '" & Trim(tipo) & "' and lt = '" & Trim(letra) & "' and prefijo = '" & Trim(prefijo) & "' and talon = '" & Trim(talon) & "'", conex)
+        comando.Fill(tbx)
+        comando.Dispose()
+
+        If tbx.Rows.Count > 0 Then acu_credito = acu_credito + tbx.Rows(0).Item(0)
+
+        tbx.Clear()
+        comando = New SqlDataAdapter("select isnull(importe,0) from t_debito where id_debito = '" & RTrim(numero) & "' and tc = '" & Trim(tipo) & "' and lt = '" & Trim(letra) & "' and prefijo = '" & Trim(prefijo) & "' and talon = '" & Trim(talon) & "'", conex)
+        comando.Fill(tbx)
+        comando.Dispose()
+
+        If tbx.Rows.Count > 0 Then acu_debito = acu_debito + tbx.Rows(0).Item(0)
+
+    End Sub
+
     Public Sub fact_total()
 
         Try
@@ -765,6 +808,12 @@ Public Class Form_muestra_cons_comp
 
                 If Form_consulta_comprobante.cmb_modalidad.Text = "Vendedor" Then
 
+                    acu_cheque = 0
+                    acu_posnet = 0
+                    acu_debito = 0
+                    acu_credito = 0
+                    acu_vale = 0
+
                     For i = 0 To Me.DataGridView1.Rows.Count - 2
 
                         If (RTrim(Me.DataGridView1.Rows(i).Cells(1).Value) = "FC" Or RTrim(Me.DataGridView1.Rows(i).Cells(1).Value) = "ND") And Form_consulta_comprobante.cmb_cliente_total.Text = RTrim(Me.DataGridView1.Rows(i).Cells(8).Value) And RTrim(Me.DataGridView1.Rows(i).Cells(9).Value) <> "Anulado" Then
@@ -772,6 +821,10 @@ Public Class Form_muestra_cons_comp
                             acu = Format(acu + Me.DataGridView1.Rows(i).Cells(6).Value, "0.00")
                             Me.DataGridView1.Rows(i).Cells(11).Value = Format(acu, "0.00")
                             Form_consulta_comprobante.txt_acu.Text = acu
+
+                            ' cambio realizado para Joel que quiere desglozar el importe
+                            ' que se muestra es decir efectivo,postet por vendedor
+                            obtiene_medios_pago(Trim(Me.DataGridView1.Rows(i).Cells(1).Value), Trim(Me.DataGridView1.Rows(i).Cells(3).Value), Trim(Me.DataGridView1.Rows(i).Cells(4).Value), Trim(Me.DataGridView1.Rows(i).Cells(2).Value), Form_consulta_comprobante.talonario)
 
                         Else
 
@@ -848,7 +901,7 @@ Public Class Form_muestra_cons_comp
             If Form_consulta_comprobante.cmb_modalidad.Text = "Total" Then
                 Me.txt_comentario.Text = "Movimiento del :" & "  " & Form_consulta_comprobante.dt_fec_ini.Text & "    " & "Hasta" & "   " & Form_consulta_comprobante.dt_fec_fin.Text & "      " & "Usuario:" & "  " & Form_login.cmb_usuario.Text & vbCrLf & "Modalidad: " & "   " & Form_consulta_comprobante.cmb_modalidad.Text & vbCrLf & "Total Registros:" & "   " & Me.DataGridView1.Rows.Count - 1 & vbCrLf & "Importe:" & "   " & Me.lbl_total.Text
             Else
-                Me.txt_comentario.Text = "Movimiento del :" & "  " & Form_consulta_comprobante.dt_fec_ini.Text & "    " & "Hasta" & "   " & Form_consulta_comprobante.dt_fec_fin.Text & "      " & "Usuario:" & "  " & Form_login.cmb_usuario.Text & vbCrLf & "Modalidad: " & "   " & Form_consulta_comprobante.cmb_modalidad.Text & vbCrLf & "Nombre:" & "   " & Form_consulta_comprobante.cmb_cliente_total.Text & vbCrLf & "Total Registros:" & "   " & Me.DataGridView1.Rows.Count - 1 & vbCrLf & "Importe:" & "   " & Me.lbl_total.Text
+                Me.txt_comentario.Text = "Movimiento del :" & "  " & Form_consulta_comprobante.dt_fec_ini.Text & "    " & "Hasta" & "   " & Form_consulta_comprobante.dt_fec_fin.Text & "      " & "Usuario:" & "  " & Form_login.cmb_usuario.Text & vbCrLf & "Modalidad: " & "   " & Form_consulta_comprobante.cmb_modalidad.Text & vbCrLf & "Nombre:" & "   " & Form_consulta_comprobante.cmb_cliente_total.Text & vbCrLf & "Total Registros:" & "   " & Me.DataGridView1.Rows.Count - 1 & vbCrLf & "Efectivo: $" & " " & Format((Me.lbl_total.Text - acu_posnet - acu_debito - acu_credito - acu_vale - acu_cheque), "0.00") & "  " & "PosNet: $" & acu_posnet & " - " & "Cheque: $" & acu_cheque & " - " & "Debito: $" & acu_debito & " - " & "Credito: $" & acu_credito & " - " & "Vale: $" & acu_vale
             End If
 
             Me.DataGridView1.Rows(i).DefaultCellStyle.BackColor = Color.LightGreen

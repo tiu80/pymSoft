@@ -65,6 +65,7 @@ Public Class Form_login
 
         Call verifica_activacion()
         Call cargar()
+
     End Sub
 
     Private Sub txt_contraseña_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles txt_contraseña.KeyDown

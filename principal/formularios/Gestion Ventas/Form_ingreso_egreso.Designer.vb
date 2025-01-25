@@ -132,7 +132,7 @@ Partial Class Form_ingreso_egreso
         '
         Me.txt_comentario.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txt_comentario.Location = New System.Drawing.Point(147, 191)
-        Me.txt_comentario.MaxLength = 200
+        Me.txt_comentario.MaxLength = 99
         Me.txt_comentario.Multiline = True
         Me.txt_comentario.Name = "txt_comentario"
         Me.txt_comentario.Size = New System.Drawing.Size(450, 55)

@@ -259,6 +259,8 @@ Public Class form_parametros
 
         Finally
 
+            Me.Close()
+
         End Try
 
     End Sub
@@ -541,10 +543,22 @@ Public Class form_parametros
     End Sub
 
     Private Sub cmd_copiar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmd_copiar.Click
-        Me.txt_codigo.Enabled = True
+
+        Dim t As New DataTable
+        conex = conecta()
+
+        comando = New SqlDataAdapter("select max(id_parametro) from parametro_01", conex)
+        comando.Fill(t)
+        comando.Dispose()
+
+        Me.txt_codigo.Text = t.Rows(0).Item(0) + 1
+
+        Me.txt_codigo.Enabled = False
+        Me.txt_descripcion.Text = ""
         Me.txt_descripcion.Enabled = True
-        Me.txt_codigo.Focus()
-        Me.txt_codigo.SelectAll()
+        Me.txt_descripcion.Focus()
+        Me.txt_descripcion.SelectAll()
+
 
         Me.cmd_aceptar.Enabled = True
         Me.cmd_aceptar.BackColor = Color.Black
@@ -553,6 +567,7 @@ Public Class form_parametros
         Me.cmd_copiar.BackColor = Color.LightGray
 
         copiar = True
+        t.Dispose()
 
     End Sub
 

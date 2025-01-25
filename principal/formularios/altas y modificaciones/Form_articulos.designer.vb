@@ -21,8 +21,8 @@ Partial Class Form_articulos
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form_articulos))
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
         Me.Panel1 = New System.Windows.Forms.Panel
         Me.chk_estado = New System.Windows.Forms.CheckBox
         Me.GroupBox4 = New System.Windows.Forms.GroupBox
@@ -197,6 +197,8 @@ Partial Class Form_articulos
         Me.TabPage3 = New System.Windows.Forms.TabPage
         Me.GroupBox6 = New System.Windows.Forms.GroupBox
         Me.GroupBox7 = New System.Windows.Forms.GroupBox
+        Me.Label36 = New System.Windows.Forms.Label
+        Me.lbl_tipo_iva_exportador = New System.Windows.Forms.Label
         Me.Label35 = New System.Windows.Forms.Label
         Me.txt_codigo_iva_expotador = New System.Windows.Forms.TextBox
         Me.cmd_exporta = New System.Windows.Forms.Button
@@ -220,8 +222,6 @@ Partial Class Form_articulos
         Me.lbl_rub = New System.Windows.Forms.Label
         Me.lbl_prov = New System.Windows.Forms.Label
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
-        Me.Label36 = New System.Windows.Forms.Label
-        Me.lbl_tipo_iva_exportador = New System.Windows.Forms.Label
         Me.Panel1.SuspendLayout()
         Me.GroupBox4.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -919,11 +919,11 @@ Partial Class Form_articulos
         '
         Me.Label19.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label19.ForeColor = System.Drawing.Color.Black
-        Me.Label19.Location = New System.Drawing.Point(810, 13)
+        Me.Label19.Location = New System.Drawing.Point(798, 13)
         Me.Label19.Name = "Label19"
-        Me.Label19.Size = New System.Drawing.Size(81, 24)
+        Me.Label19.Size = New System.Drawing.Size(113, 24)
         Me.Label19.TabIndex = 28
-        Me.Label19.Text = "Fecha Corte"
+        Me.Label19.Text = "Fecha Modificacion"
         '
         'Label22
         '
@@ -943,7 +943,7 @@ Partial Class Form_articulos
         Me.dt_fec_alta.Name = "dt_fec_alta"
         Me.dt_fec_alta.Size = New System.Drawing.Size(91, 21)
         Me.dt_fec_alta.TabIndex = 15
-        Me.dt_fec_alta.Value = New Date(2016, 8, 25, 9, 20, 5, 0)
+        Me.dt_fec_alta.Value = New Date(2023, 7, 2, 0, 0, 0, 0)
         '
         'Label23
         '
@@ -958,12 +958,13 @@ Partial Class Form_articulos
         '
         'dt_fec_modificacion
         '
+        Me.dt_fec_modificacion.Enabled = False
         Me.dt_fec_modificacion.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
         Me.dt_fec_modificacion.Location = New System.Drawing.Point(917, 11)
         Me.dt_fec_modificacion.Name = "dt_fec_modificacion"
         Me.dt_fec_modificacion.Size = New System.Drawing.Size(91, 21)
         Me.dt_fec_modificacion.TabIndex = 16
-        Me.dt_fec_modificacion.Value = New Date(2016, 8, 25, 9, 20, 11, 0)
+        Me.dt_fec_modificacion.Value = New Date(2023, 7, 2, 0, 0, 0, 0)
         '
         'Label24
         '
@@ -1325,27 +1326,27 @@ Partial Class Form_articulos
         '
         Me.DataGridView1.AllowUserToAddRows = False
         Me.DataGridView1.AllowUserToDeleteRows = False
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridView1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridView1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2, Me.Column3, Me.Column4, Me.Column5, Me.Column6, Me.Column7, Me.Column8, Me.Column9, Me.Column10, Me.Column11, Me.Column12, Me.Column13, Me.Column14, Me.Column15, Me.Column16, Me.Column17, Me.Column18, Me.Column19, Me.Column20, Me.Column21, Me.Column22, Me.Column23, Me.Column24, Me.Column25, Me.Column26, Me.Column27, Me.Column28, Me.Column29, Me.Column30, Me.Column31, Me.Column32, Me.Column33, Me.Column34, Me.Column35})
         Me.DataGridView1.Location = New System.Drawing.Point(0, 295)
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.ReadOnly = True
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        DataGridViewCellStyle4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridView1.RowHeadersDefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridView1.RowHeadersDefaultCellStyle = DataGridViewCellStyle2
         Me.DataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DataGridView1.Size = New System.Drawing.Size(1014, 278)
         Me.DataGridView1.TabIndex = 22
@@ -2133,6 +2134,28 @@ Partial Class Form_articulos
         Me.GroupBox7.TabIndex = 21
         Me.GroupBox7.TabStop = False
         '
+        'Label36
+        '
+        Me.Label36.Font = New System.Drawing.Font("Arial", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label36.ForeColor = System.Drawing.Color.Red
+        Me.Label36.Location = New System.Drawing.Point(504, 188)
+        Me.Label36.Name = "Label36"
+        Me.Label36.Size = New System.Drawing.Size(17, 19)
+        Me.Label36.TabIndex = 58
+        Me.Label36.Text = "%"
+        Me.Label36.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'lbl_tipo_iva_exportador
+        '
+        Me.lbl_tipo_iva_exportador.BackColor = System.Drawing.Color.Transparent
+        Me.lbl_tipo_iva_exportador.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl_tipo_iva_exportador.ForeColor = System.Drawing.Color.Red
+        Me.lbl_tipo_iva_exportador.Location = New System.Drawing.Point(461, 187)
+        Me.lbl_tipo_iva_exportador.Name = "lbl_tipo_iva_exportador"
+        Me.lbl_tipo_iva_exportador.Size = New System.Drawing.Size(45, 20)
+        Me.lbl_tipo_iva_exportador.TabIndex = 57
+        Me.lbl_tipo_iva_exportador.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
         'Label35
         '
         Me.Label35.AutoSize = True
@@ -2370,28 +2393,6 @@ Partial Class Form_articulos
         Me.lbl_prov.Size = New System.Drawing.Size(432, 20)
         Me.lbl_prov.TabIndex = 19
         Me.lbl_prov.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'Label36
-        '
-        Me.Label36.Font = New System.Drawing.Font("Arial", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label36.ForeColor = System.Drawing.Color.Red
-        Me.Label36.Location = New System.Drawing.Point(504, 188)
-        Me.Label36.Name = "Label36"
-        Me.Label36.Size = New System.Drawing.Size(17, 19)
-        Me.Label36.TabIndex = 58
-        Me.Label36.Text = "%"
-        Me.Label36.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        '
-        'lbl_tipo_iva_exportador
-        '
-        Me.lbl_tipo_iva_exportador.BackColor = System.Drawing.Color.Transparent
-        Me.lbl_tipo_iva_exportador.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbl_tipo_iva_exportador.ForeColor = System.Drawing.Color.Red
-        Me.lbl_tipo_iva_exportador.Location = New System.Drawing.Point(461, 187)
-        Me.lbl_tipo_iva_exportador.Name = "lbl_tipo_iva_exportador"
-        Me.lbl_tipo_iva_exportador.Size = New System.Drawing.Size(45, 20)
-        Me.lbl_tipo_iva_exportador.TabIndex = 57
-        Me.lbl_tipo_iva_exportador.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'Form_articulos
         '

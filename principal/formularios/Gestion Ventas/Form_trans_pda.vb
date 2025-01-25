@@ -342,6 +342,7 @@ Public Class Form_trans_pda
 
             comando = New SqlDataAdapter("select id_cli,nombre,direccion,tipo_iva,telefono,localidad,vendedor,cod_list,rubro,estado,cuit,ing_brutos from cli_01 where vendedor = '" & Me.txt_vendedor.Text & "' and tipo_cliente ='Cliente'", conex)
             comando.Fill(tbl2)
+            comando.Dispose()
 
             Dim sw As New IO.StreamWriter(Me.txt_enviar.Text & "\" & Me.txt_vendedor.Text & "\" & "cliente.txt")
 
@@ -368,6 +369,7 @@ Public Class Form_trans_pda
 
             comando = New SqlDataAdapter("select id_cli,nombre,direccion,tipo_iva,telefono,localidad,vendedor,cod_list,rubro,estado,cuit,ing_brutos from cli_01 where vendedor = '" & Me.txt_vendedor.Text & "' and tipo_cliente ='Proveedor'", conex)
             comando.Fill(tbl2)
+            comando.Dispose()
 
             Dim sw As New IO.StreamWriter(Me.txt_enviar.Text & "\" & Me.txt_vendedor.Text & "\" & "proveedor.txt")
 
@@ -394,6 +396,7 @@ Public Class Form_trans_pda
 
             comando = New SqlDataAdapter("select id_art1,nombre,cantidad,precio_siva,precio_civa,iva_insc,impuestos,iva,exento,rubro,costo from art_01 inner join art_precio on art_01.id_art = art_precio.id_art1 and art_01.estado = 'Activo' and art_precio.id_lista1 = '" & RTrim(Me.txt_lista.Text) & "'", conex)
             comando.Fill(tbl2)
+            comando.Dispose()
 
             Dim sw As New IO.StreamWriter(Me.txt_enviar.Text & "\" & Me.txt_vendedor.Text & "\" & "producto.txt")
 
@@ -415,10 +418,29 @@ Public Class Form_trans_pda
 
             Me.lbl_nom.Text = "cta cte.txt"
 
+            '' actualizo la cuenta corriente del vendedor redondeando los importes
+            '' antes de enviar los datos al txt
+
+            If conex.State = ConnectionState.Closed Then
+                conex = conecta()
+                conex.Open()
+            End If
+
+            coman = New SqlCommand("update cta_cte01 set debito = floor(debito),credito = floor(credito) where cod_vend = " & Trim(Me.txt_vendedor.Text) & "", conex)
+            coman.ExecuteNonQuery()
+            coman.Dispose()
+
+            If conex.State = ConnectionState.Open Then
+                conex.Close()
+            End If
+
+            conex = conecta()
+
             tbl2 = New DataTable
 
             comando = New SqlDataAdapter("select distinct id_cli,cli,tc,lt,pre,num_fact,debito,credito,fecha_emi,fecha_vto,estado,confirma,cod_vend from cta_cte01 where estado = 'DEBE' and cod_vend = '" & RTrim(Me.txt_vendedor.Text) & "' order by cli ASC", conex)
             comando.Fill(tbl2)
+            comando.Dispose()
 
             Dim sw As New IO.StreamWriter(Me.txt_enviar.Text & "\" & Me.txt_vendedor.Text & "\" & "cta cte.txt")
 
@@ -443,6 +465,7 @@ Public Class Form_trans_pda
 
             comando = New SqlDataAdapter("select id_art,nombre,cantidad from art_01 where estado = 'Activo'", conex)
             comando.Fill(tbl2)
+            comando.Dispose()
 
             Dim sw As New IO.StreamWriter(Me.txt_enviar.Text & "\" & Me.txt_vendedor.Text & "\" & "stock.txt")
 
@@ -467,6 +490,7 @@ Public Class Form_trans_pda
 
             comando = New SqlDataAdapter("select id_rubro,nombre from rub_01", conex)
             comando.Fill(tbl3)
+            comando.Dispose()
 
             Dim sw1 As New IO.StreamWriter(Me.txt_enviar.Text & "\" & Me.txt_vendedor.Text & "\" & "rubro.txt")
 
@@ -492,6 +516,7 @@ Public Class Form_trans_pda
 
             comando = New SqlDataAdapter("select id_vendedor,nombre from vend_01 where id_vendedor = '" & Me.txt_vendedor.Text & "'", conex)
             comando.Fill(tbl2)
+            comando.Dispose()
 
             Dim sw As New IO.StreamWriter(Me.txt_enviar.Text & "\" & Me.txt_vendedor.Text & "\" & "usuario.txt")
 
@@ -516,6 +541,7 @@ Public Class Form_trans_pda
 
             comando = New SqlDataAdapter("select fec_emi,fec_hasta,nombre,cantidad,proveedor from pedido_01", conex)
             comando.Fill(tbl4)
+            comando.Dispose()
 
             Dim sw As New IO.StreamWriter(Me.txt_enviar.Text & "\" & Me.txt_vendedor.Text & "\" & "pedido_prov.txt")
 

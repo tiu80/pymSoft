@@ -155,6 +155,9 @@ Public Class Form_actualiza_grilla
 
             If Me.txt_costo.Text <> "" And Me.txt_codigo_iva.Text <> "" And Me.txt_utilidad.Text <> "" Then
 
+                art.instruccion = "update art_01 set fec_modi = '" & CDate(Date.Now).ToString("dd/MM/yyyy") & "' where id_art = '" & Me.txt_codigo_producto.Text & "' and id_lista = '" & Form_articulos.txt_list.Text & "'"
+                art.actualizar()
+
                 art.instruccion = "update art_precio set costo ='" & Me.txt_costo.Text & "',id_iva ='" & Me.txt_codigo_iva.Text & "',iva ='" & Me.lbl_tipo_iva.Text & "',cod_imp = '" & Me.txt_impuestos_internos.Text & "',impuestos ='" & Me.lbl_nom_imp_int.Text & "',utilidad='" & Me.txt_utilidad.Text & "',precio_siva='" & Me.txt_precio_siva.Text & "',precio_civa='" & Me.txt_pciva.Text & "',iva_insc= '" & iva & "',desc1 = '" & Val(Me.txt_desc1.Text) & "',desc2 = '" & Val(Me.txt_desc2.Text) & "',desc3 = '" & Val(Me.txt_desc3.Text) & "',flete = '" & Val(Me.txt_flete.Text) & "',pago_total = '" & Val(Me.txt_pago_total.Text) & "' where id_art1 = '" & Me.txt_codigo_producto.Text & "' and id_lista1 = '" & Form_articulos.txt_list.Text & "'"
                 art.actualizar()
 
@@ -179,7 +182,7 @@ Public Class Form_actualiza_grilla
                 art.instruccion = "update art_precio set costo ='" & Me.txt_costo.Text & "',id_iva ='" & Me.txt_codigo_iva.Text & "',iva ='" & Me.lbl_tipo_iva.Text & "',cod_imp = '" & Me.txt_impuestos_internos.Text & "',impuestos ='" & Me.lbl_nom_imp_int.Text & "',utilidad='" & Me.txt_utilidad.Text & "',precio_siva='" & Me.txt_precio_siva.Text & "',precio_civa='" & Me.txt_pciva.Text & "',iva_insc= '" & iva & "',desc1= '" & Val(Me.txt_desc1.Text) & "',desc2 = '" & Val(Me.txt_desc2.Text) & "',desc3 = '" & Val(Me.txt_desc3.Text) & "',flete = '" & Val(Me.txt_flete.Text) & "',pago_total = '" & Val(Me.txt_pago_total.Text) & "',nom = '" & Me.lbl_nombre.Text & "' where id_art1 = '" & RTrim(Me.txt_codigo_producto.Text) & "' and id_lista1 = '" & RTrim(form_factura.txt_cod_lista.Text) & "'"
                 art.actualizar()
 
-                art.instruccion = "update art_01 set nombre = '" & Me.lbl_nombre.Text & "' where id_art = '" & Me.txt_codigo_producto.Text & "' and id_lista = '" & RTrim(form_factura.txt_cod_lista.Text) & "'"
+                art.instruccion = "update art_01 set nombre = '" & Me.lbl_nombre.Text & "',fec_modi = '" & CDate(Date.Now).ToString("dd/MM/yyyy") & "' where id_art = '" & Me.txt_codigo_producto.Text & "' and id_lista = '" & RTrim(form_factura.txt_cod_lista.Text) & "'"
                 art.actualizar()
 
                 form_factura.txt_nombre_producto.Text = Me.lbl_nombre.Text

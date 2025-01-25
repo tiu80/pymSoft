@@ -98,13 +98,13 @@ Namespace pymsoft
 
                 If marbol.Nodes(i).Checked = True Then
 
-                    Me.instruccion = "INSERT INTO sub_menu_01(id_menu,nombre,modulo,sub_modulo,estado) VALUES('" & form_menu.txt_codigo.Text & "' , '" & form_menu.txt_nombre.Text & "', '" + Me.padre + "', '" + marbol.Nodes(i).Text + "', 'A')"
+                    Me.instruccion = "INSERT INTO sub_menu_01(id_menu,nombre,modulo,sub_modulo,estado,pos) VALUES('" & form_menu.txt_codigo.Text & "' , '" & form_menu.txt_nombre.Text & "', '" + Me.padre + "', '" + marbol.Nodes(i).Text + "', 'A','" & i & "')"
                     Me.abm()
 
                 Else
 
-                    If Trim(form_menu.txt_codigo.Text) <> 1 Then Me.instruccion = "INSERT INTO sub_menu_01(id_menu,nombre,modulo,sub_modulo,estado) VALUES('" & form_menu.txt_codigo.Text & "' , '" & form_menu.txt_nombre.Text & "', '" + Me.padre + "', '" + marbol.Nodes(i).Text + "', 'B')"
-                    If Trim(form_menu.txt_codigo.Text) = 1 Then Me.instruccion = "INSERT INTO sub_menu_01(id_menu,nombre,modulo,sub_modulo,estado) VALUES('" & form_menu.txt_codigo.Text & "' , '" & form_menu.txt_nombre.Text & "', '" + Me.padre + "', '" + marbol.Nodes(i).Text + "', 'A')"
+                    If Trim(form_menu.txt_codigo.Text) <> 1 Then Me.instruccion = "INSERT INTO sub_menu_01(id_menu,nombre,modulo,sub_modulo,estado,pos) VALUES('" & form_menu.txt_codigo.Text & "' , '" & form_menu.txt_nombre.Text & "', '" + Me.padre + "', '" + marbol.Nodes(i).Text + "', 'B','" & i & "')"
+                    If Trim(form_menu.txt_codigo.Text) = 1 Then Me.instruccion = "INSERT INTO sub_menu_01(id_menu,nombre,modulo,sub_modulo,estado,pos) VALUES('" & form_menu.txt_codigo.Text & "' , '" & form_menu.txt_nombre.Text & "', '" + Me.padre + "', '" + marbol.Nodes(i).Text + "', 'A','" & i & "')"
                     Me.abm()
 
                 End If
@@ -203,10 +203,10 @@ Namespace pymsoft
         Public Sub mostrar_sub_menu()
             Try
 
-                comando = New SqlDataAdapter("select *from sub_menu_01 where modulo like '" + RTrim(mmodulo) + "' and id_menu like '" & form_menu.txt_codigo.Text & "'", conex)
+                comando = New SqlDataAdapter("select * from sub_menu_01 where modulo like '" + RTrim(mmodulo) + "' and id_menu like '" & form_menu.txt_codigo.Text & "' order by pos", conex)
                 comando.Fill(midataset, "sub_menu_01")
 
-                If RTrim(midataset.Tables("sub_menu_01").Rows(0).Item(1)) = 1 Then
+                If RTrim(midataset.Tables("sub_menu_01").Rows(0).Item(0)) = 1 Then
                     form_menu.Tree_modulo.Enabled = False
                     form_menu.Tree_altas.Enabled = False
                     form_menu.cmd_actualizar.Enabled = False
@@ -218,7 +218,8 @@ Namespace pymsoft
 
                 For i = 0 To midataset.Tables(0).Rows.Count - 1
 
-                    If RTrim(midataset.Tables(0).Rows(i).Item(5)) = "A" Then
+                    If RTrim(midataset.Tables(0).Rows(i).Item(4)) = "A" Then
+
 
                         marbol.Nodes(i).Checked = True
 
@@ -252,7 +253,7 @@ Namespace pymsoft
 
             Try
 
-                Dim comando2 As New SqlCommand("select *from sub_menu_01 where  id_menu like '" & form_menu.txt_codigo.Text & "'", conex)
+                Dim comando2 As New SqlCommand("select *from sub_menu_01 where id_menu like '" & form_menu.txt_codigo.Text & "'", conex)
 
                 If conex.State = ConnectionState.Closed Then conex.Open()
                 Dim reader As SqlDataReader = comando2.ExecuteReader

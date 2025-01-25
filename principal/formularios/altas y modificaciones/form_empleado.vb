@@ -68,16 +68,25 @@ Public Class form_empleado
 
     Private Sub form_empleado_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
-        If conex1.State = ConnectionState.Closed Then
-            conex1 = conecta1()
-            conex1.Open()
-        End If
+        Try
 
-        deshabilita_botones_imprimir_borrar()
+            If conex1.State = ConnectionState.Closed Then
+                conex1 = conecta1()
+                conex1.Open()
+            End If
 
-        Me.cmb_calcula_horas_noct.Text = Me.cmb_calcula_horas_noct.Items(0)
-        Me.cmb_sector.Text = Me.cmb_sector.Items(0)
-        Me.cmb_estado.Text = Me.cmb_estado.Items(0)
+            deshabilita_botones_imprimir_borrar()
+
+            Me.cmb_calcula_horas_noct.Text = Me.cmb_calcula_horas_noct.Items(0)
+            Me.cmb_sector.Text = Me.cmb_sector.Items(0)
+            Me.cmb_estado.Text = Me.cmb_estado.Items(0)
+
+        Catch ex As Exception
+
+            MessageBox.Show("Verifique existencia tablas!!", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Stop)
+            Me.Close()
+
+        End Try
 
     End Sub
 

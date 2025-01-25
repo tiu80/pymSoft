@@ -38,6 +38,8 @@ Partial Class Form_moneda
         Me.cmd_modificar = New System.Windows.Forms.Button
         Me.cmd_aceptar = New System.Windows.Forms.Button
         Me.PictureBox1 = New System.Windows.Forms.PictureBox
+        Me.Label5 = New System.Windows.Forms.Label
+        Me.cmb_lista = New System.Windows.Forms.ComboBox
         Me.GroupBox1.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox2.SuspendLayout()
@@ -59,6 +61,8 @@ Partial Class Form_moneda
         'GroupBox1
         '
         Me.GroupBox1.BackColor = System.Drawing.Color.White
+        Me.GroupBox1.Controls.Add(Me.cmb_lista)
+        Me.GroupBox1.Controls.Add(Me.Label5)
         Me.GroupBox1.Controls.Add(Me.cmd_ajusta_precio)
         Me.GroupBox1.Controls.Add(Me.txt_importe)
         Me.GroupBox1.Controls.Add(Me.Label1)
@@ -77,7 +81,7 @@ Partial Class Form_moneda
         Me.cmd_ajusta_precio.BackColor = System.Drawing.Color.Black
         Me.cmd_ajusta_precio.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.cmd_ajusta_precio.ForeColor = System.Drawing.Color.Yellow
-        Me.cmd_ajusta_precio.Location = New System.Drawing.Point(652, 66)
+        Me.cmd_ajusta_precio.Location = New System.Drawing.Point(652, 19)
         Me.cmd_ajusta_precio.Name = "cmd_ajusta_precio"
         Me.cmd_ajusta_precio.Size = New System.Drawing.Size(131, 40)
         Me.cmd_ajusta_precio.TabIndex = 16
@@ -219,6 +223,26 @@ Partial Class Form_moneda
         Me.PictureBox1.TabIndex = 16
         Me.PictureBox1.TabStop = False
         '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.Location = New System.Drawing.Point(609, 78)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(38, 15)
+        Me.Label5.TabIndex = 17
+        Me.Label5.Text = "Lista:"
+        '
+        'cmb_lista
+        '
+        Me.cmb_lista.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cmb_lista.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmb_lista.FormattingEnabled = True
+        Me.cmb_lista.Location = New System.Drawing.Point(652, 74)
+        Me.cmb_lista.Name = "cmb_lista"
+        Me.cmb_lista.Size = New System.Drawing.Size(60, 24)
+        Me.cmb_lista.TabIndex = 18
+        '
         'Form_moneda
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -260,4 +284,6 @@ Partial Class Form_moneda
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents txt_importe As System.Windows.Forms.TextBox
     Friend WithEvents cmd_ajusta_precio As System.Windows.Forms.Button
+    Friend WithEvents Label5 As System.Windows.Forms.Label
+    Friend WithEvents cmb_lista As System.Windows.Forms.ComboBox
 End Class

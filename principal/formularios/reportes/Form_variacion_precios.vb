@@ -24,6 +24,7 @@ Public Class Form_variacion_precios
 
         comando = New SqlDataAdapter("select id_art,detalle,precio,precio_nuevo,variacion from precio_01", conex)
         comando.Fill(tb)
+        comando.Dispose()
 
         Me.DataGridView1.Columns.Add("Codigo", "Codigo")
         Me.DataGridView1.Columns.Add("Descripcion", "Descripcion")

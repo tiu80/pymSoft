@@ -816,7 +816,7 @@ Partial Class form_factura
         Me.txt_neto.ForeColor = System.Drawing.Color.Black
         Me.txt_neto.Location = New System.Drawing.Point(922, 42)
         Me.txt_neto.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.txt_neto.MaxLength = 7
+        Me.txt_neto.MaxLength = 10
         Me.txt_neto.Name = "txt_neto"
         Me.txt_neto.Size = New System.Drawing.Size(67, 21)
         Me.txt_neto.TabIndex = 17

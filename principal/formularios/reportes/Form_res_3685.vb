@@ -104,8 +104,8 @@ Public Class Form_res_3685
                 num_comp = cero & tb.Rows(i).Item(3)
                 cero = ""
 
-                ' SI EL CLIENTE SE LLAMA CONSUMIDOR FINAL Y ES DE TIPO CONSUMIDOR FINAL Y ES MENOR A 1000 PESOS HAGO ESTO
-                If Trim(tb.Rows(i).Item(7)) = "CONSUMIDOR FINAL" And tb.Rows(i).Item(5) = 96 And Val(tb.Rows(i).Item(8)) < 1000 Then
+                ' SI EL CLIENTE SE LLAMA CONSUMIDOR FINAL Y ES DE TIPO CONSUMIDOR FINAL Y ES MENOR A 172000 PESOS HAGO ESTO
+                If Trim(tb.Rows(i).Item(7)) = "CONSUMIDOR FINAL" And tb.Rows(i).Item(5) = 96 And Val(tb.Rows(i).Item(8)) < 172000 Then
                     tipo_doc = 99
                     cuiii = 0
                 Else
@@ -935,9 +935,10 @@ Public Class Form_res_3685
                 num_comp = tb.Rows(i).Item(3).ToString()
 
                 ' SI EL CLIENTE SE LLAMA CONSUMIDOR FINAL Y ES DE TIPO CONSUMIDOR FINAL Y ES MENOR A 1000 PESOS HAGO ESTO
-                If Trim(tb.Rows(i).Item(7)) = "CONSUMIDOR FINAL" And tb.Rows(i).Item(5) = 96 And Val(tb.Rows(i).Item(8)) < 1000 Then
-                    cond_iva = 99
-                    cuiii = 0
+                If Trim(tb.Rows(i).Item(7)) = "CONSUMIDOR FINAL" And tb.Rows(i).Item(5) = 3 And Val(tb.Rows(i).Item(8)) < 172000 Then
+                    'cond_iva = 99
+                    cond_iva = tb.Rows(i).Item(5)
+                    cuiii = 1
                 Else
                     cond_iva = tb.Rows(i).Item(5)
                     cuiii = Trim(tb.Rows(i).Item(6))

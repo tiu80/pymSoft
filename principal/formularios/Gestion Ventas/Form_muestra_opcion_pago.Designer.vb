@@ -80,9 +80,9 @@ Partial Class Form_muestra_opcion_pago
         Me.Label3.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.Location = New System.Drawing.Point(87, 103)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(56, 15)
+        Me.Label3.Size = New System.Drawing.Size(65, 15)
         Me.Label3.TabIndex = 2
-        Me.Label3.Text = "3 - Ticket"
+        Me.Label3.Text = "3 - PosNet"
         '
         'Label2
         '

@@ -207,4 +207,9 @@ Public Class Form_stock
         End If
     End Sub
 
+    Private Sub Check_cero_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles Check_cero.KeyDown
+        If e.KeyCode = Keys.Return Then
+            Me.cmd_aceptar.Focus()
+        End If
+    End Sub
 End Class
