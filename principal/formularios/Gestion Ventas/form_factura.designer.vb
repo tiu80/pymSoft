@@ -66,7 +66,7 @@ Partial Class form_factura
         Me.txt_unidad_secundaria = New System.Windows.Forms.TextBox
         Me.lbl_venc_cae = New System.Windows.Forms.Label
         Me.lbl_cae = New System.Windows.Forms.Label
-        Me.AxHASAR1 = New AxFiscalPrinterLib.AxHASAR
+        'Me.AxHASAR1 = New AxFiscalPrinterLib.AxHASAR
         Me.txt_neto1 = New System.Windows.Forms.TextBox
         Me.txt_id_rubro = New System.Windows.Forms.TextBox
         Me.txt_id_proveedor = New System.Windows.Forms.TextBox
@@ -156,7 +156,7 @@ Partial Class form_factura
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox4.SuspendLayout()
         CType(Me.QrCodeImgControl1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.AxHASAR1, System.ComponentModel.ISupportInitialize).BeginInit()
+        'CType(Me.AxHASAR1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
@@ -544,7 +544,7 @@ Partial Class form_factura
         Me.GroupBox4.Controls.Add(Me.txt_unidad_secundaria)
         Me.GroupBox4.Controls.Add(Me.lbl_venc_cae)
         Me.GroupBox4.Controls.Add(Me.lbl_cae)
-        Me.GroupBox4.Controls.Add(Me.AxHASAR1)
+        'Me.GroupBox4.Controls.Add(Me.AxHASAR1)
         Me.GroupBox4.Controls.Add(Me.txt_neto1)
         Me.GroupBox4.Controls.Add(Me.txt_id_rubro)
         Me.GroupBox4.Controls.Add(Me.txt_id_proveedor)
@@ -653,12 +653,12 @@ Partial Class form_factura
         '
         'AxHASAR1
         '
-        Me.AxHASAR1.Enabled = True
-        Me.AxHASAR1.Location = New System.Drawing.Point(281, 83)
-        Me.AxHASAR1.Name = "AxHASAR1"
-        Me.AxHASAR1.OcxState = CType(resources.GetObject("AxHASAR1.OcxState"), System.Windows.Forms.AxHost.State)
-        Me.AxHASAR1.Size = New System.Drawing.Size(32, 32)
-        Me.AxHASAR1.TabIndex = 38
+        'Me.AxHASAR1.Enabled = True
+        'Me.AxHASAR1.Location = New System.Drawing.Point(281, 83)
+        'Me.AxHASAR1.Name = "AxHASAR1"
+        'Me.AxHASAR1.OcxState = CType(resources.GetObject("AxHASAR1.OcxState"), System.Windows.Forms.AxHost.State)
+        'Me.AxHASAR1.Size = New System.Drawing.Size(32, 32)
+        'Me.AxHASAR1.TabIndex = 38
         '
         'txt_neto1
         '
@@ -1611,7 +1611,7 @@ Partial Class form_factura
         Me.GroupBox4.ResumeLayout(False)
         Me.GroupBox4.PerformLayout()
         CType(Me.QrCodeImgControl1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.AxHASAR1, System.ComponentModel.ISupportInitialize).EndInit()
+        'CType(Me.AxHASAR1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
         Me.GroupBox1.ResumeLayout(False)
@@ -1711,7 +1711,7 @@ Partial Class form_factura
     Friend WithEvents lbl_saldo_cta As System.Windows.Forms.Label
     Friend WithEvents lbl_saldo_venc As System.Windows.Forms.Label
     Friend WithEvents Label13 As System.Windows.Forms.Label
-    Friend WithEvents AxHASAR1 As AxFiscalPrinterLib.AxHASAR
+    'Friend WithEvents AxHASAR1 As AxFiscalPrinterLib.AxHASAR
     Friend WithEvents txt_estado_form As System.Windows.Forms.TextBox
     Friend WithEvents lbl_n_carga As System.Windows.Forms.Label
     Friend WithEvents txt_n_carga As System.Windows.Forms.TextBox

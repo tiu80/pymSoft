@@ -2900,7 +2900,7 @@ Public Class form_factura
 
                 'MessageBox.Show(Me.txt_insc_10.Text & " " & Me.txt_inscripto.Text & " " & Me.txt_letra.Text & " " & sel.cuit & " " & sel.CRT & " " & sel.KEY & " " & CLng(Me.txt_numero.Text), "variables", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
-                estado = fact_elec.carga_factura_electronica(Me.txt_insc_10.Text, Me.txt_inscripto.Text, Me.txt_letra.Text, sel.cuit, sel.CRT, sel.KEY, CLng(Me.txt_numero.Text))
+                estado = fact_elec.carga_factura_electronica(Me.txt_insc_10.Text, Me.txt_inscripto.Text, Me.txt_letra.Text, sel.cuit, sel.CRT, sel.KEY, CLng(Me.txt_numero.Text), Trim(Me.txt_iva_solo.Text))
                 'estado = True
 
                 If fact_elec.Numeradores_distintos = True Then

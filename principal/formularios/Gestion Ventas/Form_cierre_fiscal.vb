@@ -1,9 +1,9 @@
-Imports OCXFISLib
+'Imports OCXFISLib
 
 Public Class Form_cierre_fiscal
 
     Dim fact As New pymsoft.factura
-    Dim eps As OCXFISLib.DriverFiscal
+    'Dim eps As OCXFISLib.DriverFiscal
     Dim nError As Long
     Dim puerto As String
     Dim baude As String
@@ -16,11 +16,11 @@ Public Class Form_cierre_fiscal
 
                 Me.Enabled = False
 
-                Me.AxHASAR1.Puerto = fact.Puerto_Com
-                Me.AxHASAR1.Baudios = fact.baude_rate
-                Me.AxHASAR1.Comenzar()
-                Me.AxHASAR1.ReporteZ()
-                Me.AxHASAR1.Finalizar()
+                'Me.AxHASAR1.Puerto = fact.Puerto_Com
+                'Me.AxHASAR1.Baudios = fact.baude_rate
+                'Me.AxHASAR1.Comenzar()
+                'Me.AxHASAR1.ReporteZ()
+                'Me.AxHASAR1.Finalizar()
 
                 Me.cmd_cierre_z.Enabled = False
 
@@ -33,10 +33,10 @@ Public Class Form_cierre_fiscal
                 puerto = "COM" & fact.Puerto_Com
                 baude = Me.baude
 
-                nError = eps.IF_OPEN(puerto, baude)
-                eps.EpsonTicket.CIERREZ()
+                'nError = eps.IF_OPEN(puerto, baude)
+                'eps.EpsonTicket.CIERREZ()
 
-                eps.IF_CLOSE()
+                'eps.IF_CLOSE()
 
             End If
 
@@ -61,11 +61,11 @@ Public Class Form_cierre_fiscal
 
                 Me.Enabled = False
 
-                Me.AxHASAR1.Puerto = fact.Puerto_Com
-                Me.AxHASAR1.Baudios = fact.baude_rate
-                Me.AxHASAR1.Comenzar()
-                Me.AxHASAR1.ReporteX()
-                Me.AxHASAR1.Finalizar()
+                'Me.AxHASAR1.Puerto = fact.Puerto_Com
+                'Me.AxHASAR1.Baudios = fact.baude_rate
+                'Me.AxHASAR1.Comenzar()
+                'Me.AxHASAR1.ReporteX()
+                'Me.AxHASAR1.Finalizar()
 
                 Me.cmd_cierre_x.Enabled = False
 
@@ -78,10 +78,10 @@ Public Class Form_cierre_fiscal
                 puerto = "COM" & fact.Puerto_Com
                 baude = Me.baude
 
-                nError = eps.IF_OPEN(puerto, baude)
-                eps.EpsonTicket.CIERREX()
+                'nError = eps.IF_OPEN(puerto, baude)
+                'eps.EpsonTicket.CIERREX()
 
-                eps.IF_CLOSE()
+                'eps.IF_CLOSE()
 
             End If
 
@@ -96,7 +96,7 @@ Public Class Form_cierre_fiscal
 
         ' Llamada necesaria para el Diseñador de Windows Forms.
         InitializeComponent()
-        eps = New OCXFISLib.DriverFiscal
+        'eps = New OCXFISLib.DriverFiscal
 
         ' Agregue cualquier inicialización después de la llamada a InitializeComponent().
 

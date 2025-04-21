@@ -35,6 +35,16 @@ Namespace pymsoft
         Private mnumeroaplica As String
         Private Shared WSAA As Object, WSFEv1 As Object
         Private ms As New IO.MemoryStream
+        Private mcondicionivareceptor As Integer
+
+        Public Property Condicion_IVA_recpetor()
+            Set(ByVal value)
+                mcondicionivareceptor = Val(value)
+            End Set
+            Get
+                Return mcondicionivareceptor
+            End Get
+        End Property
 
         Public Property Comprobante_aplica()
             Set(ByVal value)
@@ -479,7 +489,7 @@ Namespace pymsoft
 
         End Sub
 
-        Public Function carga_factura_electronica(ByVal iva10, ByVal iva21, ByVal letra_fact, ByVal cuit_empresa, ByVal crt, ByVal key, ByVal numero_comprobante) As Boolean
+        Public Function carga_factura_electronica(ByVal iva10, ByVal iva21, ByVal letra_fact, ByVal cuit_empresa, ByVal crt, ByVal key, ByVal numero_comprobante, ByVal condicion_iva_receptor) As Boolean
 
             Dim cont As Short = 0
             Dim ok
@@ -517,10 +527,28 @@ Namespace pymsoft
                     Me.Numeradores_distintos = False
                 End If
 
+                ''' nuevos cambios segun RG5614 y RG 5616 ''''''''''''''''''''''
+                If condicion_iva_receptor = "Consumidor Final" Then
+                    Me.Condicion_IVA_recpetor = 5
+                End If
+                If condicion_iva_receptor = "Responsable Inscripto" Then
+                    Me.Condicion_IVA_recpetor = 1
+                End If
+                If condicion_iva_receptor = "Monotributo" Then
+                    Me.Condicion_IVA_recpetor = 6
+                End If
+                If condicion_iva_receptor = "Exento" Then
+                    Me.Condicion_IVA_recpetor = 4
+                End If
+                ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
                 ok = WSFEv1.CrearFactura(Me.Concepto, Me.Tipo_documento, Me.Numero_documento, Me.Tipo_comprobante, Me.Punto_venta, _
                         Me.Comprobante_desde, Me.Comprobante_hasta, Me.Importe_total, Me.Importe_total_conc, Me.Importe_neto, _
                         Me.Importe_iva, Me.Importe_trib, Me.Importe_op_ex, Me.Fecha_comprobante, Me.Fecha_vencimiento_pago, _
-                        Me.Fecha_servidor_desde, Me.Fecha_servidor_hasta, Me.Tipo_moneda, Me.Cotizacion_moneda)
+                        Me.Fecha_servidor_desde, Me.Fecha_servidor_hasta, Me.Tipo_moneda, Me.Cotizacion_moneda, Nothing, Nothing)
+
+                ok = WSFEv1.EstablecerCampoFactura("cancela_misma_moneda_ext", "N")
+                ok = WSFEv1.EstablecerCampoFactura("condicion_iva_receptor_id", Me.Condicion_IVA_recpetor)
 
                 If letra_fact <> "C" Then
 
