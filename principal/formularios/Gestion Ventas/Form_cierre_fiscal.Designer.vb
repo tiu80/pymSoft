@@ -21,16 +21,16 @@ Partial Class Form_cierre_fiscal
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form_cierre_fiscal))
         Me.GroupBox1 = New System.Windows.Forms.GroupBox
-        Me.AxHASAR1 = New AxFiscalPrinterLib.AxHASAR
+        'Me.AxHASAR1 = New AxFiscalPrinterLib.AxHASAR
         Me.cmd_cierre_x = New System.Windows.Forms.Button
         Me.cmd_cierre_z = New System.Windows.Forms.Button
         Me.GroupBox1.SuspendLayout()
-        CType(Me.AxHASAR1, System.ComponentModel.ISupportInitialize).BeginInit()
+        'CType(Me.AxHASAR1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'GroupBox1
         '
-        Me.GroupBox1.Controls.Add(Me.AxHASAR1)
+        'Me.GroupBox1.Controls.Add(Me.AxHASAR1)
         Me.GroupBox1.Controls.Add(Me.cmd_cierre_x)
         Me.GroupBox1.Controls.Add(Me.cmd_cierre_z)
         Me.GroupBox1.Location = New System.Drawing.Point(8, 2)
@@ -41,12 +41,12 @@ Partial Class Form_cierre_fiscal
         '
         'AxHASAR1
         '
-        Me.AxHASAR1.Enabled = True
-        Me.AxHASAR1.Location = New System.Drawing.Point(231, 152)
-        Me.AxHASAR1.Name = "AxHASAR1"
-        Me.AxHASAR1.OcxState = CType(resources.GetObject("AxHASAR1.OcxState"), System.Windows.Forms.AxHost.State)
-        Me.AxHASAR1.Size = New System.Drawing.Size(32, 32)
-        Me.AxHASAR1.TabIndex = 2
+        'Me.AxHASAR1.Enabled = True
+        'Me.AxHASAR1.Location = New System.Drawing.Point(231, 152)
+        'Me.AxHASAR1.Name = "AxHASAR1"
+        'Me.AxHASAR1.OcxState = CType(resources.GetObject("AxHASAR1.OcxState"), System.Windows.Forms.AxHost.State)
+        'Me.AxHASAR1.Size = New System.Drawing.Size(32, 32)
+        'Me.AxHASAR1.TabIndex = 2
         '
         'cmd_cierre_x
         '
@@ -89,12 +89,12 @@ Partial Class Form_cierre_fiscal
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Cierre Fiscal"
         Me.GroupBox1.ResumeLayout(False)
-        CType(Me.AxHASAR1, System.ComponentModel.ISupportInitialize).EndInit()
+        'CType(Me.AxHASAR1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
     Friend WithEvents cmd_cierre_x As System.Windows.Forms.Button
     Friend WithEvents cmd_cierre_z As System.Windows.Forms.Button
-    Friend WithEvents AxHASAR1 As AxFiscalPrinterLib.AxHASAR
+    'Friend WithEvents AxHASAR1 As AxFiscalPrinterLib.AxHASAR
 End Class

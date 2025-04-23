@@ -1,6 +1,5 @@
 Imports System.Data.SqlClient
 Imports System.Data
-Imports OCXFISLib
 
 Namespace pymsoft
 
@@ -10,7 +9,6 @@ Namespace pymsoft
         Dim comando1 As SqlDataAdapter
         Dim comando As SqlCommand
         Dim midataset As New DataSet
-        Dim eps As OCXFISLib.DriverFiscal
         Dim nError As Long
         Dim sub_cadena As String, lfe As String, tce As String
         Dim puerto As String
@@ -1171,7 +1169,7 @@ Namespace pymsoft
         End Sub
 
         Public Sub New()
-            eps = New OCXFISLib.DriverFiscal
+            'eps = New OCXFISLib.DriverFiscal
             conex = conecta()
         End Sub
 
@@ -1894,45 +1892,45 @@ Namespace pymsoft
                 If Me.habilita_puerto_com = "SI" Then
 
                     If Me.detecta_modelo = "SI" Then
-                        form_factura.AxHASAR1.Puerto = Me.Puerto_Com
-                        form_factura.AxHASAR1.Baudios = Me.baude_rate
-                        form_factura.AxHASAR1.AutodetectarControlador()
-                        form_factura.AxHASAR1.Modelo = FiscalPrinterLib.ModelosDeImpresoras.MODELO_715
+                        'form_factura.AxHASAR1.Puerto = Me.Puerto_Com
+                        'form_factura.AxHASAR1.Baudios = Me.baude_rate
+                        'form_factura.AxHASAR1.AutodetectarControlador()
+                        'form_factura.AxHASAR1.Modelo = FiscalPrinterLib.ModelosDeImpresoras.MODELO_715
                     Else
-                        form_factura.AxHASAR1.Puerto = Me.Puerto_Com
-                        form_factura.AxHASAR1.Baudios = Me.baude_rate
-                        form_factura.AxHASAR1.Modelo = FiscalPrinterLib.ModelosDeImpresoras.MODELO_715
+                        'form_factura.AxHASAR1.Puerto = Me.Puerto_Com
+                        'form_factura.AxHASAR1.Baudios = Me.baude_rate
+                        'form_factura.AxHASAR1.Modelo = FiscalPrinterLib.ModelosDeImpresoras.MODELO_715
                     End If
 
                 End If
 
                 If Me.habilita_tcp = "SI" Then
 
-                    form_factura.AxHASAR1.Transporte = FiscalPrinterLib.TiposDeTransporte.SOCKET_TCP
-                    form_factura.AxHASAR1.Puerto = 7227
-                    form_factura.AxHASAR1.DireccionIP = "127.0.0.1"
+                    ' form_factura.AxHASAR1.Transporte = FiscalPrinterLib.TiposDeTransporte.SOCKET_TCP
+                    'form_factura.AxHASAR1.Puerto = 7227
+                    'form_factura.AxHASAR1.DireccionIP = "127.0.0.1"
 
                 End If
 
-                form_factura.AxHASAR1.ReintentoConstante = True
-                form_factura.AxHASAR1.Comenzar()
-                form_factura.AxHASAR1.TratarDeCancelarTodo()
-                form_factura.AxHASAR1.AbrirComprobanteFiscal(FiscalPrinterLib.DocumentosFiscales.TICKET_C)
-                form_factura.AxHASAR1.DescripcionesLargas = False
+                'form_factura.AxHASAR1.ReintentoConstante = True
+                'form_factura.AxHASAR1.Comenzar()
+                'form_factura.AxHASAR1.TratarDeCancelarTodo()
+                'form_factura.AxHASAR1.AbrirComprobanteFiscal(FiscalPrinterLib.DocumentosFiscales.TICKET_C)
+                'form_factura.AxHASAR1.DescripcionesLargas = False
 
-                form_factura.AxHASAR1.BorrarFantasiaEncabezadoCola(False, True, True)
+                'form_factura.AxHASAR1.BorrarFantasiaEncabezadoCola(False, True, True)
 
-                form_factura.AxHASAR1.set_Encabezado(11, "Forma pago:" & " " & form_factura.cmb_forma_pago.Text)
-                form_factura.AxHASAR1.get_Encabezado(11)
-                form_factura.AxHASAR1.set_Encabezado(12, "Numero Control:" & " " & form_factura.txt_numero.Text)
-                form_factura.AxHASAR1.get_Encabezado(12)
-                form_factura.AxHASAR1.set_Encabezado(13, "Usuario:" & " " & principal.lbl_usu.Text)
-                form_factura.AxHASAR1.get_Encabezado(13)
-                form_factura.AxHASAR1.set_Encabezado(14, "        " & "　 GRACIAS X SU COMPRA !!")
-                form_factura.AxHASAR1.get_Encabezado(14)
+                'form_factura.AxHASAR1.set_Encabezado(11, "Forma pago:" & " " & form_factura.cmb_forma_pago.Text)
+                'form_factura.AxHASAR1.get_Encabezado(11)
+                'form_factura.AxHASAR1.set_Encabezado(12, "Numero Control:" & " " & form_factura.txt_numero.Text)
+                'form_factura.AxHASAR1.get_Encabezado(12)
+                'form_factura.AxHASAR1.set_Encabezado(13, "Usuario:" & " " & principal.lbl_usu.Text)
+                'form_factura.AxHASAR1.get_Encabezado(13)
+                'form_factura.AxHASAR1.set_Encabezado(14, "        " & "　 GRACIAS X SU COMPRA !!")
+                'form_factura.AxHASAR1.get_Encabezado(14)
 
                 Dim copias As String = Me.copias_fiscales
-                form_factura.AxHASAR1.ConfigurarControlador(FiscalPrinterLib.ParametrosDeConfiguracion.COPIAS_DOCUMENTOS, copias)
+                'form_factura.AxHASAR1.ConfigurarControlador(FiscalPrinterLib.ParametrosDeConfiguracion.COPIAS_DOCUMENTOS, copias)
 
                 For i = 0 To form_factura.DataGridView1.Rows.Count - 2
 
@@ -1943,7 +1941,7 @@ Namespace pymsoft
                     imp = (form_factura.DataGridView1.Rows(i).Cells(7).Value / cant)
                     des = form_factura.DataGridView1.Rows(i).Cells(1).Value.ToString
 
-                    form_factura.AxHASAR1.ImpuestoInternoFijo = True
+                    'form_factura.AxHASAR1.ImpuestoInternoFijo = True
 
                     If descuento = "" Then
                         p_civa = Format(((monto * ivas) / 100 + monto), "0.000")
@@ -1954,15 +1952,15 @@ Namespace pymsoft
 
                     If imp > 0 Then p_civa = Format(p_civa + imp, "0.000")
 
-                    form_factura.AxHASAR1.ImprimirItem(des, cant, p_civa, ivas, imp)
+                    'form_factura.AxHASAR1.ImprimirItem(des, cant, p_civa, ivas, imp)
 
                 Next
 
-                form_factura.AxHASAR1.ImprimirPago("Efectivo", 0)
+                'form_factura.AxHASAR1.ImprimirPago("Efectivo", 0)
 
-                If Form_tipo_pago.txt_descuento.Text <> "" Then form_factura.AxHASAR1.DescuentoGeneral("Bonificacion", Form_tipo_pago.txt_descuento.Text, True)
-                form_factura.AxHASAR1.CerrarComprobanteFiscal()
-                form_factura.AxHASAR1.Finalizar()
+                'If Form_tipo_pago.txt_descuento.Text <> "" Then form_factura.AxHASAR1.DescuentoGeneral("Bonificacion", Form_tipo_pago.txt_descuento.Text, True)
+                'form_factura.AxHASAR1.CerrarComprobanteFiscal()
+                'form_factura.AxHASAR1.Finalizar()
 
             Catch ex As Exception
 
@@ -2045,8 +2043,8 @@ Namespace pymsoft
                 puerto = "COM" & Me.Puerto_Com
                 baude = Me.baude_rate
 
-                nError = eps.IF_OPEN(puerto, baude)
-                nError = eps.EpsonTicket.TIQUEABRE("C")
+                'nError = eps.IF_OPEN(puerto, baude)
+                'nError = eps.EpsonTicket.TIQUEABRE("C")
 
                 For i = 0 To form_factura.DataGridView1.Rows.Count - 2
 
@@ -2074,11 +2072,11 @@ Namespace pymsoft
 
                     If imp > 0 Then p_civa = Format(p_civa + imp, "0.00")
 
-                    nError = eps.EpsonTicket.TIQUEITEM("    " & sub_cadena, cant, p_civa, ivas, "M", 1, 0, 0)
+                    'nError = eps.EpsonTicket.TIQUEITEM("    " & sub_cadena, cant, p_civa, ivas, "M", 1, 0, 0)
 
                 Next
 
-                eps.EpsonTicket.TIQUECIERRA("T")
+                'eps.EpsonTicket.TIQUECIERRA("T")
 
             Catch ex As Exception
 
@@ -2089,7 +2087,7 @@ Namespace pymsoft
 
             Finally
 
-                eps.IF_CLOSE()
+                'eps.IF_CLOSE()
 
             End Try
 
@@ -2112,9 +2110,9 @@ Namespace pymsoft
                 puerto = "COM" & Me.Puerto_Com
                 baude = Me.baude_rate
 
-                nError = eps.IF_OPEN(puerto, baude)
+                'nError = eps.IF_OPEN(puerto, baude)
 
-                nError = eps.EpsonTicket.FACTABRE("T", "C", "A", 1, "P", 10, "I", "I", form_factura.txt_cliente.Text, "", "CUIT", cuit, "N", form_factura.txt_direccion.Text, "", "", form_factura.txt_numero.Text, "", "C")
+                'nError = eps.EpsonTicket.FACTABRE("T", "C", "A", 1, "P", 10, "I", "I", form_factura.txt_cliente.Text, "", "CUIT", cuit, "N", form_factura.txt_direccion.Text, "", "", form_factura.txt_numero.Text, "", "C")
 
                 For i = 0 To form_factura.DataGridView1.Rows.Count - 2
 
@@ -2142,23 +2140,23 @@ Namespace pymsoft
 
                     If imp > 0 Then p_civa = Format(p_civa + imp, "0.00")
 
-                    nError = eps.EpsonTicket.FACTITEM(sub_cadena, cant, monto, ivas, "M", 1, 0, "", "", "", 0, imp)
+                    'nError = eps.EpsonTicket.FACTITEM(sub_cadena, cant, monto, ivas, "M", 1, 0, "", "", "", 0, imp)
 
                 Next
 
-                nError = eps.EpsonTicket.FACTCIERRA("T", "A", "")
+                'nError = eps.EpsonTicket.FACTCIERRA("T", "A", "")
 
             Catch ex As Exception
 
                 MsgBox(Err.Description, MsgBoxStyle.Exclamation, "PyM Soft")
                 form_factura.err_1 = 1
                 msale_factura = 1
-                nError = eps.IF_CLOSE()
+                'nError = eps.IF_CLOSE()
                 form_factura.Close()
 
             Finally
 
-                nError = eps.IF_CLOSE()
+                'nError = eps.IF_CLOSE()
 
             End Try
 
@@ -2201,9 +2199,9 @@ Namespace pymsoft
                 puerto = "COM" & Me.Puerto_Com
                 baude = Me.baude_rate
 
-                nError = eps.IF_OPEN(puerto, baude)
+                'nError = eps.IF_OPEN(puerto, baude)
 
-                nError = eps.EpsonTicket.FACTABRE("T", "C", "B", 1, "P", 10, "I", lfe, form_factura.txt_cliente.Text, "", tce, cuit, "N", form_factura.txt_direccion.Text, "", "", form_factura.txt_numero.Text, "", "C")
+                'nError = eps.EpsonTicket.FACTABRE("T", "C", "B", 1, "P", 10, "I", lfe, form_factura.txt_cliente.Text, "", tce, cuit, "N", form_factura.txt_direccion.Text, "", "", form_factura.txt_numero.Text, "", "C")
 
                 For i = 0 To form_factura.DataGridView1.Rows.Count - 2
 
@@ -2231,23 +2229,23 @@ Namespace pymsoft
 
                     If imp > 0 Then p_civa = Format(p_civa + imp, "0.00")
 
-                    nError = eps.EpsonTicket.FACTITEM(sub_cadena, cant, p_civa, ivas, "M", 1, 0, "", "", "", 0, imp)
+                    'nError = eps.EpsonTicket.FACTITEM(sub_cadena, cant, p_civa, ivas, "M", 1, 0, "", "", "", 0, imp)
 
                 Next
 
-                nError = eps.EpsonTicket.FACTCIERRA("T", "B", "")
+                'nError = eps.EpsonTicket.FACTCIERRA("T", "B", "")
 
             Catch ex As Exception
 
                 MsgBox(Err.Description, MsgBoxStyle.Exclamation, "PyM Soft")
                 form_factura.err_1 = 1
                 msale_factura = 1
-                nError = eps.IF_CLOSE()
+                'nError = eps.IF_CLOSE()
                 form_factura.Close()
 
             Finally
 
-                nError = eps.IF_CLOSE()
+                'nError = eps.IF_CLOSE()
 
             End Try
 
@@ -2269,9 +2267,9 @@ Namespace pymsoft
                 puerto = "COM" & Me.Puerto_Com
                 baude = Me.baude_rate
 
-                nError = eps.IF_OPEN(puerto, baude)
+                'nError = eps.IF_OPEN(puerto, baude)
 
-                nError = eps.EpsonTicket.FACTABRE("M", "C", "A", 1, "P", 10, "I", "I", form_factura.txt_cliente.Text, "", "CUIT", cuit, "N", form_factura.txt_direccion.Text, "", "", form_factura.txt_numero.Text, "", "C")
+                'nError = eps.EpsonTicket.FACTABRE("M", "C", "A", 1, "P", 10, "I", "I", form_factura.txt_cliente.Text, "", "CUIT", cuit, "N", form_factura.txt_direccion.Text, "", "", form_factura.txt_numero.Text, "", "C")
 
                 For i = 0 To form_factura.DataGridView1.Rows.Count - 2
 
@@ -2300,23 +2298,23 @@ Namespace pymsoft
 
                     If imp > 0 Then p_civa = Format(p_civa + imp, "0.00")
 
-                    nError = eps.EpsonTicket.FACTITEM(sub_cadena, cant, monto, ivas, "M", 1, 0, "", "", "", 0, imp)
+                    'nError = eps.EpsonTicket.FACTITEM(sub_cadena, cant, monto, ivas, "M", 1, 0, "", "", "", 0, imp)
 
                 Next
 
-                nError = eps.EpsonTicket.FACTCIERRA("M", "A", "Gracias x su Compra!")
+                ' nError = eps.EpsonTicket.FACTCIERRA("M", "A", "Gracias x su Compra!")
 
             Catch ex As Exception
 
                 MsgBox(Err.Description, MsgBoxStyle.Exclamation, "PyM Soft")
                 form_factura.err_1 = 1
                 msale_factura = 1
-                nError = eps.IF_CLOSE()
+                'nError = eps.IF_CLOSE()
                 form_factura.Close()
 
             Finally
 
-                nError = eps.IF_CLOSE()
+                'nError = eps.IF_CLOSE()
 
             End Try
 
@@ -2359,9 +2357,9 @@ Namespace pymsoft
                 puerto = "COM" & Me.Puerto_Com
                 baude = Me.baude_rate
 
-                nError = eps.IF_OPEN(puerto, baude)
+                'nError = eps.IF_OPEN(puerto, baude)
 
-                nError = eps.EpsonTicket.FACTABRE("M", "C", "B", 1, "P", 10, "I", lfe, form_factura.txt_cliente.Text, "", tce, cuit, "N", form_factura.txt_direccion.Text, "", "", form_factura.txt_numero.Text, "", "C")
+                'nError = eps.EpsonTicket.FACTABRE("M", "C", "B", 1, "P", 10, "I", lfe, form_factura.txt_cliente.Text, "", tce, cuit, "N", form_factura.txt_direccion.Text, "", "", form_factura.txt_numero.Text, "", "C")
 
                 For i = 0 To form_factura.DataGridView1.Rows.Count - 2
 
@@ -2390,23 +2388,23 @@ Namespace pymsoft
 
                     If imp > 0 Then p_civa = Format(p_civa + imp, "0.00")
 
-                    nError = eps.EpsonTicket.FACTITEM(sub_cadena, cant, p_civa, ivas, "M", 1, 0, "", "", "", 0, imp)
+                    'nError = eps.EpsonTicket.FACTITEM(sub_cadena, cant, p_civa, ivas, "M", 1, 0, "", "", "", 0, imp)
 
                 Next
 
-                nError = eps.EpsonTicket.FACTCIERRA("M", "B", "Gracias x su Compra!")
+                'nError = eps.EpsonTicket.FACTCIERRA("M", "B", "Gracias x su Compra!")
 
             Catch ex As Exception
 
                 MsgBox(Err.Description, MsgBoxStyle.Exclamation, "PyM Soft")
                 form_factura.err_1 = 1
                 msale_factura = 1
-                nError = eps.IF_CLOSE()
+                'nError = eps.IF_CLOSE()
                 form_factura.Close()
 
             Finally
 
-                nError = eps.IF_CLOSE()
+                'nError = eps.IF_CLOSE()
 
             End Try
 
@@ -2423,33 +2421,33 @@ Namespace pymsoft
                 Form_tipo_pago.Enabled = False
                 form_factura.Enabled = False
 
-                form_factura.AxHASAR1.Puerto = Me.Puerto_Com
-                form_factura.AxHASAR1.Baudios = Me.baude_rate
-                form_factura.AxHASAR1.Modelo = FiscalPrinterLib.ModelosDeImpresoras.MODELO_715
+                'form_factura.AxHASAR1.Puerto = Me.Puerto_Com
+                'form_factura.AxHASAR1.Baudios = Me.baude_rate
+                'form_factura.AxHASAR1.Modelo = FiscalPrinterLib.ModelosDeImpresoras.MODELO_715
 
-                form_factura.AxHASAR1.ReintentoConstante = True
-                form_factura.AxHASAR1.Comenzar()
-                form_factura.AxHASAR1.TratarDeCancelarTodo()
+                'form_factura.AxHASAR1.ReintentoConstante = True
+                'form_factura.AxHASAR1.Comenzar()
+                'form_factura.AxHASAR1.TratarDeCancelarTodo()
 
                 Dim cuit As String = Replace(form_factura.txt_cuit.Text, "-", "")
 
-                If RTrim(form_factura.txt_iva_solo.Text) = "Monotributo" Then form_factura.AxHASAR1.DatosCliente(form_factura.txt_cliente.Text, cuit, FiscalPrinterLib.TiposDeDocumento.TIPO_CUIT, FiscalPrinterLib.TiposDeResponsabilidades.MONOTRIBUTO, form_factura.txt_direccion.Text)
-                If RTrim(form_factura.txt_iva_solo.Text) = "Consumidor Final" Then form_factura.AxHASAR1.DatosCliente(form_factura.txt_cliente.Text, cuit, FiscalPrinterLib.TiposDeDocumento.TIPO_CUIT, FiscalPrinterLib.TiposDeResponsabilidades.CONSUMIDOR_FINAL, form_factura.txt_direccion.Text)
-                If RTrim(form_factura.txt_iva_solo.Text) = "Exento" Then form_factura.AxHASAR1.DatosCliente(form_factura.txt_cliente.Text, cuit, FiscalPrinterLib.TiposDeDocumento.TIPO_CUIT, FiscalPrinterLib.TiposDeResponsabilidades.RESPONSABLE_EXENTO, form_factura.txt_direccion.Text)
-                If RTrim(form_factura.txt_iva_solo.Text) = " No Categorizado" Then form_factura.AxHASAR1.DatosCliente(form_factura.txt_cliente.Text, cuit, FiscalPrinterLib.TiposDeDocumento.TIPO_CUIT, FiscalPrinterLib.TiposDeResponsabilidades.NO_CATEGORIZADO, form_factura.txt_direccion.Text)
-                If RTrim(form_factura.txt_iva_solo.Text) = " No Inscripto" Then form_factura.AxHASAR1.DatosCliente(form_factura.txt_cliente.Text, cuit, FiscalPrinterLib.TiposDeDocumento.TIPO_CUIT, FiscalPrinterLib.TiposDeResponsabilidades.RESPONSABLE_NO_INSCRIPTO, form_factura.txt_direccion.Text)
+                'If RTrim(form_factura.txt_iva_solo.Text) = "Monotributo" Then form_factura.AxHASAR1.DatosCliente(form_factura.txt_cliente.Text, cuit, FiscalPrinterLib.TiposDeDocumento.TIPO_CUIT, FiscalPrinterLib.TiposDeResponsabilidades.MONOTRIBUTO, form_factura.txt_direccion.Text)
+                'If RTrim(form_factura.txt_iva_solo.Text) = "Consumidor Final" Then form_factura.AxHASAR1.DatosCliente(form_factura.txt_cliente.Text, cuit, FiscalPrinterLib.TiposDeDocumento.TIPO_CUIT, FiscalPrinterLib.TiposDeResponsabilidades.CONSUMIDOR_FINAL, form_factura.txt_direccion.Text)
+                'If RTrim(form_factura.txt_iva_solo.Text) = "Exento" Then form_factura.AxHASAR1.DatosCliente(form_factura.txt_cliente.Text, cuit, FiscalPrinterLib.TiposDeDocumento.TIPO_CUIT, FiscalPrinterLib.TiposDeResponsabilidades.RESPONSABLE_EXENTO, form_factura.txt_direccion.Text)
+                'If RTrim(form_factura.txt_iva_solo.Text) = " No Categorizado" Then form_factura.AxHASAR1.DatosCliente(form_factura.txt_cliente.Text, cuit, FiscalPrinterLib.TiposDeDocumento.TIPO_CUIT, FiscalPrinterLib.TiposDeResponsabilidades.NO_CATEGORIZADO, form_factura.txt_direccion.Text)
+                'If RTrim(form_factura.txt_iva_solo.Text) = " No Inscripto" Then form_factura.AxHASAR1.DatosCliente(form_factura.txt_cliente.Text, cuit, FiscalPrinterLib.TiposDeDocumento.TIPO_CUIT, FiscalPrinterLib.TiposDeResponsabilidades.RESPONSABLE_NO_INSCRIPTO, form_factura.txt_direccion.Text)
 
-                form_factura.AxHASAR1.AbrirComprobanteFiscal(FiscalPrinterLib.DocumentosFiscales.TICKET_FACTURA_B)
-                form_factura.AxHASAR1.DescripcionesLargas = True
+                'form_factura.AxHASAR1.AbrirComprobanteFiscal(FiscalPrinterLib.DocumentosFiscales.TICKET_FACTURA_B)
+                'form_factura.AxHASAR1.DescripcionesLargas = True
 
-                form_factura.AxHASAR1.BorrarFantasiaEncabezadoCola(False, True, True)
+                'form_factura.AxHASAR1.BorrarFantasiaEncabezadoCola(False, True, True)
 
-                form_factura.AxHASAR1.set_Encabezado(11, "Forma pago:" & " " & form_factura.cmb_forma_pago.Text)
-                form_factura.AxHASAR1.get_Encabezado(11)
-                form_factura.AxHASAR1.set_Encabezado(12, "Numero Control:" & " " & form_factura.txt_numero.Text)
-                form_factura.AxHASAR1.get_Encabezado(12)
-                form_factura.AxHASAR1.set_Encabezado(13, "        " & "　 GRACIAS X SU COMPRA !!")
-                form_factura.AxHASAR1.get_Encabezado(13)
+                'form_factura.AxHASAR1.set_Encabezado(11, "Forma pago:" & " " & form_factura.cmb_forma_pago.Text)
+                'form_factura.AxHASAR1.get_Encabezado(11)
+                'form_factura.AxHASAR1.set_Encabezado(12, "Numero Control:" & " " & form_factura.txt_numero.Text)
+                'form_factura.AxHASAR1.get_Encabezado(12)
+                'form_factura.AxHASAR1.set_Encabezado(13, "        " & "　 GRACIAS X SU COMPRA !!")
+                'form_factura.AxHASAR1.get_Encabezado(13)
 
                 For i = 0 To form_factura.DataGridView1.Rows.Count - 2
 
@@ -2460,7 +2458,7 @@ Namespace pymsoft
                     imp = (form_factura.DataGridView1.Rows(i).Cells(7).Value / cant)
                     des = form_factura.DataGridView1.Rows(i).Cells(1).Value.ToString
 
-                    form_factura.AxHASAR1.ImpuestoInternoFijo = True
+                    'form_factura.AxHASAR1.ImpuestoInternoFijo = True
 
                     If descuento = "" Then
                         p_civa = Format(((monto * ivas) / 100 + monto), "0.00")
@@ -2471,13 +2469,13 @@ Namespace pymsoft
 
                     If imp > 0 Then p_civa = Format(p_civa + imp, "0.00")
 
-                    form_factura.AxHASAR1.ImprimirItem(des, cant, p_civa, ivas, imp)
+                    'form_factura.AxHASAR1.ImprimirItem(des, cant, p_civa, ivas, imp)
 
                 Next
 
 
-                form_factura.AxHASAR1.CerrarComprobanteFiscal()
-                form_factura.AxHASAR1.Finalizar()
+                'form_factura.AxHASAR1.CerrarComprobanteFiscal()
+                'form_factura.AxHASAR1.Finalizar()
 
             Catch ex As Exception
 
@@ -2501,28 +2499,28 @@ Namespace pymsoft
                 Form_tipo_pago.Enabled = False
                 form_factura.Enabled = False
 
-                form_factura.AxHASAR1.Puerto = Me.Puerto_Com
-                form_factura.AxHASAR1.Baudios = Me.baude_rate
-                form_factura.AxHASAR1.Modelo = FiscalPrinterLib.ModelosDeImpresoras.MODELO_715
+                'form_factura.AxHASAR1.Puerto = Me.Puerto_Com
+                'form_factura.AxHASAR1.Baudios = Me.baude_rate
+                'form_factura.AxHASAR1.Modelo = FiscalPrinterLib.ModelosDeImpresoras.MODELO_715
 
-                form_factura.AxHASAR1.ReintentoConstante = True
-                form_factura.AxHASAR1.Comenzar()
-                form_factura.AxHASAR1.TratarDeCancelarTodo()
+                'form_factura.AxHASAR1.ReintentoConstante = True
+                'form_factura.AxHASAR1.Comenzar()
+                'form_factura.AxHASAR1.TratarDeCancelarTodo()
 
                 Dim cuit As String = Replace(form_factura.txt_cuit.Text, "-", "")
 
-                form_factura.AxHASAR1.DatosCliente(form_factura.txt_cliente.Text, cuit, FiscalPrinterLib.TiposDeDocumento.TIPO_CUIT, FiscalPrinterLib.TiposDeResponsabilidades.RESPONSABLE_INSCRIPTO, form_factura.txt_direccion.Text)
-                form_factura.AxHASAR1.AbrirComprobanteFiscal(FiscalPrinterLib.DocumentosFiscales.TICKET_FACTURA_A)
-                form_factura.AxHASAR1.DescripcionesLargas = True
+                'form_factura.AxHASAR1.DatosCliente(form_factura.txt_cliente.Text, cuit, FiscalPrinterLib.TiposDeDocumento.TIPO_CUIT, FiscalPrinterLib.TiposDeResponsabilidades.RESPONSABLE_INSCRIPTO, form_factura.txt_direccion.Text)
+                'form_factura.AxHASAR1.AbrirComprobanteFiscal(FiscalPrinterLib.DocumentosFiscales.TICKET_FACTURA_A)
+                'form_factura.AxHASAR1.DescripcionesLargas = True
 
-                form_factura.AxHASAR1.BorrarFantasiaEncabezadoCola(False, True, True)
+                'form_factura.AxHASAR1.BorrarFantasiaEncabezadoCola(False, True, True)
 
-                form_factura.AxHASAR1.set_Encabezado(11, "Forma pago:" & " " & form_factura.cmb_forma_pago.Text)
-                form_factura.AxHASAR1.get_Encabezado(11)
-                form_factura.AxHASAR1.set_Encabezado(12, "Numero Control:" & " " & form_factura.txt_numero.Text)
-                form_factura.AxHASAR1.get_Encabezado(12)
-                form_factura.AxHASAR1.set_Encabezado(13, "        " & "　 GRACIAS X SU COMPRA !!")
-                form_factura.AxHASAR1.get_Encabezado(13)
+                'form_factura.AxHASAR1.set_Encabezado(11, "Forma pago:" & " " & form_factura.cmb_forma_pago.Text)
+                'form_factura.AxHASAR1.get_Encabezado(11)
+                'form_factura.AxHASAR1.set_Encabezado(12, "Numero Control:" & " " & form_factura.txt_numero.Text)
+                'form_factura.AxHASAR1.get_Encabezado(12)
+                'form_factura.AxHASAR1.set_Encabezado(13, "        " & "　 GRACIAS X SU COMPRA !!")
+                'form_factura.AxHASAR1.get_Encabezado(13)
 
                 For i = 0 To form_factura.DataGridView1.Rows.Count - 2
 
@@ -2533,7 +2531,7 @@ Namespace pymsoft
                     imp = (form_factura.DataGridView1.Rows(i).Cells(7).Value / cant)
                     des = form_factura.DataGridView1.Rows(i).Cells(1).Value.ToString
 
-                    form_factura.AxHASAR1.ImpuestoInternoFijo = True
+                    'form_factura.AxHASAR1.ImpuestoInternoFijo = True
 
                     If descuento = "" Then
                         p_civa = Format(((monto * ivas) / 100 + monto), "0.00")
@@ -2544,13 +2542,13 @@ Namespace pymsoft
 
                     If imp > 0 Then p_civa = Format(p_civa + imp, "0.00")
 
-                    form_factura.AxHASAR1.ImprimirItem(des, cant, p_civa, ivas, imp)
+                    'form_factura.AxHASAR1.ImprimirItem(des, cant, p_civa, ivas, imp)
 
                 Next
 
 
-                form_factura.AxHASAR1.CerrarComprobanteFiscal()
-                form_factura.AxHASAR1.Finalizar()
+                'form_factura.AxHASAR1.CerrarComprobanteFiscal()
+                'form_factura.AxHASAR1.Finalizar()
 
             Catch ex As Exception
 
@@ -2574,32 +2572,32 @@ Namespace pymsoft
                 Form_tipo_pago.Enabled = False
                 form_factura.Enabled = False
 
-                form_factura.AxHASAR1.Puerto = Me.Puerto_Com
-                form_factura.AxHASAR1.Baudios = Me.baude_rate
-                form_factura.AxHASAR1.Modelo = FiscalPrinterLib.ModelosDeImpresoras.MODELO_715
+                'form_factura.AxHASAR1.Puerto = Me.Puerto_Com
+                'form_factura.AxHASAR1.Baudios = Me.baude_rate
+                'form_factura.AxHASAR1.Modelo = FiscalPrinterLib.ModelosDeImpresoras.MODELO_715
 
-                form_factura.AxHASAR1.ReintentoConstante = True
-                form_factura.AxHASAR1.Comenzar()
-                form_factura.AxHASAR1.TratarDeCancelarTodo()
+                'form_factura.AxHASAR1.ReintentoConstante = True
+                'form_factura.AxHASAR1.Comenzar()
+                'form_factura.AxHASAR1.TratarDeCancelarTodo()
 
                 Dim cuit As String = Replace(form_factura.txt_cuit.Text, "-", "")
 
                 Dim FS As String = Chr(28)
                 Dim comando As String = Chr(147) & FS & "1" & FS & form_factura.txt_numero.Text
-                form_factura.AxHASAR1.Enviar(comando)
+                'form_factura.AxHASAR1.Enviar(comando)
 
-                form_factura.AxHASAR1.DatosCliente(form_factura.txt_cliente.Text, cuit, FiscalPrinterLib.TiposDeDocumento.TIPO_CUIT, FiscalPrinterLib.TiposDeResponsabilidades.RESPONSABLE_INSCRIPTO, form_factura.txt_direccion.Text)
-                form_factura.AxHASAR1.AbrirDNFH(FiscalPrinterLib.DocumentosNoFiscales.TICKET_NOTA_CREDITO_A)
-                form_factura.AxHASAR1.DescripcionesLargas = True
+                'form_factura.AxHASAR1.DatosCliente(form_factura.txt_cliente.Text, cuit, FiscalPrinterLib.TiposDeDocumento.TIPO_CUIT, FiscalPrinterLib.TiposDeResponsabilidades.RESPONSABLE_INSCRIPTO, form_factura.txt_direccion.Text)
+                'form_factura.AxHASAR1.AbrirDNFH(FiscalPrinterLib.DocumentosNoFiscales.TICKET_NOTA_CREDITO_A)
+                'form_factura.AxHASAR1.DescripcionesLargas = True
 
-                form_factura.AxHASAR1.BorrarFantasiaEncabezadoCola(False, True, True)
+                'form_factura.AxHASAR1.BorrarFantasiaEncabezadoCola(False, True, True)
 
-                form_factura.AxHASAR1.set_Encabezado(11, "Forma pago:" & " " & form_factura.cmb_forma_pago.Text)
-                form_factura.AxHASAR1.get_Encabezado(11)
-                form_factura.AxHASAR1.set_Encabezado(12, "Numero Control:" & " " & form_factura.txt_numero.Text)
-                form_factura.AxHASAR1.get_Encabezado(12)
-                form_factura.AxHASAR1.set_Encabezado(13, "        " & "　 GRACIAS X SU COMPRA !!")
-                form_factura.AxHASAR1.get_Encabezado(13)
+                'form_factura.AxHASAR1.set_Encabezado(11, "Forma pago:" & " " & form_factura.cmb_forma_pago.Text)
+                'form_factura.AxHASAR1.get_Encabezado(11)
+                'form_factura.AxHASAR1.set_Encabezado(12, "Numero Control:" & " " & form_factura.txt_numero.Text)
+                'form_factura.AxHASAR1.get_Encabezado(12)
+                'form_factura.AxHASAR1.set_Encabezado(13, "        " & "　 GRACIAS X SU COMPRA !!")
+                'form_factura.AxHASAR1.get_Encabezado(13)
 
                 For i = 0 To form_factura.DataGridView1.Rows.Count - 2
 
@@ -2610,7 +2608,7 @@ Namespace pymsoft
                     imp = (form_factura.DataGridView1.Rows(i).Cells(7).Value / cant)
                     des = form_factura.DataGridView1.Rows(i).Cells(1).Value.ToString
 
-                    form_factura.AxHASAR1.ImpuestoInternoFijo = True
+                    'form_factura.AxHASAR1.ImpuestoInternoFijo = True
 
                     If descuento = "" Then
                         p_civa = Format(((monto * ivas) / 100 + monto), "0.00")
@@ -2621,12 +2619,12 @@ Namespace pymsoft
 
                     If imp > 0 Then p_civa = Format(p_civa + imp, "0.00")
 
-                    form_factura.AxHASAR1.ImprimirItem(des, cant, p_civa, ivas, imp)
+                    'form_factura.AxHASAR1.ImprimirItem(des, cant, p_civa, ivas, imp)
 
                 Next
 
-                form_factura.AxHASAR1.CerrarDNFH()
-                form_factura.AxHASAR1.Finalizar()
+                'form_factura.AxHASAR1.CerrarDNFH()
+                'form_factura.AxHASAR1.Finalizar()
 
             Catch ex As Exception
 
@@ -2650,38 +2648,38 @@ Namespace pymsoft
                 Form_tipo_pago.Enabled = False
                 form_factura.Enabled = False
 
-                form_factura.AxHASAR1.Puerto = Me.Puerto_Com
-                form_factura.AxHASAR1.Baudios = Me.baude_rate
-                form_factura.AxHASAR1.Modelo = FiscalPrinterLib.ModelosDeImpresoras.MODELO_715
+                'form_factura.AxHASAR1.Puerto = Me.Puerto_Com
+                'form_factura.AxHASAR1.Baudios = Me.baude_rate
+                'form_factura.AxHASAR1.Modelo = FiscalPrinterLib.ModelosDeImpresoras.MODELO_715
 
-                form_factura.AxHASAR1.ReintentoConstante = True
-                form_factura.AxHASAR1.Comenzar()
-                form_factura.AxHASAR1.TratarDeCancelarTodo()
+                'form_factura.AxHASAR1.ReintentoConstante = True
+                'form_factura.AxHASAR1.Comenzar()
+                'form_factura.AxHASAR1.TratarDeCancelarTodo()
 
                 Dim cuit As String = ""
                 If RTrim(form_factura.txt_iva_solo.Text) <> "Consumidor Final" Then cuit = Replace(form_factura.txt_cuit.Text, "-", "")
 
-                If RTrim(form_factura.txt_iva_solo.Text) = "Monotributo" Then form_factura.AxHASAR1.DatosCliente(form_factura.txt_cliente.Text, cuit, FiscalPrinterLib.TiposDeDocumento.TIPO_CUIT, FiscalPrinterLib.TiposDeResponsabilidades.MONOTRIBUTO, form_factura.txt_direccion.Text)
-                If RTrim(form_factura.txt_iva_solo.Text) = "Consumidor Final" Then form_factura.AxHASAR1.DatosCliente(form_factura.txt_cliente.Text, "222222222", FiscalPrinterLib.TiposDeDocumento.TIPO_NINGUNO, FiscalPrinterLib.TiposDeResponsabilidades.CONSUMIDOR_FINAL, form_factura.txt_direccion.Text)
-                If RTrim(form_factura.txt_iva_solo.Text) = "Exento" Then form_factura.AxHASAR1.DatosCliente(form_factura.txt_cliente.Text, cuit, FiscalPrinterLib.TiposDeDocumento.TIPO_CUIT, FiscalPrinterLib.TiposDeResponsabilidades.RESPONSABLE_EXENTO, form_factura.txt_direccion.Text)
-                If RTrim(form_factura.txt_iva_solo.Text) = " No Categorizado" Then form_factura.AxHASAR1.DatosCliente(form_factura.txt_cliente.Text, cuit, FiscalPrinterLib.TiposDeDocumento.TIPO_CUIT, FiscalPrinterLib.TiposDeResponsabilidades.NO_CATEGORIZADO, form_factura.txt_direccion.Text)
-                If RTrim(form_factura.txt_iva_solo.Text) = " No Inscripto" Then form_factura.AxHASAR1.DatosCliente(form_factura.txt_cliente.Text, cuit, FiscalPrinterLib.TiposDeDocumento.TIPO_CUIT, FiscalPrinterLib.TiposDeResponsabilidades.RESPONSABLE_NO_INSCRIPTO, form_factura.txt_direccion.Text)
+                'If RTrim(form_factura.txt_iva_solo.Text) = "Monotributo" Then form_factura.AxHASAR1.DatosCliente(form_factura.txt_cliente.Text, cuit, FiscalPrinterLib.TiposDeDocumento.TIPO_CUIT, FiscalPrinterLib.TiposDeResponsabilidades.MONOTRIBUTO, form_factura.txt_direccion.Text)
+                'If RTrim(form_factura.txt_iva_solo.Text) = "Consumidor Final" Then form_factura.AxHASAR1.DatosCliente(form_factura.txt_cliente.Text, "222222222", FiscalPrinterLib.TiposDeDocumento.TIPO_NINGUNO, FiscalPrinterLib.TiposDeResponsabilidades.CONSUMIDOR_FINAL, form_factura.txt_direccion.Text)
+                'If RTrim(form_factura.txt_iva_solo.Text) = "Exento" Then form_factura.AxHASAR1.DatosCliente(form_factura.txt_cliente.Text, cuit, FiscalPrinterLib.TiposDeDocumento.TIPO_CUIT, FiscalPrinterLib.TiposDeResponsabilidades.RESPONSABLE_EXENTO, form_factura.txt_direccion.Text)
+                'If RTrim(form_factura.txt_iva_solo.Text) = " No Categorizado" Then form_factura.AxHASAR1.DatosCliente(form_factura.txt_cliente.Text, cuit, FiscalPrinterLib.TiposDeDocumento.TIPO_CUIT, FiscalPrinterLib.TiposDeResponsabilidades.NO_CATEGORIZADO, form_factura.txt_direccion.Text)
+                'If RTrim(form_factura.txt_iva_solo.Text) = " No Inscripto" Then form_factura.AxHASAR1.DatosCliente(form_factura.txt_cliente.Text, cuit, FiscalPrinterLib.TiposDeDocumento.TIPO_CUIT, FiscalPrinterLib.TiposDeResponsabilidades.RESPONSABLE_NO_INSCRIPTO, form_factura.txt_direccion.Text)
 
                 Dim FS As String = Chr(28)
                 Dim comando As String = Chr(147) & FS & "1" & FS & form_factura.txt_numero.Text
-                form_factura.AxHASAR1.Enviar(comando)
+                'form_factura.AxHASAR1.Enviar(comando)
 
-                form_factura.AxHASAR1.AbrirDNFH(FiscalPrinterLib.DocumentosNoFiscales.TICKET_NOTA_CREDITO_B)
-                form_factura.AxHASAR1.DescripcionesLargas = True
+                'form_factura.AxHASAR1.AbrirDNFH(FiscalPrinterLib.DocumentosNoFiscales.TICKET_NOTA_CREDITO_B)
+                'form_factura.AxHASAR1.DescripcionesLargas = True
 
-                form_factura.AxHASAR1.BorrarFantasiaEncabezadoCola(False, True, True)
+                'form_factura.AxHASAR1.BorrarFantasiaEncabezadoCola(False, True, True)
 
-                form_factura.AxHASAR1.set_Encabezado(11, "Forma pago:" & " " & form_factura.cmb_forma_pago.Text)
-                form_factura.AxHASAR1.get_Encabezado(11)
-                form_factura.AxHASAR1.set_Encabezado(12, "Numero Control:" & " " & form_factura.txt_numero.Text)
-                form_factura.AxHASAR1.get_Encabezado(12)
-                form_factura.AxHASAR1.set_Encabezado(13, "        " & "　 GRACIAS X SU COMPRA !!")
-                form_factura.AxHASAR1.get_Encabezado(13)
+                'form_factura.AxHASAR1.set_Encabezado(11, "Forma pago:" & " " & form_factura.cmb_forma_pago.Text)
+                'form_factura.AxHASAR1.get_Encabezado(11)
+                'form_factura.AxHASAR1.set_Encabezado(12, "Numero Control:" & " " & form_factura.txt_numero.Text)
+                'form_factura.AxHASAR1.get_Encabezado(12)
+                'form_factura.AxHASAR1.set_Encabezado(13, "        " & "　 GRACIAS X SU COMPRA !!")
+                'form_factura.AxHASAR1.get_Encabezado(13)
 
                 For i = 0 To form_factura.DataGridView1.Rows.Count - 2
 
@@ -2692,7 +2690,7 @@ Namespace pymsoft
                     imp = (form_factura.DataGridView1.Rows(i).Cells(7).Value / cant)
                     des = form_factura.DataGridView1.Rows(i).Cells(1).Value.ToString
 
-                    form_factura.AxHASAR1.ImpuestoInternoFijo = True
+                    'form_factura.AxHASAR1.ImpuestoInternoFijo = True
 
                     If descuento = "" Then
                         p_civa = Format(((monto * ivas) / 100 + monto), "0.00")
@@ -2703,13 +2701,13 @@ Namespace pymsoft
 
                     If imp > 0 Then p_civa = Format(p_civa + imp, "0.00")
 
-                    form_factura.AxHASAR1.ImprimirItem(des, cant, p_civa, ivas, imp)
+                    'form_factura.AxHASAR1.ImprimirItem(des, cant, p_civa, ivas, imp)
 
                 Next
 
 
-                form_factura.AxHASAR1.CerrarDNFH()
-                form_factura.AxHASAR1.Finalizar()
+                'form_factura.AxHASAR1.CerrarDNFH()
+                'form_factura.AxHASAR1.Finalizar()
 
             Catch ex As Exception
 

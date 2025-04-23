@@ -283,7 +283,7 @@ Public Class Form_numerador
                 fac_elec.Importe_iva = "0.00"
 
                 fac_elec.Fecha_comprobante = Format(Date.Now, "yyyyMMdd")
-                estado = fac_elec.carga_factura_electronica(0, 0, "C", sel.cuit, sel.CRT, sel.KEY, CLng(Me.txt_fact_c.Text))
+                estado = fac_elec.carga_factura_electronica(0, 0, "C", sel.cuit, sel.CRT, sel.KEY, CLng(Me.txt_fact_c.Text), Trim(Form_factura_preventa.txt_iva.Text))
 
                 If fac_elec.Numeradores_distintos = True Then
                     MessageBox.Show("La numeracion del sistemas no es laisma que AFIP.. Verifique!!", "PyMsoft", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -378,7 +378,7 @@ Public Class Form_numerador
                 fac_elec.Neto_21 = Form_factura_preventa.neto_21
 
                 fac_elec.Fecha_comprobante = Format(Date.Now, "yyyyMMdd")
-                estado = fac_elec.carga_factura_electronica(Form_factura_preventa.txt_insc_10.Text, Form_factura_preventa.txt_inscripto.Text, "B", sel.cuit, sel.CRT, sel.KEY, CLng(Me.txt_fact_b.Text))
+                estado = fac_elec.carga_factura_electronica(Form_factura_preventa.txt_insc_10.Text, Form_factura_preventa.txt_inscripto.Text, "B", sel.cuit, sel.CRT, sel.KEY, CLng(Me.txt_fact_b.Text), Trim(Form_factura_preventa.txt_iva.Text))
 
                 If estado = False Then
                     MessageBox.Show("La Factura no se grabo en el AFIP....Verifique!!", "PyMsoft", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -442,7 +442,7 @@ Public Class Form_numerador
                 fac_elec.Neto_21 = Form_factura_preventa.neto_21
 
                 fac_elec.Fecha_comprobante = Format(Date.Now, "yyyyMMdd")
-                estado = fac_elec.carga_factura_electronica(Form_factura_preventa.txt_insc_10.Text, Form_factura_preventa.txt_inscripto.Text, "A", sel.cuit, sel.CRT, sel.KEY, CLng(Me.txt_fact_a.Text))
+                estado = fac_elec.carga_factura_electronica(Form_factura_preventa.txt_insc_10.Text, Form_factura_preventa.txt_inscripto.Text, "A", sel.cuit, sel.CRT, sel.KEY, CLng(Me.txt_fact_a.Text), Trim(Form_factura_preventa.txt_iva.Text))
 
                 If estado = False Then
                     MessageBox.Show("La Factura no se grabo en el AFIP....Verifique!!", "PyMsoft", MessageBoxButtons.OK, MessageBoxIcon.Error)

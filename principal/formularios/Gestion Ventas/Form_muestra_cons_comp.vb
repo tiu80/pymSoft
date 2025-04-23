@@ -112,7 +112,7 @@ Public Class Form_muestra_cons_comp
 
             If RTrim(Form_consulta_comprobante.cmb_tipo.Text) = "Facturas" Or RTrim(Form_consulta_comprobante.cmb_tipo.Text) = "Debitos" Then
 
-                comando = New SqlDataAdapter("select codi_producto,detalle,cantidad1,precio_unidad,total1,descuento,iva_inscripto,imp_interno,exento1,val_uni_sec from fact_det where fact_det.letra_fact1 = '" & RTrim(Me.DataGridView1.SelectedCells(3).Value) & "' and fact_det.num_fact = '" & RTrim(Me.DataGridView1.SelectedCells(2).Value) & "' and fact_det.tipo_fact2 = '" & RTrim(Me.DataGridView1.SelectedCells(1).Value) & "' and fact_det.prefijo_fact2= '" & RTrim(Me.DataGridView1.SelectedCells(4).Value) & "' and fact_det.talon1 = '" & RTrim(Me.DataGridView1.SelectedCells(10).Value) & "'", conex)
+                comando = New SqlDataAdapter("select codi_producto,detalle,cantidad1,precio_unidad,total1,descuento,iva_inscripto,imp_interno,exento1,val_uni_sec,costo from fact_det where fact_det.letra_fact1 = '" & RTrim(Me.DataGridView1.SelectedCells(3).Value) & "' and fact_det.num_fact = '" & RTrim(Me.DataGridView1.SelectedCells(2).Value) & "' and fact_det.tipo_fact2 = '" & RTrim(Me.DataGridView1.SelectedCells(1).Value) & "' and fact_det.prefijo_fact2= '" & RTrim(Me.DataGridView1.SelectedCells(4).Value) & "' and fact_det.talon1 = '" & RTrim(Me.DataGridView1.SelectedCells(10).Value) & "'", conex)
                 comando.Fill(midataset, "fact_det")
                 comando.Dispose()
 
