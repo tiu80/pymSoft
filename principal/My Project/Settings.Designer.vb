@@ -15,21 +15,21 @@ Option Explicit On
 Namespace My
     
     <Global.System.Runtime.CompilerServices.CompilerGeneratedAttribute(),  _
-     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "11.0.0.0"),  _
+     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.2.0.0"),  _
      Global.System.ComponentModel.EditorBrowsableAttribute(Global.System.ComponentModel.EditorBrowsableState.Advanced)>  _
     Partial Friend NotInheritable Class MySettings
         Inherits Global.System.Configuration.ApplicationSettingsBase
         
         Private Shared defaultInstance As MySettings = CType(Global.System.Configuration.ApplicationSettingsBase.Synchronized(New MySettings()),MySettings)
         
-#Region "Funcionalidad para autoguardar de My.Settings"
+#Region "Funcionalidad para autoguardar My.Settings"
 #If _MyType = "WindowsForms" Then
     Private Shared addedHandler As Boolean
 
     Private Shared addedHandlerLockObject As New Object
 
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), Global.System.ComponentModel.EditorBrowsableAttribute(Global.System.ComponentModel.EditorBrowsableState.Advanced)> _
-    Private Shared Sub AutoSaveSettings(ByVal sender As Global.System.Object, ByVal e As Global.System.EventArgs)
+    Private Shared Sub AutoSaveSettings(sender As Global.System.Object, e As Global.System.EventArgs)
         If My.Application.SaveMySettingsOnExit Then
             My.Settings.Save()
         End If
@@ -54,57 +54,45 @@ Namespace My
             End Get
         End Property
         
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
          Global.System.Configuration.DefaultSettingValueAttribute("Data Source=127.0.0.1,1433;Initial Catalog=pgc;Persist Security Info=false;User I"& _ 
             "D=sa")>  _
-        Public Property pgcConnectionString() As String
+        Public ReadOnly Property pgcConnectionString() As String
             Get
                 Return CType(Me("pgcConnectionString"),String)
             End Get
-            Set
-                Me("pgcConnectionString") = value
-            End Set
         End Property
         
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
          Global.System.Configuration.DefaultSettingValueAttribute("Provider=SQLOLEDB;Data Source=PYM;User ID=sa;Initial Catalog=pgc")>  _
-        Public Property ConnectionString() As String
+        Public ReadOnly Property ConnectionString() As String
             Get
                 Return CType(Me("ConnectionString"),String)
             End Get
-            Set
-                Me("ConnectionString") = value
-            End Set
         End Property
         
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
          Global.System.Configuration.DefaultSettingValueAttribute("Data Source=PYM;Initial Catalog=pgc;User ID=sa")>  _
-        Public Property pgcConnectionString1() As String
+        Public ReadOnly Property pgcConnectionString1() As String
             Get
                 Return CType(Me("pgcConnectionString1"),String)
             End Get
-            Set
-                Me("pgcConnectionString1") = value
-            End Set
         End Property
         
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
          Global.System.Configuration.DefaultSettingValueAttribute("Data Source=PYM,1433;Initial Catalog=pgc;User ID=sa")>  _
-        Public Property pgcConnectionString2() As String
+        Public ReadOnly Property pgcConnectionString2() As String
             Get
                 Return CType(Me("pgcConnectionString2"),String)
             End Get
-            Set
-                Me("pgcConnectionString2") = value
-            End Set
         End Property
         
         <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
@@ -114,6 +102,26 @@ Namespace My
         Public ReadOnly Property riopedreConnectionString() As String
             Get
                 Return CType(Me("riopedreConnectionString"),String)
+            End Get
+        End Property
+        
+        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.WebServiceUrl),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("https://wsaahomo.afip.gov.ar/ws/services/LoginCms")>  _
+        Public ReadOnly Property PYMSOFT_Wsaa_LoginCMSService() As String
+            Get
+                Return CType(Me("PYMSOFT_Wsaa_LoginCMSService"),String)
+            End Get
+        End Property
+        
+        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.WebServiceUrl),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("https://wswhomo.afip.gov.ar/wsfev1/service.asmx")>  _
+        Public ReadOnly Property PYMSOFT_WSFEV1_Service() As String
+            Get
+                Return CType(Me("PYMSOFT_WSFEV1_Service"),String)
             End Get
         End Property
     End Class

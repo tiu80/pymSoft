@@ -1,9 +1,46 @@
-Imports System.Data
 Imports System.Data.SqlClient
+Imports System.Net
+Imports System.Security
+Imports System.Security.Cryptography.X509Certificates
+Imports System.Xml
+Imports System.Text
+Imports System.Security.Cryptography.Pkcs
+Imports System.IO
+Imports pym.WSFEV1
 
 Namespace pymsoft
 
     Public Class factura_electronica
+
+        ' Valores por defecto, globales en esta clase
+        Const DEFAULT_URLWSAAWSDL As String = "https://wsaahomo.afip.gov.ar/ws/services/LoginCms?WSDL"
+        Const URL_HOMOLOGACION As String = "https://wswhomo.afip.gov.ar/wsfev1/service.asmx"
+        Const URL_PRODUCCION As String = "https://servicios1.afip.gov.ar/wsfev1/service.asmx"
+        Const DEFAULT_SERVICIO As String = "wsfe"
+        Dim DEFAULT_CERTSIGNER As String = Application.StartupPath & "\certificado.pfx"
+        Const DEFAULT_PROXY As String = Nothing
+        Const DEFAULT_PROXY_USER As String = Nothing
+        Const DEFAULT_PROXY_PASSWORD As String = ""
+        Const DEFAULT_VERBOSE As Boolean = True
+        Private _ultimoNroComprobante As Integer = 0
+        Private _ultimoCAE As String = ""
+        Private _ultimoVencimientoCAE As String = ""
+        Private _respuestaAfip As String = ""
+        Private sign As String = ""
+        Private token As String = ""
+
+        Public Shared VerboseMode As Boolean = False
+
+        Public UniqueId As UInt32 ' Entero de 32 bits sin signo que identifica el requerimiento
+        Public GenerationTime As DateTime ' Momento en que fue generado el requerimiento
+        Public ExpirationTime As DateTime ' Momento en el que expira la solicitud
+        Public Service As String ' Identificacion del WSN para el cual se solicita el TA
+        Public XmlLoginTicketRequest As XmlDocument = Nothing
+        Public XmlLoginTicketResponse As XmlDocument = Nothing
+        Public RutaDelCertificadoFirmante As String
+        Public XmlStrLoginTicketRequestTemplate As String = "<loginTicketRequest><header><uniqueId></uniqueId><generationTime></generationTime><expirationTime></expirationTime></header><service></service></loginTicketRequest>"
+        Private _verboseMode As Boolean = True
+        Private Shared _globalUniqueID As UInt32 = 0 ' OJO! NO ES THREAD-SAFE
 
         Private conex As SqlConnection
         Private coman As SqlCommand
@@ -15,10 +52,10 @@ Namespace pymsoft
         Private horasalida As DateTime
         Private hora As Integer
 
-        Private mconcepto, mtipo_doc, mnro_doc, mtipo_cbte, mpunto_vta, _
-                mcbt_desde, mcbt_hasta, mimp_total, mimp_tot_conc, mimp_neto, _
-                mimp_iva, mimp_trib, mimp_op_ex, mfecha_cbte, mfecha_venc_pago, _
-                mfecha_serv_desde, mfecha_serv_hasta, _
+        Private mconcepto, mtipo_doc, mnro_doc, mtipo_cbte, mpunto_vta,
+                mcbt_desde, mcbt_hasta, mimp_total, mimp_tot_conc, mimp_neto,
+                mimp_iva, mimp_trib, mimp_op_ex, mfecha_cbte, mfecha_venc_pago,
+                mfecha_serv_desde, mfecha_serv_hasta,
                 mmoneda_id, mmoneda_ctz, mtipoiva As String
         Private tipo, pto_vta, nro, fecha, cbte_nro As String
         Private id, Desc, base_imp, alic, importe As String
@@ -36,6 +73,35 @@ Namespace pymsoft
         Private Shared WSAA As Object, WSFEv1 As Object
         Private ms As New IO.MemoryStream
         Private mcondicionivareceptor As Integer
+
+        ' Propiedades públicas
+        Public Property RespuestaAfip()
+            Set(ByVal value)
+                _respuestaAfip = value
+            End Set
+            Get
+                Return _respuestaAfip
+            End Get
+        End Property
+
+        ' Propiedades públicas
+        Public ReadOnly Property UltimoNroComprobante() As Integer
+            Get
+                Return _ultimoNroComprobante
+            End Get
+        End Property
+
+        Public ReadOnly Property UltimoCAE() As String
+            Get
+                Return _ultimoCAE
+            End Get
+        End Property
+
+        Public ReadOnly Property UltimoVencimientoCAE() As String
+            Get
+                Return _ultimoVencimientoCAE
+            End Get
+        End Property
 
         Public Property Condicion_IVA_recpetor()
             Set(ByVal value)
@@ -336,16 +402,9 @@ Namespace pymsoft
                 hora = DateDiff(DateInterval.Hour, horaentrada, horasalida)
                 hora = hora * (-1)
 
-                'diferencia_nocturna = horasalida.Subtract(horaentrada)
-                'hora = diferencia_nocturna.Hours
-
-                ' Generar un nuevo ticket de acceso si no existe o ha expirado;
-                ' de lo contrario, se reutiliza el solicitado anteriormente
-                ' (el objeto WSAA debe permanecer instanciado en memoria)
-                'If WSAA.Token = "" Or WSAA.Sign = "" Then
                 If Trim(tb.Rows(0).Item(0)) = "" Or Trim(tb.Rows(0).Item(1)) = "" Or hora >= 11 Then
                     Autenticar(crt, key)
-                    actualiza_sign_token()
+                    actualiza_sign_token(WSAA.Sign, WSAA.Token)
                     WSFEv1.Token = WSAA.Token
                     WSFEv1.Sign = WSAA.Sign
                 Else
@@ -354,11 +413,6 @@ Namespace pymsoft
                     WSFEv1.Sign = Trim(tb.Rows(0).Item(0))
                 End If
 
-                ' Setear tocken y sing de autorización (pasos previos)
-                'WSFEv1.Token = WSAA.Token
-                'WSFEv1.Sign = WSAA.Sign
-
-                ' CUIT del emisor (debe estar registrado en la AFIP)
                 WSFEv1.Cuit = RTrim(Replace(cuit, "-", ""))
 
                 ' Conectar al Servicio Web de Facturación
@@ -385,7 +439,50 @@ Namespace pymsoft
             End Try
         End Sub
 
-        Private Sub actualiza_sign_token()
+        Private Function verifica_sign_token() As Boolean
+
+            Dim est As Boolean = False
+
+            'obtengo el sgn y token almacenados
+            conex = conecta()
+            tb = New DataTable
+            tb.Clear()
+
+            comando = New SqlDataAdapter("select Signn,Token,hora_token from Numerador where talon = 1", conex)
+            comando.Fill(tb)
+            comando.Dispose()
+
+            horaentrada = Date.Now
+            horasalida = tb.Rows(0).Item(2)
+
+            hora = DateDiff(DateInterval.Hour, horaentrada, horasalida)
+            hora = hora * (-1)
+
+            If Trim(tb.Rows(0).Item(0)) = "" Or Trim(tb.Rows(0).Item(1)) = "" Or hora >= 11 Then
+                Dim Ta As String = inicializa_ticket()
+                If Ta.ToString.Substring(0, 2) <> "99" Then
+                    XmlLoginTicketResponse = New XmlDocument()
+                    XmlLoginTicketResponse.LoadXml(Ta)
+                    sign = XmlLoginTicketResponse.SelectSingleNode("//sign").InnerText
+                    token = XmlLoginTicketResponse.SelectSingleNode("//token").InnerText
+                    actualiza_sign_token(sign, token)
+                    est = True
+                Else
+                    est = False
+                End If
+            Else
+                ' Setear tocken y sing de autorización (pasos previos)
+                token = Trim(tb.Rows(0).Item(1))
+                sign = Trim(tb.Rows(0).Item(0))
+                est = True
+            End If
+
+            Return est
+            'WSFEv1.Cuit = Trim(Replace(cuit, "-", ""))
+
+        End Function
+
+        Private Sub actualiza_sign_token(ByVal Sign, ByVal Token)
 
             Try
 
@@ -393,7 +490,7 @@ Namespace pymsoft
                 conex = conecta()
                 If conex.State = ConnectionState.Closed Then conex.Open()
 
-                coman = New SqlCommand("Update numerador set Token = '" & Trim(WSAA.Token) & "',Signn = '" & Trim(WSAA.Sign) & "',hora_token = '" & Date.Now.ToString("yyyyMMdd HH:mm:ss") & "' where talon = 1", conex)
+                coman = New SqlCommand("Update numerador set Token = '" & Trim(Token) & "',Signn = '" & Trim(Sign) & "',hora_token = '" & Date.Now.ToString("yyyyMMdd HH:mm:ss") & "' where talon = 1", conex)
                 coman.ExecuteNonQuery()
                 coman.Dispose()
 
@@ -542,9 +639,9 @@ Namespace pymsoft
                 End If
                 ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
-                ok = WSFEv1.CrearFactura(Me.Concepto, Me.Tipo_documento, Me.Numero_documento, Me.Tipo_comprobante, Me.Punto_venta, _
-                        Me.Comprobante_desde, Me.Comprobante_hasta, Me.Importe_total, Me.Importe_total_conc, Me.Importe_neto, _
-                        Me.Importe_iva, Me.Importe_trib, Me.Importe_op_ex, Me.Fecha_comprobante, Me.Fecha_vencimiento_pago, _
+                ok = WSFEv1.CrearFactura(Me.Concepto, Me.Tipo_documento, Me.Numero_documento, Me.Tipo_comprobante, Me.Punto_venta,
+                        Me.Comprobante_desde, Me.Comprobante_hasta, Me.Importe_total, Me.Importe_total_conc, Me.Importe_neto,
+                        Me.Importe_iva, Me.Importe_trib, Me.Importe_op_ex, Me.Fecha_comprobante, Me.Fecha_vencimiento_pago,
                         Me.Fecha_servidor_desde, Me.Fecha_servidor_hasta, Me.Tipo_moneda, Me.Cotizacion_moneda, Nothing, Nothing)
 
                 ok = WSFEv1.EstablecerCampoFactura("cancela_misma_moneda_ext", "N")
@@ -691,6 +788,469 @@ Namespace pymsoft
             'cmd.ExecuteNonQuery()
 
             'conex.Close()
+
+        End Function
+
+
+        ''' <summary>
+        ''' '''''''''''''''''''''''''''''''''''''    CLASE NUEVA PARA WEB SERVICE SIN PYAFIPWS  '''''''''''''''''''''''''''''''''''''' 
+        ''' </summary>
+        ''' <returns></returns>
+        Public Function inicializa_ticket() As Object
+
+            Dim strUrlWsaaWsdl As String = DEFAULT_URLWSAAWSDL
+            Dim strIdServicioNegocio As String = DEFAULT_SERVICIO
+            Dim strRutaCertSigner As String = DEFAULT_CERTSIGNER
+            Dim strPasswordSecureString As New SecureString
+            Dim strProxy As String = DEFAULT_PROXY
+            Dim strProxyUser As String = DEFAULT_PROXY_USER
+            Dim strProxyPassword As String = DEFAULT_PROXY_PASSWORD
+            Dim blnVerboseMode As Boolean = DEFAULT_VERBOSE
+
+
+            ' Argumentos OK, entonces procesar normalmente...
+            Dim objTicketRespuesta As factura_electronica
+            Dim strTicketRespuesta As String
+
+            Try
+
+                objTicketRespuesta = New factura_electronica
+
+
+                strTicketRespuesta = objTicketRespuesta.ObtenerLoginTicketResponse(strIdServicioNegocio, strUrlWsaaWsdl, strRutaCertSigner, strPasswordSecureString, strProxy, strProxyUser, strProxyPassword, blnVerboseMode)
+
+            Catch excepcionAlObtenerTicket As Exception
+
+                Return "99" & " " & excepcionAlObtenerTicket.Message
+
+            End Try
+            Return strTicketRespuesta
+        End Function
+
+        Public Shared Function FirmaBytesMensaje(
+        ByVal argBytesMsg As Byte(),
+        ByVal argCertFirmante As X509Certificate2
+        ) As Byte()
+            Const ID_FNC As String = "[FirmaBytesMensaje]"
+            Try
+                ' Pongo el mensaje en un objeto ContentInfo (requerido para construir el obj SignedCms)
+                Dim infoContenido As New ContentInfo(argBytesMsg)
+                Dim cmsFirmado As New SignedCms(infoContenido)
+
+                ' Creo objeto CmsSigner que tiene las caracteristicas del firmante
+                Dim cmsFirmante As New CmsSigner(argCertFirmante)
+                cmsFirmante.IncludeOption = X509IncludeOption.EndCertOnly
+
+                If VerboseMode Then
+                    Console.WriteLine(ID_FNC + "***Firmando bytes del mensaje...")
+                End If
+
+                ' Firmo el mensaje PKCS #7
+                cmsFirmado.ComputeSignature(cmsFirmante)
+
+                If VerboseMode Then
+                    Console.WriteLine(ID_FNC + "***OK mensaje firmado")
+                End If
+
+                ' Encodeo el mensaje PKCS #7.
+                Return cmsFirmado.Encode()
+            Catch excepcionAlFirmar As Exception
+                Throw New Exception(ID_FNC + "***Error al firmar: " & excepcionAlFirmar.Message)
+                Return Nothing
+            End Try
+        End Function
+
+        Public Shared Function ObtieneCertificadoDesdeArchivo(
+    ByVal argArchivo As String,
+    ByVal argPassword As SecureString
+    ) As X509Certificate2
+            Const ID_FNC As String = "[ObtieneCertificadoDesdeArchivo]"
+            Dim objCert As New X509Certificate2
+            Try
+                If argPassword.IsReadOnly = False Then
+                    objCert.Import(File.ReadAllBytes(argArchivo), "123456", X509KeyStorageFlags.PersistKeySet)
+                Else
+                    objCert.Import(File.ReadAllBytes(argArchivo))
+                End If
+                Return objCert
+            Catch excepcionAlImportarCertificado As Exception
+                Throw New Exception(ID_FNC + "***Error al leer certificado: " + excepcionAlImportarCertificado.Message)
+                Return Nothing
+            End Try
+        End Function
+
+        Public Function ObtenerLoginTicketResponse(
+            ByVal argServicio As String,
+            ByVal argUrlWsaa As String,
+            ByVal argRutaCertX509Firmante As String,
+            ByVal argPassword As SecureString,
+            ByVal argProxy As String,
+            ByVal argProxyUser As String,
+            ByVal argProxyPassword As String,
+            ByVal argVerbose As Boolean
+                ) As String
+
+            Const ID_FNC As String = "[ObtenerLoginTicketResponse]"
+
+            Me.RutaDelCertificadoFirmante = argRutaCertX509Firmante
+            Me._verboseMode = argVerbose
+            'Me.VerboseMode = argVerbose
+
+            Dim cmsFirmadoBase64 As String
+            Dim loginTicketResponse As String
+            Dim xmlNodoUniqueId As XmlNode
+            Dim xmlNodoGenerationTime As XmlNode
+            Dim xmlNodoExpirationTime As XmlNode
+            Dim xmlNodoService As XmlNode
+
+            ' PASO 1: Genero el Login Ticket Request
+            Try
+                _globalUniqueID += 1
+
+                XmlLoginTicketRequest = New XmlDocument()
+                XmlLoginTicketRequest.LoadXml(XmlStrLoginTicketRequestTemplate)
+
+                xmlNodoUniqueId = XmlLoginTicketRequest.SelectSingleNode("//uniqueId")
+                xmlNodoGenerationTime = XmlLoginTicketRequest.SelectSingleNode("//generationTime")
+                xmlNodoExpirationTime = XmlLoginTicketRequest.SelectSingleNode("//expirationTime")
+                xmlNodoService = XmlLoginTicketRequest.SelectSingleNode("//service")
+                xmlNodoGenerationTime.InnerText = DateTime.Now.AddMinutes(-10).ToString("s")
+                xmlNodoExpirationTime.InnerText = DateTime.Now.AddMinutes(+10).ToString("s")
+                xmlNodoUniqueId.InnerText = CStr(_globalUniqueID)
+                xmlNodoService.InnerText = argServicio
+                Me.Service = argServicio
+
+                If Me._verboseMode Then
+                    Console.WriteLine(XmlLoginTicketRequest.OuterXml)
+                End If
+
+            Catch excepcionAlGenerarLoginTicketRequest As Exception
+                Throw New Exception(ID_FNC + "***Error GENERANDO el LoginTicketRequest : " + excepcionAlGenerarLoginTicketRequest.Message + excepcionAlGenerarLoginTicketRequest.StackTrace)
+            End Try
+
+            ' PASO 2: Firmo el Login Ticket Request
+            Try
+                If Me._verboseMode Then
+                    Console.WriteLine(ID_FNC + "***Leyendo certificado: {0}", RutaDelCertificadoFirmante)
+                End If
+
+                Dim certFirmante As X509Certificate2 = ObtieneCertificadoDesdeArchivo(RutaDelCertificadoFirmante, argPassword)
+
+                If Me._verboseMode Then
+                    Console.WriteLine(ID_FNC + "***Firmando: ")
+                    Console.WriteLine(XmlLoginTicketRequest.OuterXml)
+                End If
+
+                ' Convierto el login ticket request a bytes, firmo el msg y convierto a Base64
+                Dim EncodedMsg As Encoding = Encoding.UTF8
+                Dim msgBytes As Byte() = EncodedMsg.GetBytes(XmlLoginTicketRequest.OuterXml)
+                Dim encodedSignedCms As Byte() = FirmaBytesMensaje(msgBytes, certFirmante)
+                cmsFirmadoBase64 = Convert.ToBase64String(encodedSignedCms)
+
+            Catch excepcionAlFirmar As Exception
+                Throw New Exception(ID_FNC + "***Error FIRMANDO el LoginTicketRequest: " + excepcionAlFirmar.Message)
+            End Try
+
+            ' PASO 3: Invoco al WSAA para obtener el Login Ticket Response
+            Try
+                If Me._verboseMode Then
+                    Console.WriteLine(ID_FNC + "***Llamando al WSAA en URL: {0}", argUrlWsaa)
+                    Console.WriteLine(ID_FNC + "***Argumento en el request:")
+                    Console.WriteLine(cmsFirmadoBase64)
+                End If
+
+                Dim servicioWsaa As New Wsaa.LoginCMSService()
+                servicioWsaa.Url = argUrlWsaa
+
+                ' Veo si hay que salir a traves de un proxy
+                If argProxy IsNot Nothing Then
+                    servicioWsaa.Proxy = New WebProxy(argProxy, True)
+                    If argProxyUser IsNot Nothing Then
+                        Dim Credentials As New NetworkCredential(argProxyUser, argProxyPassword)
+                        servicioWsaa.Proxy.Credentials = Credentials
+                    End If
+                End If
+
+                loginTicketResponse = servicioWsaa.loginCms(cmsFirmadoBase64)
+
+                If Me._verboseMode Then
+                    Console.WriteLine(ID_FNC + "***LoguinTicketResponse: ")
+                    Console.WriteLine(loginTicketResponse)
+                End If
+
+            Catch excepcionAlInvocarWsaa As Exception
+                Throw New Exception(ID_FNC + "***Error INVOCANDO al servicio WSAA: " + excepcionAlInvocarWsaa.Message)
+            End Try
+
+            ' PASO 4: Analizo el Login Ticket Response recibido del WSAA
+            Try
+                XmlLoginTicketResponse = New XmlDocument()
+                XmlLoginTicketResponse.LoadXml(loginTicketResponse)
+
+                Me.UniqueId = UInt32.Parse(XmlLoginTicketResponse.SelectSingleNode("//uniqueId").InnerText)
+                Me.GenerationTime = DateTime.Parse(XmlLoginTicketResponse.SelectSingleNode("//generationTime").InnerText)
+                Me.ExpirationTime = DateTime.Parse(XmlLoginTicketResponse.SelectSingleNode("//expirationTime").InnerText)
+                sign = XmlLoginTicketResponse.SelectSingleNode("//sign").InnerText
+                token = XmlLoginTicketResponse.SelectSingleNode("//token").InnerText
+
+            Catch excepcionAlAnalizarLoginTicketResponse As Exception
+                Throw New Exception(ID_FNC + "***Error ANALIZANDO el LoginTicketResponse: " + excepcionAlAnalizarLoginTicketResponse.Message)
+            End Try
+
+            Return loginTicketResponse
+
+        End Function
+
+        ' Método principal para obtener el último comprobante
+        Public Function ObtenerUltimoComprobanteAutorizado(ByVal sign As String, ByVal token As String, ByVal cuit As Long, ByVal cbteTipo As Integer, ByVal ptoVta As Integer) As Integer
+
+            Try
+                ' Configurar seguridad (TLS 1.2 no está disponible en .NET 2.0, usamos SSL3)
+                ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12
+
+                ' Seleccionar URL según ambiente
+                Dim urlServicio As String = URL_HOMOLOGACION
+
+                ' Crear el objeto del servicio web
+                Dim wsFE As New WSFEV1.Service
+                wsFE.Url = urlServicio
+                wsFE.Timeout = 30000 ' 30 segundos de timeout
+
+                ' Configurar autenticación
+                Dim authRequest As New WSFEV1.FEAuthRequest
+                authRequest.Token = token
+                authRequest.Sign = sign
+                authRequest.Cuit = cuit
+
+                ' Configurar proxy si es necesario
+                'ConfigurarProxy(wsFE)
+
+                ' Llamar al servicio
+                Dim response As WSFEV1.FERecuperaLastCbteResponse =
+                    wsFE.FECompUltimoAutorizado(authRequest, ptoVta, cbteTipo)
+
+                ' Verificar respuesta
+                If response Is Nothing Then
+                    Throw New Exception("El servicio no devolvió respuesta")
+                End If
+
+                ' Verificar errores AFIP
+                If response.Errors IsNot Nothing AndAlso response.Errors.Length > 0 Then
+                    Dim errorMsg As String = ""
+                    For Each err As WSFEV1.Err In response.Errors
+                        errorMsg &= String.Format("Código: {0} - Mensaje: {1}{2}", err.Code, err.Msg, Environment.NewLine)
+                    Next
+                    Throw New Exception("Error AFIP: " & errorMsg)
+                End If
+
+                ' Retornar el número de comprobante
+                Return response.CbteNro
+
+            Catch ex As WebException
+                Dim errorResponse As String = ObtenerMensajeErrorWeb(ex)
+                Throw New Exception("Error de conexión con AFIP: " & errorResponse)
+            Catch ex As Exception
+                Throw New Exception("Error al obtener último comprobante: " & ex.Message)
+            End Try
+        End Function
+
+        ' Método para obtener mensajes de error de WebException
+        Private Function ObtenerMensajeErrorWeb(ByVal ex As WebException) As String
+            Try
+                If ex.Response IsNot Nothing Then
+                    Using reader As New IO.StreamReader(ex.Response.GetResponseStream())
+                        Return reader.ReadToEnd()
+                    End Using
+                Else
+                    Return ex.Message
+                End If
+            Catch
+                Return ex.Message
+            End Try
+        End Function
+
+        ' Autorizar una factura electrónica (adaptado para ARCA)
+        Public Function AutorizarFactura(ByVal cuit_empresa As String, ByVal cbteNro As Integer,
+                                        ByVal cndIvaReceptor As String, ByVal iva10 As Double, ByVal iva21 As Double, ByVal letra_fact As String)
+
+            estado = False
+
+            estado = verifica_sign_token()
+
+            If estado = False Then
+                RespuestaAfip = "No se puede obtener el ticker de acceso"
+                Return False
+            End If
+
+            cbte_nro = ObtenerUltimoComprobanteAutorizado(Me.Sign, Me.Token, cuit_empresa, Me.Tipo_comprobante, Me.Punto_venta)
+
+            If cbte_nro = "" Then
+                Me.Comprobante_desde = 1            ' no hay comprobantes emitidos
+                Me.Comprobante_hasta = 1
+            Else
+                Me.Comprobante_desde = CLng(cbte_nro + 1)   ' convertir a entero largo
+                Me.Comprobante_hasta = CLng(cbte_nro + 1)
+            End If
+
+            If Trim(cbteNro) <> Trim(Me.Comprobante_desde) Then
+                Me.Numeradores_distintos = True
+                Return False
+                Exit Function
+            Else
+                Me.Numeradores_distintos = False
+            End If
+
+            ''' nuevos cambios segun RG5614 y RG 5616 ''''''''''''''''''''''
+            If cndIvaReceptor = "Consumidor Final" Then
+                Me.Condicion_IVA_recpetor = 5
+            End If
+            If cndIvaReceptor = "Responsable Inscripto" Then
+                Me.Condicion_IVA_recpetor = 1
+            End If
+            If cndIvaReceptor = "Monotributo" Then
+                Me.Condicion_IVA_recpetor = 6
+            End If
+            If cndIvaReceptor = "Exento" Then
+                Me.Condicion_IVA_recpetor = 4
+            End If
+
+            ' Configurar seguridad (TLS 1.2 no está disponible en .NET 2.0, usamos SSL3)
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12
+
+            ' Seleccionar URL según ambiente
+            Dim urlServicio As String = URL_HOMOLOGACION
+
+            ' Crear el objeto del servicio web
+            Dim servicio As New WSFEV1.Service With {
+                .Url = urlServicio,
+                .Timeout = 30000
+            }
+
+            ' Obtener TA (simulado - en producción usar WSAA)
+            Dim authRequest As New WSFEV1.FEAuthRequest()
+            authRequest.Cuit = cuit_empresa.Trim()
+            authRequest.Token = Token.Trim()
+            authRequest.Sign = Sign.Trim()
+
+            ' --- 3. Crear encabezado de factura (Cabecera) ---
+            Dim cabecera As New FECAECabRequest()
+            cabecera.CantReg = 1 ' Cantidad de facturas
+            cabecera.PtoVta = Me.Punto_venta
+            cabecera.CbteTipo = Me.Tipo_comprobante
+
+            ' --- 4. Crear detalle de factura ---
+            Dim detalle As New FECAEDetRequest()
+            detalle.Concepto = 1 ' Productos
+            detalle.DocTipo = Me.Tipo_documento ' 96 = DNI (Consumidor Final)
+            detalle.DocNro = Me.Numero_documento ' N° de documento
+            detalle.CbteDesde = Me.Comprobante_desde ' N° de factura desde
+            detalle.CbteHasta = Me.Comprobante_hasta ' N° de factura hasta
+            detalle.CbteFch = Me.Fecha_comprobante 'DateTime.Now.ToString("yyyyMMdd") ' Fecha
+            detalle.ImpTotal = Me.Importe_total ' Total con IVA
+            detalle.ImpTotConc = Me.Importe_total_conc ' Importe neto no gravado
+            detalle.ImpNeto = Me.Importe_neto ' Importe neto
+            detalle.ImpOpEx = Me.Importe_op_ex ' Importe exento
+            detalle.ImpTrib = Me.Importe_trib ' Tributos
+            detalle.ImpIVA = Me.Importe_iva ' IVA
+            detalle.FchServDesde = Me.Fecha_servidor_desde
+            detalle.FchServHasta = Me.Fecha_servidor_hasta
+            detalle.FchVtoPago = Me.Fecha_vencimiento_pago
+            detalle.MonId = "PES" ' Moneda (Pesos)
+            detalle.MonCotiz = 1 ' Cotización (1 para pesos)
+            detalle.CondicionIVAReceptorId = Me.Condicion_IVA_recpetor
+            detalle.CanMisMonExt = "N"
+            detalle.MonCotizSpecified = True
+
+            If letra_fact <> "C" Then
+
+                ' agregamos la alicuota de iva
+                Dim listaIva As New List(Of AlicIva)()
+
+                ' si es credito/debito debo informar el comprobante al cual aplica
+                If Me.Tipo_comprobante = 3 Or Me.Tipo_comprobante = 8 Or Me.Tipo_comprobante = 2 Or Me.Tipo_comprobante = 7 Then
+                    If Me.Tipo_comprobante = 3 Or Me.Tipo_comprobante = 2 Then tipo = 1
+                    If Me.Tipo_comprobante = 8 Or Me.Tipo_comprobante = 7 Then tipo = 6
+                    pto_vta = Me.Punto_venta
+                    nro = Me.Comprobante_aplica
+                    'ok = WSFEv1.AgregarCmpAsoc(tipo, pto_vta, nro)
+                End If
+
+                If iva21 <> 0 Then
+                    ' Agrego tasas de IVA
+                    Dim iva21ali As New AlicIva() With {.Id = 5, .BaseImp = Me.Neto_21, .Importe = iva21}
+                    listaIva.Add(iva21ali)
+                End If
+
+                If iva10 <> 0 Then
+                    ' Agrego tasas de IVA
+                    Dim iva10ali As New AlicIva() With {.Id = 4, .BaseImp = Me.Neto_10, .Importe = iva10}
+                    listaIva.Add(iva10ali)
+                End If
+
+                If mexento <> 0 Then
+                    ' Agrego tasas de IVA
+                    Dim iva0ali As New AlicIva() With {.Id = 3, .BaseImp = Me.Exento, .Importe = 0}
+                    listaIva.Add(iva0ali)
+                End If
+
+                detalle.Iva = listaIva.ToArray()
+
+            End If
+
+            ' --- 5. Agregar al array de detalles ---
+            ' --- Crear la colección de detalles (en este caso, solo uno) ---
+            Dim detalles(0) As WSFEV1.FECAEDetRequest
+            detalles(0) = detalle
+
+            ' --- Crear la solicitud completa ---
+            Dim fecaereq As New WSFEV1.FECAERequest()
+            fecaereq.FeCabReq = cabecera
+            fecaereq.FeDetReq = detalles
+
+            ' --- Llamar al WebService ---
+            Try
+                Dim respuesta As FECAEResponse = servicio.FECAESolicitar(authRequest, fecaereq)
+
+                ' --- Procesar respuesta CORRECTAMENTE ---
+                ' Verifica primero si la operación fue exitosa
+                If respuesta.Errors IsNot Nothing AndAlso respuesta.Errors.Length > 0 Then
+                    ' Hubo errores
+                    'Form1.txtErr.Text = respuesta.Errors(0).Msg & " (Código: " & respuesta.Errors(0).Code & ")"
+                    RespuestaAfip = respuesta.Errors(0).Msg & " (Código: " & respuesta.Errors(0).Code & ")"
+                    estado = False
+                Else
+                    ' Verificar aprobación mediante la existencia de CAE
+                    If respuesta.FeDetResp IsNot Nothing AndAlso respuesta.FeDetResp.Length > 0 Then
+                        If Not String.IsNullOrEmpty(respuesta.FeDetResp(0).CAE) Then
+                            'Console.WriteLine("Factura autorizada:")
+                            Me.cae_afip = respuesta.FeDetResp(0).CAE
+                            Me.Fecha_cae = respuesta.FeDetResp(0).CAEFchVto
+
+                            form_factura.lbl_cae.Text = Me.cae_afip
+                            form_factura.lbl_venc_cae.Text = Me.Fecha_cae
+
+                            estado = True
+                            'Form1.txtErr.Text = "CAE: " & respuesta.FeDetResp(0).CAE
+                            'Form1.txtErr.Text = Form1.txtErr.Text & " " & "Vencimiento: " & respuesta.FeDetResp(0).CAEFchVto
+                            'Form1.txtErr.Text = Form1.txtErr.Text & " " & "Número de comprobante: " & respuesta.FeDetResp(0).CbteDesde
+                        Else
+                            RespuestaAfip = "La factura fue rechazada por AFIP"
+                            estado = False
+                        End If
+                    Else
+                        RespuestaAfip = "No se recibió detalle de respuesta de AFIP"
+                        estado = False
+                    End If
+                End If
+            Catch ex As Exception
+                RespuestaAfip = "Error al conectar con AFIP: " & ex.Message
+                If ex.InnerException IsNot Nothing Then
+                    RespuestaAfip = "Detalle interno: " & ex.InnerException.Message
+                End If
+                estado = False
+            End Try
+
+            Return estado
 
         End Function
 
