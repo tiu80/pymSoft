@@ -11,8 +11,8 @@ Imports System.Runtime.InteropServices
 <Assembly: AssemblyTitle("pym")> 
 <Assembly: AssemblyDescription("sistema")> 
 <Assembly: AssemblyCompany("pym-soft")> 
-<Assembly: AssemblyProduct("")> 
-<Assembly: AssemblyCopyright("v527")> 
+<Assembly: AssemblyProduct("")>
+<Assembly: AssemblyCopyright("v530")>
 <Assembly: AssemblyTrademark("")> 
 
 <Assembly: ComVisible(False)> 

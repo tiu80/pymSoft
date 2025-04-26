@@ -26,8 +26,8 @@ Namespace pymsoft
         Private _ultimoCAE As String = ""
         Private _ultimoVencimientoCAE As String = ""
         Private _respuestaAfip As String = ""
-        Private sign As String = ""
-        Private token As String = ""
+        Public sign As String = ""
+        Public token As String = ""
 
         Public Shared VerboseMode As Boolean = False
 
@@ -439,9 +439,9 @@ Namespace pymsoft
             End Try
         End Sub
 
-        Private Function verifica_sign_token() As Boolean
+        Public Function verifica_sign_token() As Boolean
 
-            Dim est As Boolean = False
+            Dim est As Boolean
 
             'obtengo el sgn y token almacenados
             conex = conecta()
@@ -1168,10 +1168,22 @@ Namespace pymsoft
 
                 ' si es credito/debito debo informar el comprobante al cual aplica
                 If Me.Tipo_comprobante = 3 Or Me.Tipo_comprobante = 8 Or Me.Tipo_comprobante = 2 Or Me.Tipo_comprobante = 7 Then
-                    If Me.Tipo_comprobante = 3 Or Me.Tipo_comprobante = 2 Then tipo = 1
-                    If Me.Tipo_comprobante = 8 Or Me.Tipo_comprobante = 7 Then tipo = 6
-                    pto_vta = Me.Punto_venta
-                    nro = Me.Comprobante_aplica
+
+                    ' --- Agregar comprobante asociado ---
+                    Dim comprobanteAsociado As New CbteAsoc()
+
+                    If Me.Tipo_comprobante = 3 Or Me.Tipo_comprobante = 2 Then
+                        comprobanteAsociado.Tipo = 1 ' Tipo de comprobante asociado (ej: 1 para Factura A)
+                    End If
+                    If Me.Tipo_comprobante = 8 Or Me.Tipo_comprobante = 7 Then
+                        comprobanteAsociado.Tipo = 6
+                    End If
+
+                    comprobanteAsociado.PtoVta = Me.Punto_venta ' Punto de venta del comprobante asociado
+                    comprobanteAsociado.Nro = Me.Comprobante_aplica ' Número del comprobante asociado
+                    comprobanteAsociado.Cuit = Me.Numero_documento ' CUIT del emisor del comprobante (solo si es diferent
+
+                    detalle.CbtesAsoc = New CbteAsoc() {comprobanteAsociado}
                     'ok = WSFEv1.AgregarCmpAsoc(tipo, pto_vta, nro)
                 End If
 
@@ -1253,6 +1265,63 @@ Namespace pymsoft
             Return estado
 
         End Function
+
+        Public Sub ConsultarFacturaAFIP(cuitEmisor As String,
+            tipoComprobante As Integer,
+            puntoVenta As Integer,
+            numeroComprobante As Long,
+            token As String,
+            sign As String)
+            Try
+                ' Configurar el servicio
+                Dim request As New FECompConsultaReq()
+
+                ' Configurar seguridad (TLS 1.2 no está disponible en .NET 2.0, usamos SSL3)
+                ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12
+
+                ' Seleccionar URL según ambiente
+                Dim urlServicio As String = URL_HOMOLOGACION
+
+                ' Crear el objeto del servicio web
+                Dim servicio As New WSFEV1.Service With {
+                .Url = urlServicio,
+                .Timeout = 30000
+            }
+
+                ' Datos del comprobante a consultar
+                request.CbteTipo = tipoComprobante ' Ej: 1 (Factura A), 6 (Factura B)
+                request.CbteNro = numeroComprobante
+                request.PtoVta = puntoVenta
+
+                ' Autenticación con TA (Ticket de Acceso)
+                Dim authRequest As New FEAuthRequest()
+                authRequest.Token = token
+                authRequest.Sign = sign
+                authRequest.Cuit = CLng(cuitEmisor)
+
+                ' Consultar comprobante
+                Dim respuesta As FECompConsultaResponse = servicio.FECompConsultar(authRequest, request)
+
+                ' Verifica primero si la operación fue exitosa
+                If respuesta.Errors IsNot Nothing AndAlso respuesta.Errors.Length > 0 Then
+                    ' Hubo errores
+                    RespuestaAfip = respuesta.Errors(0).Msg & " (Código: " & respuesta.Errors(0).Code & ")"
+                Else
+                    ' Verificar aprobación mediante la existencia de CAE
+                    'If respuesta.Errors IsNot Nothing AndAlso respuesta.Errors.Length > 0 Then
+                    cae_afip = respuesta.ResultGet.CodAutorizacion
+                    Fecha_cae = respuesta.ResultGet.FchVto
+                    importe_comprobante = respuesta.ResultGet.ImpTotal
+                    'End If
+                End If
+            Catch ex As Exception
+                Console.WriteLine("Error al conectar con AFIP: " & ex.Message)
+                If ex.InnerException IsNot Nothing Then
+                    Console.WriteLine("Detalle interno: " & ex.InnerException.Message)
+                End If
+            End Try
+
+        End Sub
 
     End Class
 
