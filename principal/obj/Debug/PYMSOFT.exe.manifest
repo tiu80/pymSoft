@@ -175,14 +175,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PYMSOFT.exe" size="8276992">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PYMSOFT.exe" size="8277504">
       <assemblyIdentity name="PYMSOFT" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>gRrlVNRm8UkmCzV3Le+opImD1P3WrcdB3h/TSE3CvwA=</dsig:DigestValue>
+        <dsig:DigestValue>229znOQ5C2EP9hNmdD7F00IzxYPpmB+2wzNr+4xjymg=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -194,7 +194,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>j22/SfVYiZaZiDV2XfHK24Toy+L78wXvXIwPT1Sz+cs=</dsig:DigestValue>
+        <dsig:DigestValue>5ZmX62TI83bCyqOqnIEZNRhhKubFwZgARg5X89MpAuc=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
