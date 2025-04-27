@@ -25,6 +25,26 @@ Namespace pymsoft
         Private mnumero3 As Integer
         Private mnumero4 As String
         Private mfec As Date
+        Private mpfx As String
+        Private mpasspfx As Integer
+
+        Public Property pfx()
+            Get
+                Return mpfx
+            End Get
+            Set(ByVal value)
+                mpfx = value
+            End Set
+        End Property
+
+        Public Property pass_pfx()
+            Get
+                Return mpasspfx
+            End Get
+            Set(ByVal value)
+                mpasspfx = value
+            End Set
+        End Property
 
         Public Property telefono()
             Get
@@ -209,6 +229,8 @@ Namespace pymsoft
                 telefono = midataset.Tables(nombre_tabla).Rows(0).Item(11)
                 CRT = midataset.Tables(nombre_tabla).Rows(0).Item(12)
                 KEY = midataset.Tables(nombre_tabla).Rows(0).Item(13)
+                pfx = midataset.Tables(nombre_tabla).Rows(0).Item(14)
+                pass_pfx = midataset.Tables(nombre_tabla).Rows(0).Item(15)
 
             Catch ex As Exception
 

@@ -112,29 +112,26 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="PictureBox1.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAHsSURBVHhe7drBS5RBHMbxTaFDIKIVhF7FLp0KkujcoQ5d
-        JA+CIngIOnuzY5A36dK5c5cOFUEg6EFE618oSL2IiqARGZZ9f68ODMPyvjE70zLwPPCBnfmx7+4+LO+7
-        69pSFEVRFEVR/i0XMYThQlzDBSTJHI5wWphvuIeOch9/0O4BSnCIq4jOS/gHPMZW4Cfc3G6Hc7uPm//G
-        Nvz5d7h5Do8QnVfwD/YEYWbg5rO2EeQx3PyFbQS5AzfPYRrRCQuYQphxuPmEbQSZhJs/s40gN+DmOSQt
-        4DOeB9bg5uvne75PcPOvWIA/fw83zyFpASVKVsABdgvhn1iTFLBarcpJH9zVJ0kBb6tVWXHvAhVQrSKj
-        AqACoAKq1VlW0O7Sk8oSUiRbAfY10/Zy+YIUyVbAddzNaBQponMAVABUQLWKjAqACsD/KuAj7PGanOAm
-        6lJkAfa123+hdeySWZciC7gM+xzQZARN0TkAKgAqoFpFRgUgpoBeXMloEE3pagFPYffLaQx16WoB8/Cf
-        bGr2i/Vt1KWrBfRgAPZWzaEfTdFJECoAKqBaRUYFwA7yoVqVE/sPsR/ouIBF2EHsl9Y3eF2IZdjzNg8R
-        nVv4BXew0mziEjrKA2xgD/uF2ME72N8OFEVRFEVRFEVRlLO0Wn8BXG3l3ax+Tz0AAAAASUVORK5CYII=
+        iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        wwAADsMBx2+oZAAAAfJJREFUeF7tms9LVFEAhb8UWggimkLUNnTjysCI1i5q0SZqESRCC6G1u1oGtZM2
+        rVu3cWERBIIuJNL+hYLUjVQEKaHRLy7MwOV0nXzNfby5cT44MMyZd398DHNneAPGGGOMMeZYnATOAGcL
+        yWnghG7iX1kA9oBfheU9MKObqcpl4Gdi8FLyBRjTTVXhsQx4CGxLDqI+PNY+XNPufwA70u8nFp4z13VT
+        VXgig93RFwBzUX9bS2A+6h9pCVxMLDpnZnXCKqiAW/oC4FrU39ASuBn197UEJhOLzpmsAt4ADySvov51
+        ot+M+nfAQ+mfJxadM1kFlJhsAj4DHwpJ/MGaRcC6Fj3OYHT6ZBGwrEUBtN8FFqBFFSzAAizgDwFriWMn
+        Z1aiubqhNgHhZ2Z4rq68jebqhtoETACXasx4NFc31CagFCzAAizAAooT8DI6DjvlOzClFwtFCgg/u3Wz
+        RyUcmZ0oUsCp1veAv+WcXpigSAE5sQALsIDmBPQDozVmRCdM0KiAe9FxVVcu6KRCowLuJhacM+GO9bRO
+        KjQqoA8Ybr1V68iQTpigUQG9gAVYgAXkE/BCix4n/EPsaw4Bi61Bwp3WJeBpIVmNjsyruqkqnAe+RYOV
+        li1gQDdVlSvABvAR+FRIdoFnGe8xGGOMMcYYY8z/wW9cbeXdgwBA3gAAAABJRU5ErkJggg==
 </value>
   </data>
-  <metadata name="$this.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAEAICAAAAAAIACoEAAAFgAAACgAAAAgAAAAQAAAAAEAIAAAAAAAgBAAAAAAAAAAAAAAAAAAAAAA

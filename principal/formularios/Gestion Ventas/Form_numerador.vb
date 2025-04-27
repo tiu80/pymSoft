@@ -284,8 +284,11 @@ Public Class Form_numerador
 
                 fac_elec.Fecha_comprobante = Format(Date.Now, "yyyyMMdd")
 
-                'estado = fac_elec.carga_factura_electronica(0, 0, "C", sel.cuit, sel.CRT, sel.KEY, CLng(Me.txt_fact_c.Text), Trim(Form_factura_preventa.txt_iva.Text))
-                estado = fac_elec.AutorizarFactura(Replace(sel.cuit, "-", ""), CLng(Me.txt_fact_c.Text), Trim(Form_factura_preventa.txt_iva.Text), 0, 0, "C")
+                If fact.usa_pyafipws = "SI" Then
+                    estado = fac_elec.carga_factura_electronica(0, 0, "C", sel.cuit, sel.CRT, sel.KEY, CLng(Me.txt_fact_c.Text), Trim(Form_factura_preventa.txt_iva.Text))
+                Else
+                    estado = fac_elec.AutorizarFactura(Replace(sel.cuit, "-", ""), CLng(Me.txt_fact_c.Text), Trim(Form_factura_preventa.txt_iva.Text), 0, 0, "C")
+                End If
 
                 If fac_elec.Numeradores_distintos = True Then
                     MessageBox.Show("La numeracion del sistemas no es laisma que AFIP.. Verifique!!", "PyMsoft", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -381,8 +384,11 @@ Public Class Form_numerador
 
                 fac_elec.Fecha_comprobante = Format(Date.Now, "yyyyMMdd")
 
-                'estado = fac_elec.carga_factura_electronica(Form_factura_preventa.txt_insc_10.Text, Form_factura_preventa.txt_inscripto.Text, "B", sel.cuit, sel.CRT, sel.KEY, CLng(Me.txt_fact_b.Text), Trim(Form_factura_preventa.txt_iva.Text))
-                estado = fac_elec.AutorizarFactura(Replace(sel.cuit, "-", ""), CLng(Me.txt_fact_b.Text), Trim(Form_factura_preventa.txt_iva.Text), Form_factura_preventa.txt_insc_10.Text, Form_factura_preventa.txt_inscripto.Text, "B")
+                If fact.usa_pyafipws = "SI" Then
+                    estado = fac_elec.carga_factura_electronica(Form_factura_preventa.txt_insc_10.Text, Form_factura_preventa.txt_inscripto.Text, "B", sel.cuit, sel.CRT, sel.KEY, CLng(Me.txt_fact_b.Text), Trim(Form_factura_preventa.txt_iva.Text))
+                Else
+                    estado = fac_elec.AutorizarFactura(Replace(sel.cuit, "-", ""), CLng(Me.txt_fact_b.Text), Trim(Form_factura_preventa.txt_iva.Text), Form_factura_preventa.txt_insc_10.Text, Form_factura_preventa.txt_inscripto.Text, "B")
+                End If
 
                 If estado = False Then
                     MessageBox.Show("La Factura no se grabo en el AFIP....Verifique!!", "PyMsoft", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -447,8 +453,11 @@ Public Class Form_numerador
 
                 fac_elec.Fecha_comprobante = Format(Date.Now, "yyyyMMdd")
 
-                'estado = fac_elec.carga_factura_electronica(Form_factura_preventa.txt_insc_10.Text, Form_factura_preventa.txt_inscripto.Text, "A", sel.cuit, sel.CRT, sel.KEY, CLng(Me.txt_fact_a.Text), Trim(Form_factura_preventa.txt_iva.Text))
-                estado = fac_elec.AutorizarFactura(Replace(sel.cuit, "-", ""), CLng(Me.txt_fact_a.Text), Trim(Form_factura_preventa.txt_iva.Text), Form_factura_preventa.txt_insc_10.Text, Form_factura_preventa.txt_inscripto.Text, "A")
+                If fact.usa_pyafipws = "SI" Then
+                    estado = fac_elec.carga_factura_electronica(Form_factura_preventa.txt_insc_10.Text, Form_factura_preventa.txt_inscripto.Text, "A", sel.cuit, sel.CRT, sel.KEY, CLng(Me.txt_fact_a.Text), Trim(Form_factura_preventa.txt_iva.Text))
+                Else
+                    estado = fac_elec.AutorizarFactura(Replace(sel.cuit, "-", ""), CLng(Me.txt_fact_a.Text), Trim(Form_factura_preventa.txt_iva.Text), Form_factura_preventa.txt_insc_10.Text, Form_factura_preventa.txt_inscripto.Text, "A")
+                End If
 
                 If estado = False Then
                     MessageBox.Show("La Factura no se grabo en el AFIP....Verifique!!", "PyMsoft", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -533,10 +542,14 @@ Public Class Form_numerador
         sel.instruccion = "select *from empresa_01"
         sel.nombre_tabla = "empresa_01"
         sel.carga_campos()
-        'fac_elec.consulta_ultimo_numero(sel.cuit, sel.CRT, sel.KEY)
-        'Me.lbl_ultimo_comprobante.Text = fac_elec.ultimo_numero_afip
-        fac_elec.verifica_sign_token()
-        Me.lbl_ultimo_comprobante.Text = fac_elec.ObtenerUltimoComprobanteAutorizado(fac_elec.sign, fac_elec.token, Replace(sel.cuit, "-", ""), fac_elec.Tipo_comprobante, fac_elec.Punto_venta)
+
+        If fact.usa_pyafipws = "SI" Then
+            fac_elec.consulta_ultimo_numero(sel.cuit, sel.CRT, sel.KEY)
+            Me.lbl_ultimo_comprobante.Text = fac_elec.ultimo_numero_afip
+        Else
+            fac_elec.verifica_sign_token()
+            Me.lbl_ultimo_comprobante.Text = fac_elec.ObtenerUltimoComprobanteAutorizado(fac_elec.sign, fac_elec.token, Replace(sel.cuit, "-", ""), fac_elec.Tipo_comprobante, fac_elec.Punto_venta)
+        End If
 
         barra_carga.Timer1.Enabled = True
 
@@ -569,26 +582,28 @@ Public Class Form_numerador
             sel.nombre_tabla = "empresa_01"
             sel.carga_campos()
 
-            'fac_elec.consulta_numero(sel.cuit, sel.CRT, sel.KEY, Me.txt_numero_aut.Text)
-            'Me.lbl_cae.Text = fac_elec.cae_afip
-            'Me.txt_cae.Text = Me.lbl_cae.Text
-            'dia = fac_elec.Fecha_cae.ToString.Substring(6, 2)
-            'mes = fac_elec.Fecha_cae.ToString.Substring(4, 2)
-            'año = fac_elec.Fecha_cae.ToString.Substring(0, 4)
-            'Me.lbl_venc_cae.Text = dia & mes & año
-            'Me.txt_venc_cae.Text = Me.lbl_venc_cae.Text
-            'Me.lbl_importe_cae.Text = fac_elec.importe_comprobante
-
-            fac_elec.verifica_sign_token()
-            fac_elec.ConsultarFacturaAFIP(Replace(sel.cuit, "-", ""), Me.txt_tipo_aut.Text, Me.txt_pto_vta_aut.Text, Me.txt_numero_aut.Text, fac_elec.token, fac_elec.sign)
-            Me.lbl_cae.Text = fac_elec.cae_afip
-            Me.txt_cae.Text = Me.lbl_cae.Text
-            dia = fac_elec.Fecha_cae.ToString.Substring(6, 2)
-            mes = fac_elec.Fecha_cae.ToString.Substring(4, 2)
-            año = fac_elec.Fecha_cae.ToString.Substring(0, 4)
-            Me.lbl_venc_cae.Text = dia & mes & año
-            Me.txt_venc_cae.Text = Me.lbl_venc_cae.Text
-            Me.lbl_importe_cae.Text = fac_elec.importe_comprobante
+            If fact.usa_pyafipws = "SI" Then
+                fac_elec.consulta_numero(sel.cuit, sel.CRT, sel.KEY, Me.txt_numero_aut.Text)
+                Me.lbl_cae.Text = fac_elec.cae_afip
+                Me.txt_cae.Text = Me.lbl_cae.Text
+                dia = fac_elec.Fecha_cae.ToString.Substring(6, 2)
+                mes = fac_elec.Fecha_cae.ToString.Substring(4, 2)
+                año = fac_elec.Fecha_cae.ToString.Substring(0, 4)
+                Me.lbl_venc_cae.Text = dia & mes & año
+                Me.txt_venc_cae.Text = Me.lbl_venc_cae.Text
+                Me.lbl_importe_cae.Text = fac_elec.importe_comprobante
+            Else
+                fac_elec.verifica_sign_token()
+                fac_elec.ConsultarFacturaAFIP(Replace(sel.cuit, "-", ""), Me.txt_tipo_aut.Text, Me.txt_pto_vta_aut.Text, Me.txt_numero_aut.Text, fac_elec.token, fac_elec.sign)
+                Me.lbl_cae.Text = fac_elec.cae_afip
+                Me.txt_cae.Text = Me.lbl_cae.Text
+                dia = fac_elec.Fecha_cae.ToString.Substring(6, 2)
+                mes = fac_elec.Fecha_cae.ToString.Substring(4, 2)
+                año = fac_elec.Fecha_cae.ToString.Substring(0, 4)
+                Me.lbl_venc_cae.Text = dia & mes & año
+                Me.txt_venc_cae.Text = Me.lbl_venc_cae.Text
+                Me.lbl_importe_cae.Text = fac_elec.importe_comprobante
+            End If
 
         Catch ex As Exception
 

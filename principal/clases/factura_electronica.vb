@@ -13,7 +13,8 @@ Namespace pymsoft
     Public Class factura_electronica
 
         ' Valores por defecto, globales en esta clase
-        Const DEFAULT_URLWSAAWSDL As String = "https://wsaahomo.afip.gov.ar/ws/services/LoginCms?WSDL"
+        Const DEFAULT_URLWSAAWSDLHOMO As String = "https://wsaahomo.afip.gov.ar/ws/services/LoginCms?WSDL" ' Homologación
+        Const DEFAULT_URLWSAAWSDLPROD As String = "https://wsaa.afip.gov.ar/ws/services/LoginCms?wsdl" '(produccion)
         Const URL_HOMOLOGACION As String = "https://wswhomo.afip.gov.ar/wsfev1/service.asmx"
         Const URL_PRODUCCION As String = "https://servicios1.afip.gov.ar/wsfev1/service.asmx"
         Const DEFAULT_SERVICIO As String = "wsfe"
@@ -798,7 +799,7 @@ Namespace pymsoft
         ''' <returns></returns>
         Public Function inicializa_ticket() As Object
 
-            Dim strUrlWsaaWsdl As String = DEFAULT_URLWSAAWSDL
+            Dim strUrlWsaaWsdl As String = DEFAULT_URLWSAAWSDLHOMO 'wsaa de homologacion
             Dim strIdServicioNegocio As String = DEFAULT_SERVICIO
             Dim strRutaCertSigner As String = DEFAULT_CERTSIGNER
             Dim strPasswordSecureString As New SecureString
