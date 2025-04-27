@@ -108,6 +108,16 @@ Namespace pymsoft
         Private mcodiva As Integer
         Private munidad_medida As String
         Private mvalor_unidad_medida As Single
+        Private musapyafipws As String
+
+        Public Property usa_pyafipws()
+            Get
+                Return musapyafipws
+            End Get
+            Set(ByVal value)
+                musapyafipws = value
+            End Set
+        End Property
 
         Public Property valor_unidad_medida()
             Get
@@ -820,6 +830,7 @@ Namespace pymsoft
                 If RTrim(midataset.Tables("parametro_01").Rows(i).Item(3)) = "ACTUALIZA PRECIO EN FACTURA" Then Me.Actualiza_precio_en_factura = midataset.Tables("parametro_01").Rows(i).Item(4)
                 If RTrim(midataset.Tables("parametro_01").Rows(i).Item(3)) = "HABILITA DESCUENTO GRAL" Then Me.Habilita_descuento_gral = midataset.Tables("parametro_01").Rows(i).Item(4)
                 If RTrim(midataset.Tables("parametro_01").Rows(i).Item(3)) = "HABILITA ESPECIAL" Then Me.Habilita_facturacion_especial = midataset.Tables("parametro_01").Rows(i).Item(4)
+                If RTrim(midataset.Tables("parametro_01").Rows(i).Item(3)) = "USA PYAFIPWS" Then Me.usa_pyafipws = midataset.Tables("parametro_01").Rows(i).Item(4)
 
             Next
 

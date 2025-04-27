@@ -158,7 +158,7 @@ Namespace pymsoft
                 Form_numerador.txt_int_debito_c.Text = reader("n_debito_c")
                 Form_numerador.txt_int_orden_pago.Text = reader("orden_pago")
                 Form_numerador.txt_cae.Text = Trim(reader("cae"))
-                Form_numerador.txt_venc_cae.Text = reader("venc_cae")
+                Form_numerador.txt_venc_cae.Text = Format(reader("venc_cae"), "ddMMyyyy")
 
                 Form_numerador.cmd_guardar.Enabled = False
                 Form_numerador.cmd_guardar.BackColor = Color.LightGray

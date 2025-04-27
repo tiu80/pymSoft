@@ -22,26 +22,26 @@ Partial Class form_parametros
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(form_parametros))
-        Me.DataGridView1 = New System.Windows.Forms.DataGridView
-        Me.label1 = New System.Windows.Forms.Label
-        Me.Label2 = New System.Windows.Forms.Label
-        Me.txt_codigo = New mitextbox1.texto_solonum
-        Me.txt_descripcion = New System.Windows.Forms.TextBox
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox
-        Me.lbl_descripcion = New System.Windows.Forms.Label
-        Me.cmd_ok = New System.Windows.Forms.Button
-        Me.lbl_habilita = New System.Windows.Forms.Label
-        Me.opt_no = New System.Windows.Forms.RadioButton
-        Me.opt_si = New System.Windows.Forms.RadioButton
-        Me.txt_parametro = New mitextbox1.texto_solonum
-        Me.cmd_aceptar = New System.Windows.Forms.Button
-        Me.cmd_actualizar = New System.Windows.Forms.Button
-        Me.cmd_borrar = New System.Windows.Forms.Button
-        Me.txt_interno = New System.Windows.Forms.TextBox
-        Me.txt_verifica = New System.Windows.Forms.TextBox
-        Me.cmd_copiar = New System.Windows.Forms.Button
+        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.label1 = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.txt_codigo = New mitextbox1.texto_solonum()
+        Me.txt_descripcion = New System.Windows.Forms.TextBox()
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.lbl_descripcion = New System.Windows.Forms.Label()
+        Me.cmd_ok = New System.Windows.Forms.Button()
+        Me.lbl_habilita = New System.Windows.Forms.Label()
+        Me.opt_no = New System.Windows.Forms.RadioButton()
+        Me.opt_si = New System.Windows.Forms.RadioButton()
+        Me.txt_parametro = New mitextbox1.texto_solonum()
+        Me.cmd_aceptar = New System.Windows.Forms.Button()
+        Me.cmd_actualizar = New System.Windows.Forms.Button()
+        Me.cmd_borrar = New System.Windows.Forms.Button()
+        Me.txt_interno = New System.Windows.Forms.TextBox()
+        Me.txt_verifica = New System.Windows.Forms.TextBox()
+        Me.cmd_copiar = New System.Windows.Forms.Button()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()

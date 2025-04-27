@@ -403,6 +403,7 @@ Public Class form_parametros
         Me.DataGridView1.Rows.Add(55, "ACTUALIZA PRECIO EN FACTURA", "NO")
         Me.DataGridView1.Rows.Add(56, "HABILITA DESCUENTO GRAL", "NO")
         Me.DataGridView1.Rows.Add(57, "HABILITA ESPECIAL", "NO")
+        Me.DataGridView1.Rows.Add(58, "USA PYAFIPWS", "NO")
 
         Me.txt_verifica.Text = 1
 
@@ -480,6 +481,10 @@ Public Class form_parametros
         Else
             verifica = True
         End If
+
+    End Sub
+
+    Private Sub form_parametros_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
     End Sub
 

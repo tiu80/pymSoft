@@ -53,6 +53,8 @@ Public Class Form_empresa
         Me.cmb_iva.Text = sel.encuadre
         Me.txt_crt.Text = sel.CRT
         Me.txt_key.Text = sel.KEY
+        Me.txt_nombre_certificado_pfx.Text = sel.pfx
+        Me.txt_contrasena_pfx.Text = sel.pass_pfx
 
     End Sub
 
@@ -79,7 +81,7 @@ Public Class Form_empresa
 
             End If
 
-            abm.instruccion = "INSERT INTO empresa_01(id_emp ,empresa,encuadre, cuit, ing_bruto, ejercicio,localidad,cod_postal,direccion,inicio,cod_loc,telefono,crt,crt_key) VALUES('" + Me.txt_codigo.Text + "' , '" + Me.txt_empresa.Text + "','" + Me.cmb_iva.Text + "','" + Me.txt_iva.Text + "','" + Me.txt_ingbrutos.Text + "','" + Me.txt_ejercicio.Text + "','" + Me.lbl_localidad.Text + "','" + Me.txt_cod_postal.Text + "','" + Me.txt_direccion.Text + "','" + Me.dt_inicio_act.Text + "','" + Me.txt_localidad.Text + "','" + Me.txt_telefono.Text + "','" + Me.txt_crt.Text + "','" + Me.txt_key.Text + "')"
+            abm.instruccion = "INSERT INTO empresa_01(id_emp ,empresa,encuadre, cuit, ing_bruto, ejercicio,localidad,cod_postal,direccion,inicio,cod_loc,telefono,crt,crt_key,pfx,pass_pfx) VALUES('" + Me.txt_codigo.Text + "' , '" + Me.txt_empresa.Text + "','" + Me.cmb_iva.Text + "','" + Me.txt_iva.Text + "','" + Me.txt_ingbrutos.Text + "','" + Me.txt_ejercicio.Text + "','" + Me.lbl_localidad.Text + "','" + Me.txt_cod_postal.Text + "','" + Me.txt_direccion.Text + "','" + Me.dt_inicio_act.Text + "','" + Me.txt_localidad.Text + "','" + Me.txt_telefono.Text + "','" + Me.txt_crt.Text + "','" + Me.txt_key.Text + "','" + Me.txt_nombre_certificado_pfx.Text + "','" + Me.txt_contrasena_pfx.Text + "')"
             abm.abm()
 
             Call limpia()
@@ -127,6 +129,10 @@ Public Class Form_empresa
         Me.txt_cod_postal.Text = ""
         Me.txt_direccion.Text = ""
         Me.txt_telefono.Text = ""
+        Me.txt_crt.Text = ""
+        Me.txt_key.Text = ""
+        Me.txt_nombre_certificado_pfx.Text = ""
+        Me.txt_contrasena_pfx.Text = ""
 
     End Sub
 
@@ -160,7 +166,7 @@ Public Class Form_empresa
 
         End If
 
-        abm.instruccion = "update empresa_01 set id_emp = '" & Me.txt_codigo.Text & "', empresa = '" & Me.txt_empresa.Text & "', encuadre = '" & Me.cmb_iva.Text & "',cuit='" & Me.txt_iva.Text & "',ing_bruto='" & Me.txt_ingbrutos.Text & "',localidad='" & Me.lbl_localidad.Text & "',cod_loc='" & Me.txt_localidad.Text & "',cod_postal='" & Me.txt_cod_postal.Text & "',inicio='" & Me.dt_inicio_act.Text & "',direccion='" & Me.txt_direccion.Text & "',ejercicio='" & Me.txt_ejercicio.Text & "',telefono = '" & Me.txt_telefono.Text & "',crt = '" + Me.txt_crt.Text + "',crt_key = '" + Me.txt_key.Text + "' where id_emp ='" & Me.txt_interno.Text & "'"
+        abm.instruccion = "update empresa_01 set id_emp = '" & Me.txt_codigo.Text & "', empresa = '" & Me.txt_empresa.Text & "', encuadre = '" & Me.cmb_iva.Text & "',cuit='" & Me.txt_iva.Text & "',ing_bruto='" & Me.txt_ingbrutos.Text & "',localidad='" & Me.lbl_localidad.Text & "',cod_loc='" & Me.txt_localidad.Text & "',cod_postal='" & Me.txt_cod_postal.Text & "',inicio='" & Me.dt_inicio_act.Text & "',direccion='" & Me.txt_direccion.Text & "',ejercicio='" & Me.txt_ejercicio.Text & "',telefono = '" & Me.txt_telefono.Text & "',crt = '" + Me.txt_crt.Text + "',crt_key = '" + Me.txt_key.Text + "',pfx = '" + Me.txt_nombre_certificado_pfx.Text + "',pass_pfx = '" + Me.txt_contrasena_pfx.Text + "' where id_emp ='" & Me.txt_interno.Text & "'"
         abm.abm()
 
         Call limpia()
