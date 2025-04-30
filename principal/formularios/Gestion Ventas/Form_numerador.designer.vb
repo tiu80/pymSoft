@@ -19,92 +19,93 @@ Partial Class Form_numerador
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container
+        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form_numerador))
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox
-        Me.Label11 = New System.Windows.Forms.Label
-        Me.cmd_help = New System.Windows.Forms.Button
-        Me.txt_talonario = New mitextbox1.texto_solonum
-        Me.txt_interno = New System.Windows.Forms.TextBox
-        Me.cmd_eliminar = New System.Windows.Forms.Button
-        Me.cmd_actualizar = New System.Windows.Forms.Button
-        Me.cmd_guardar = New System.Windows.Forms.Button
-        Me.Label1 = New System.Windows.Forms.Label
-        Me.GroupBox2 = New System.Windows.Forms.GroupBox
-        Me.txt_int_nc_c = New System.Windows.Forms.TextBox
-        Me.GroupBox3 = New System.Windows.Forms.GroupBox
-        Me.Label28 = New System.Windows.Forms.Label
-        Me.cmd_consulta_comprobante_autorizado = New System.Windows.Forms.Button
-        Me.lbl_importe_cae = New text_solo_num.solo_numeros
-        Me.Label26 = New System.Windows.Forms.Label
-        Me.lbl_venc_cae = New System.Windows.Forms.MaskedTextBox
-        Me.txt_venc_cae = New System.Windows.Forms.MaskedTextBox
-        Me.Label24 = New System.Windows.Forms.Label
-        Me.txt_vencimiento_cae = New System.Windows.Forms.Label
-        Me.lbl_cae = New text_solo_num.solo_numeros
-        Me.txt_cae = New text_solo_num.solo_numeros
-        Me.Label21 = New System.Windows.Forms.Label
-        Me.Label25 = New System.Windows.Forms.Label
-        Me.Label22 = New System.Windows.Forms.Label
-        Me.txt_numero_aut = New mitextbox1.texto_solonum
-        Me.Label20 = New System.Windows.Forms.Label
-        Me.txt_pto_vta_aut = New mitextbox1.texto_solonum
-        Me.Label18 = New System.Windows.Forms.Label
-        Me.txt_tipo_aut = New mitextbox1.texto_solonum
-        Me.Label19 = New System.Windows.Forms.Label
-        Me.Label17 = New System.Windows.Forms.Label
-        Me.Label16 = New System.Windows.Forms.Label
-        Me.cmd_verifica_ultimo_numero = New System.Windows.Forms.Button
-        Me.lbl_ultimo_comprobante = New System.Windows.Forms.Label
-        Me.Label15 = New System.Windows.Forms.Label
-        Me.txt_punto_venta_afip = New mitextbox1.texto_solonum
-        Me.Label14 = New System.Windows.Forms.Label
-        Me.txt_tipo_comprobante_afip = New mitextbox1.texto_solonum
-        Me.Label13 = New System.Windows.Forms.Label
-        Me.Label12 = New System.Windows.Forms.Label
-        Me.txt_n_credito_c = New text_solo_num.solo_numeros
-        Me.Label30 = New System.Windows.Forms.Label
-        Me.txt_int_debito_b = New System.Windows.Forms.TextBox
-        Me.txt_int_debito_a = New System.Windows.Forms.TextBox
-        Me.txt_debito_b = New text_solo_num.solo_numeros
-        Me.txt_debito_a = New text_solo_num.solo_numeros
-        Me.Label29 = New System.Windows.Forms.Label
-        Me.Label23 = New System.Windows.Forms.Label
-        Me.txt_int_orden_pago = New System.Windows.Forms.TextBox
-        Me.txt_orden_pago = New text_solo_num.solo_numeros
-        Me.Label27 = New System.Windows.Forms.Label
-        Me.txt_punto_venta = New mitextbox1.texto_solonum
-        Me.txt_int_nc_b = New System.Windows.Forms.TextBox
-        Me.txt_int_nc_a = New System.Windows.Forms.TextBox
-        Me.txt_int_pedido = New System.Windows.Forms.TextBox
-        Me.txt_int_remito = New System.Windows.Forms.TextBox
-        Me.txt_int_recibo = New System.Windows.Forms.TextBox
-        Me.txt_int_factc = New System.Windows.Forms.TextBox
-        Me.txt_int_factb = New System.Windows.Forms.TextBox
-        Me.txt_int_facta = New System.Windows.Forms.TextBox
-        Me.txt_int_p_vta = New System.Windows.Forms.TextBox
-        Me.txt_n_credito_b = New text_solo_num.solo_numeros
-        Me.txt_n_credito_a = New text_solo_num.solo_numeros
-        Me.txt_pedido = New text_solo_num.solo_numeros
-        Me.txt_remito = New text_solo_num.solo_numeros
-        Me.txt_recibo = New text_solo_num.solo_numeros
-        Me.txt_fact_c = New text_solo_num.solo_numeros
-        Me.txt_fact_b = New text_solo_num.solo_numeros
-        Me.txt_fact_a = New text_solo_num.solo_numeros
-        Me.Label10 = New System.Windows.Forms.Label
-        Me.Label9 = New System.Windows.Forms.Label
-        Me.Label8 = New System.Windows.Forms.Label
-        Me.Label7 = New System.Windows.Forms.Label
-        Me.Label6 = New System.Windows.Forms.Label
-        Me.Label5 = New System.Windows.Forms.Label
-        Me.Label4 = New System.Windows.Forms.Label
-        Me.Label3 = New System.Windows.Forms.Label
-        Me.Label2 = New System.Windows.Forms.Label
-        Me.EventLog1 = New System.Diagnostics.EventLog
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.cmd_help = New System.Windows.Forms.Button()
+        Me.txt_talonario = New mitextbox1.texto_solonum()
+        Me.txt_interno = New System.Windows.Forms.TextBox()
+        Me.cmd_eliminar = New System.Windows.Forms.Button()
+        Me.cmd_actualizar = New System.Windows.Forms.Button()
+        Me.cmd_guardar = New System.Windows.Forms.Button()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.txt_int_debito_c = New System.Windows.Forms.TextBox()
+        Me.txt_debito_c = New text_solo_num.solo_numeros()
+        Me.Label31 = New System.Windows.Forms.Label()
+        Me.txt_int_nc_c = New System.Windows.Forms.TextBox()
+        Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.Label28 = New System.Windows.Forms.Label()
+        Me.cmd_consulta_comprobante_autorizado = New System.Windows.Forms.Button()
+        Me.lbl_importe_cae = New text_solo_num.solo_numeros()
+        Me.Label26 = New System.Windows.Forms.Label()
+        Me.lbl_venc_cae = New System.Windows.Forms.MaskedTextBox()
+        Me.txt_venc_cae = New System.Windows.Forms.MaskedTextBox()
+        Me.Label24 = New System.Windows.Forms.Label()
+        Me.txt_vencimiento_cae = New System.Windows.Forms.Label()
+        Me.lbl_cae = New text_solo_num.solo_numeros()
+        Me.txt_cae = New text_solo_num.solo_numeros()
+        Me.Label21 = New System.Windows.Forms.Label()
+        Me.Label25 = New System.Windows.Forms.Label()
+        Me.Label22 = New System.Windows.Forms.Label()
+        Me.txt_numero_aut = New mitextbox1.texto_solonum()
+        Me.Label20 = New System.Windows.Forms.Label()
+        Me.txt_pto_vta_aut = New mitextbox1.texto_solonum()
+        Me.Label18 = New System.Windows.Forms.Label()
+        Me.txt_tipo_aut = New mitextbox1.texto_solonum()
+        Me.Label19 = New System.Windows.Forms.Label()
+        Me.Label17 = New System.Windows.Forms.Label()
+        Me.Label16 = New System.Windows.Forms.Label()
+        Me.cmd_verifica_ultimo_numero = New System.Windows.Forms.Button()
+        Me.lbl_ultimo_comprobante = New System.Windows.Forms.Label()
+        Me.Label15 = New System.Windows.Forms.Label()
+        Me.txt_punto_venta_afip = New mitextbox1.texto_solonum()
+        Me.Label14 = New System.Windows.Forms.Label()
+        Me.txt_tipo_comprobante_afip = New mitextbox1.texto_solonum()
+        Me.Label13 = New System.Windows.Forms.Label()
+        Me.Label12 = New System.Windows.Forms.Label()
+        Me.txt_n_credito_c = New text_solo_num.solo_numeros()
+        Me.Label30 = New System.Windows.Forms.Label()
+        Me.txt_int_debito_b = New System.Windows.Forms.TextBox()
+        Me.txt_int_debito_a = New System.Windows.Forms.TextBox()
+        Me.txt_debito_b = New text_solo_num.solo_numeros()
+        Me.txt_debito_a = New text_solo_num.solo_numeros()
+        Me.Label29 = New System.Windows.Forms.Label()
+        Me.Label23 = New System.Windows.Forms.Label()
+        Me.txt_int_orden_pago = New System.Windows.Forms.TextBox()
+        Me.txt_orden_pago = New text_solo_num.solo_numeros()
+        Me.Label27 = New System.Windows.Forms.Label()
+        Me.txt_punto_venta = New mitextbox1.texto_solonum()
+        Me.txt_int_nc_b = New System.Windows.Forms.TextBox()
+        Me.txt_int_nc_a = New System.Windows.Forms.TextBox()
+        Me.txt_int_pedido = New System.Windows.Forms.TextBox()
+        Me.txt_int_remito = New System.Windows.Forms.TextBox()
+        Me.txt_int_recibo = New System.Windows.Forms.TextBox()
+        Me.txt_int_factc = New System.Windows.Forms.TextBox()
+        Me.txt_int_factb = New System.Windows.Forms.TextBox()
+        Me.txt_int_facta = New System.Windows.Forms.TextBox()
+        Me.txt_int_p_vta = New System.Windows.Forms.TextBox()
+        Me.txt_n_credito_b = New text_solo_num.solo_numeros()
+        Me.txt_n_credito_a = New text_solo_num.solo_numeros()
+        Me.txt_pedido = New text_solo_num.solo_numeros()
+        Me.txt_remito = New text_solo_num.solo_numeros()
+        Me.txt_recibo = New text_solo_num.solo_numeros()
+        Me.txt_fact_c = New text_solo_num.solo_numeros()
+        Me.txt_fact_b = New text_solo_num.solo_numeros()
+        Me.txt_fact_a = New text_solo_num.solo_numeros()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.EventLog1 = New System.Diagnostics.EventLog()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
-        Me.Label31 = New System.Windows.Forms.Label
-        Me.txt_debito_c = New text_solo_num.solo_numeros
-        Me.txt_int_debito_c = New System.Windows.Forms.TextBox
+        Me.lbl_respuesta_afip = New System.Windows.Forms.Label()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
@@ -114,8 +115,8 @@ Partial Class Form_numerador
         'GroupBox1
         '
         Me.GroupBox1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.GroupBox1.BackColor = System.Drawing.Color.White
         Me.GroupBox1.Controls.Add(Me.Label11)
         Me.GroupBox1.Controls.Add(Me.cmd_help)
@@ -233,8 +234,9 @@ Partial Class Form_numerador
         'GroupBox2
         '
         Me.GroupBox2.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.GroupBox2.Controls.Add(Me.lbl_respuesta_afip)
         Me.GroupBox2.Controls.Add(Me.txt_int_debito_c)
         Me.GroupBox2.Controls.Add(Me.txt_debito_c)
         Me.GroupBox2.Controls.Add(Me.Label31)
@@ -283,6 +285,34 @@ Partial Class Form_numerador
         Me.GroupBox2.Size = New System.Drawing.Size(633, 418)
         Me.GroupBox2.TabIndex = 0
         Me.GroupBox2.TabStop = False
+        '
+        'txt_int_debito_c
+        '
+        Me.txt_int_debito_c.Location = New System.Drawing.Point(278, 391)
+        Me.txt_int_debito_c.Name = "txt_int_debito_c"
+        Me.txt_int_debito_c.Size = New System.Drawing.Size(24, 20)
+        Me.txt_int_debito_c.TabIndex = 50
+        Me.txt_int_debito_c.Visible = False
+        '
+        'txt_debito_c
+        '
+        Me.txt_debito_c.Location = New System.Drawing.Point(173, 391)
+        Me.txt_debito_c.Name = "txt_debito_c"
+        Me.txt_debito_c.Size = New System.Drawing.Size(100, 20)
+        Me.txt_debito_c.TabIndex = 49
+        Me.txt_debito_c.Text = "0"
+        Me.txt_debito_c.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'Label31
+        '
+        Me.Label31.Anchor = System.Windows.Forms.AnchorStyles.Left
+        Me.Label31.AutoSize = True
+        Me.Label31.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label31.Location = New System.Drawing.Point(20, 395)
+        Me.Label31.Name = "Label31"
+        Me.Label31.Size = New System.Drawing.Size(109, 15)
+        Me.Label31.TabIndex = 48
+        Me.Label31.Text = "Nota de Debito ""C"""
         '
         'txt_int_nc_c
         '
@@ -619,8 +649,8 @@ Partial Class Form_numerador
         Me.txt_tipo_comprobante_afip.Size = New System.Drawing.Size(32, 20)
         Me.txt_tipo_comprobante_afip.TabIndex = 5
         Me.txt_tipo_comprobante_afip.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        Me.ToolTip1.SetToolTip(Me.txt_tipo_comprobante_afip, "1- Facturas A" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "2- Debito A" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "3- Nota Credito A" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "6- Factura B" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "7- Debito B" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "8- Nota" & _
-                " Credito B" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "11- Factura C" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "13- Nota Credito C" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10))
+        Me.ToolTip1.SetToolTip(Me.txt_tipo_comprobante_afip, "1- Facturas A" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "2- Debito A" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "3- Nota Credito A" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "6- Factura B" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "7- Debito B" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "8- Nota" &
+        " Credito B" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "11- Factura C" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "13- Nota Credito C" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10))
         '
         'Label13
         '
@@ -1003,33 +1033,13 @@ Partial Class Form_numerador
         '
         Me.EventLog1.SynchronizingObject = Me
         '
-        'Label31
+        'lbl_respuesta_afip
         '
-        Me.Label31.Anchor = System.Windows.Forms.AnchorStyles.Left
-        Me.Label31.AutoSize = True
-        Me.Label31.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label31.Location = New System.Drawing.Point(20, 395)
-        Me.Label31.Name = "Label31"
-        Me.Label31.Size = New System.Drawing.Size(109, 15)
-        Me.Label31.TabIndex = 48
-        Me.Label31.Text = "Nota de Debito ""C"""
-        '
-        'txt_debito_c
-        '
-        Me.txt_debito_c.Location = New System.Drawing.Point(173, 391)
-        Me.txt_debito_c.Name = "txt_debito_c"
-        Me.txt_debito_c.Size = New System.Drawing.Size(100, 20)
-        Me.txt_debito_c.TabIndex = 49
-        Me.txt_debito_c.Text = "0"
-        Me.txt_debito_c.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        '
-        'txt_int_debito_c
-        '
-        Me.txt_int_debito_c.Location = New System.Drawing.Point(278, 391)
-        Me.txt_int_debito_c.Name = "txt_int_debito_c"
-        Me.txt_int_debito_c.Size = New System.Drawing.Size(24, 20)
-        Me.txt_int_debito_c.TabIndex = 50
-        Me.txt_int_debito_c.Visible = False
+        Me.lbl_respuesta_afip.ForeColor = System.Drawing.Color.Red
+        Me.lbl_respuesta_afip.Location = New System.Drawing.Point(323, 371)
+        Me.lbl_respuesta_afip.Name = "lbl_respuesta_afip"
+        Me.lbl_respuesta_afip.Size = New System.Drawing.Size(304, 39)
+        Me.lbl_respuesta_afip.TabIndex = 51
         '
         'Form_numerador
         '
@@ -1139,5 +1149,5 @@ Partial Class Form_numerador
     Friend WithEvents txt_int_debito_c As System.Windows.Forms.TextBox
     Friend WithEvents txt_debito_c As text_solo_num.solo_numeros
     Friend WithEvents Label31 As System.Windows.Forms.Label
-
+    Friend WithEvents lbl_respuesta_afip As Label
 End Class
