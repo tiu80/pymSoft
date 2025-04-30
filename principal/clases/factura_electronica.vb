@@ -13,12 +13,12 @@ Namespace pymsoft
     Public Class factura_electronica
 
         ' Valores por defecto, globales en esta clase
-        Const DEFAULT_URLWSAAWSDLHOMO As String = "https://wsaahomo.afip.gov.ar/ws/services/LoginCms?WSDL" ' Homologación
-        Const DEFAULT_URLWSAAWSDLPROD As String = "https://wsaa.afip.gov.ar/ws/services/LoginCms?wsdl" '(produccion)
-        Const URL_HOMOLOGACION As String = "https://wswhomo.afip.gov.ar/wsfev1/service.asmx"
-        Const URL_PRODUCCION As String = "https://servicios1.afip.gov.ar/wsfev1/service.asmx"
+        'Const url_wsaa As String = "https://wsaahomo.afip.gov.ar/ws/services/LoginCms?WSDL" ' Homologación
+        Const url_wsaa As String = "https://wsaa.afip.gov.ar/ws/services/LoginCms?wsdl" '(produccion)
+        'Const url_servicio As String = "https://wswhomo.afip.gov.ar/wsfev1/service.asmx"
+        Const url_servicio As String = "https://servicios1.afip.gov.ar/wsfev1/service.asmx"
         Const DEFAULT_SERVICIO As String = "wsfe"
-        Dim DEFAULT_CERTSIGNER As String = Application.StartupPath & "\certificado.pfx"
+        'Dim DEFAULT_CERTSIGNER As String = Application.StartupPath & "\certificado.pfx"
         Const DEFAULT_PROXY As String = Nothing
         Const DEFAULT_PROXY_USER As String = Nothing
         Const DEFAULT_PROXY_PASSWORD As String = ""
@@ -440,7 +440,7 @@ Namespace pymsoft
             End Try
         End Sub
 
-        Public Function verifica_sign_token() As Boolean
+        Public Function verifica_sign_token(rutaPfx As String, clavePfx As String) As Boolean
 
             Dim est As Boolean
 
@@ -460,7 +460,7 @@ Namespace pymsoft
             hora = hora * (-1)
 
             If Trim(tb.Rows(0).Item(0)) = "" Or Trim(tb.Rows(0).Item(1)) = "" Or hora >= 11 Then
-                Dim Ta As String = inicializa_ticket()
+                Dim Ta As String = inicializa_ticket(rutaPfx, clavePfx)
                 If Ta.ToString.Substring(0, 2) <> "99" Then
                     XmlLoginTicketResponse = New XmlDocument()
                     XmlLoginTicketResponse.LoadXml(Ta)
@@ -797,11 +797,11 @@ Namespace pymsoft
         ''' '''''''''''''''''''''''''''''''''''''    CLASE NUEVA PARA WEB SERVICE SIN PYAFIPWS  '''''''''''''''''''''''''''''''''''''' 
         ''' </summary>
         ''' <returns></returns>
-        Public Function inicializa_ticket() As Object
+        Public Function inicializa_ticket(rutaPfx As String, clavePfx As String) As Object
 
-            Dim strUrlWsaaWsdl As String = DEFAULT_URLWSAAWSDLHOMO 'wsaa de homologacion
+            Dim strUrlWsaaWsdl As String = url_wsaa 'wsaa de homologacion
             Dim strIdServicioNegocio As String = DEFAULT_SERVICIO
-            Dim strRutaCertSigner As String = DEFAULT_CERTSIGNER
+            Dim strRutaCertSigner As String = rutaPfx 'DEFAULT_CERTSIGNER
             Dim strPasswordSecureString As New SecureString
             Dim strProxy As String = DEFAULT_PROXY
             Dim strProxyUser As String = DEFAULT_PROXY_USER
@@ -818,7 +818,7 @@ Namespace pymsoft
                 objTicketRespuesta = New factura_electronica
 
 
-                strTicketRespuesta = objTicketRespuesta.ObtenerLoginTicketResponse(strIdServicioNegocio, strUrlWsaaWsdl, strRutaCertSigner, strPasswordSecureString, strProxy, strProxyUser, strProxyPassword, blnVerboseMode)
+                strTicketRespuesta = objTicketRespuesta.ObtenerLoginTicketResponse(strIdServicioNegocio, strUrlWsaaWsdl, strRutaCertSigner, strPasswordSecureString, strProxy, strProxyUser, strProxyPassword, blnVerboseMode, clavePfx)
 
             Catch excepcionAlObtenerTicket As Exception
 
@@ -863,13 +863,14 @@ Namespace pymsoft
 
         Public Shared Function ObtieneCertificadoDesdeArchivo(
     ByVal argArchivo As String,
-    ByVal argPassword As SecureString
+    ByVal argPassword As SecureString,
+    ByVal password As String
     ) As X509Certificate2
             Const ID_FNC As String = "[ObtieneCertificadoDesdeArchivo]"
             Dim objCert As New X509Certificate2
             Try
                 If argPassword.IsReadOnly = False Then
-                    objCert.Import(File.ReadAllBytes(argArchivo), "123456", X509KeyStorageFlags.PersistKeySet)
+                    objCert.Import(File.ReadAllBytes(argArchivo), password, X509KeyStorageFlags.PersistKeySet)
                 Else
                     objCert.Import(File.ReadAllBytes(argArchivo))
                 End If
@@ -888,7 +889,8 @@ Namespace pymsoft
             ByVal argProxy As String,
             ByVal argProxyUser As String,
             ByVal argProxyPassword As String,
-            ByVal argVerbose As Boolean
+            ByVal argVerbose As Boolean,
+            ByVal password As String
                 ) As String
 
             Const ID_FNC As String = "[ObtenerLoginTicketResponse]"
@@ -935,7 +937,7 @@ Namespace pymsoft
                     Console.WriteLine(ID_FNC + "***Leyendo certificado: {0}", RutaDelCertificadoFirmante)
                 End If
 
-                Dim certFirmante As X509Certificate2 = ObtieneCertificadoDesdeArchivo(RutaDelCertificadoFirmante, argPassword)
+                Dim certFirmante As X509Certificate2 = ObtieneCertificadoDesdeArchivo(RutaDelCertificadoFirmante, argPassword, password)
 
                 If Me._verboseMode Then
                     Console.WriteLine(ID_FNC + "***Firmando: ")
@@ -1010,7 +1012,7 @@ Namespace pymsoft
                 ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12
 
                 ' Seleccionar URL según ambiente
-                Dim urlServicio As String = URL_HOMOLOGACION
+                Dim urlServicio As String = url_servicio
 
                 ' Crear el objeto del servicio web
                 Dim wsFE As New WSFEV1.Service
@@ -1032,7 +1034,7 @@ Namespace pymsoft
 
                 ' Verificar respuesta
                 If response Is Nothing Then
-                    Throw New Exception("El servicio no devolvió respuesta")
+                    RespuestaAfip = "El servicio no devolvió respuesta"
                 End If
 
                 ' Verificar errores AFIP
@@ -1041,7 +1043,7 @@ Namespace pymsoft
                     For Each err As WSFEV1.Err In response.Errors
                         errorMsg &= String.Format("Código: {0} - Mensaje: {1}{2}", err.Code, err.Msg, Environment.NewLine)
                     Next
-                    Throw New Exception("Error AFIP: " & errorMsg)
+                    RespuestaAfip = "Error AFIP: " & errorMsg
                 End If
 
                 ' Retornar el número de comprobante
@@ -1049,9 +1051,9 @@ Namespace pymsoft
 
             Catch ex As WebException
                 Dim errorResponse As String = ObtenerMensajeErrorWeb(ex)
-                Throw New Exception("Error de conexión con AFIP: " & errorResponse)
+                RespuestaAfip = "Error de conexión con AFIP: " & errorResponse
             Catch ex As Exception
-                Throw New Exception("Error al obtener último comprobante: " & ex.Message)
+                RespuestaAfip = "Error al obtener último comprobante: " & ex.Message
             End Try
         End Function
 
@@ -1072,18 +1074,18 @@ Namespace pymsoft
 
         ' Autorizar una factura electrónica (adaptado para ARCA)
         Public Function AutorizarFactura(ByVal cuit_empresa As String, ByVal cbteNro As Integer,
-                                        ByVal cndIvaReceptor As String, ByVal iva10 As Double, ByVal iva21 As Double, ByVal letra_fact As String)
+                                        ByVal cndIvaReceptor As String, ByVal iva10 As Double, ByVal iva21 As Double, ByVal letra_fact As String, ByVal rutaPfx As String, ByVal clavePfx As String)
 
             estado = False
 
-            estado = verifica_sign_token()
+            estado = verifica_sign_token(rutaPfx, clavePfx)
 
             If estado = False Then
                 RespuestaAfip = "No se puede obtener el ticker de acceso"
                 Return False
             End If
 
-            cbte_nro = ObtenerUltimoComprobanteAutorizado(Me.Sign, Me.Token, cuit_empresa, Me.Tipo_comprobante, Me.Punto_venta)
+            cbte_nro = ObtenerUltimoComprobanteAutorizado(Me.sign, Me.token, cuit_empresa, Me.Tipo_comprobante, Me.Punto_venta)
 
             If cbte_nro = "" Then
                 Me.Comprobante_desde = 1            ' no hay comprobantes emitidos
@@ -1119,7 +1121,7 @@ Namespace pymsoft
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12
 
             ' Seleccionar URL según ambiente
-            Dim urlServicio As String = URL_HOMOLOGACION
+            Dim urlServicio As String = url_servicio
 
             ' Crear el objeto del servicio web
             Dim servicio As New WSFEV1.Service With {
@@ -1130,8 +1132,8 @@ Namespace pymsoft
             ' Obtener TA (simulado - en producción usar WSAA)
             Dim authRequest As New WSFEV1.FEAuthRequest()
             authRequest.Cuit = cuit_empresa.Trim()
-            authRequest.Token = Token.Trim()
-            authRequest.Sign = Sign.Trim()
+            authRequest.Token = token.Trim()
+            authRequest.Sign = sign.Trim()
 
             ' --- 3. Crear encabezado de factura (Cabecera) ---
             Dim cabecera As New FECAECabRequest()
@@ -1281,7 +1283,7 @@ Namespace pymsoft
                 ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12
 
                 ' Seleccionar URL según ambiente
-                Dim urlServicio As String = URL_HOMOLOGACION
+                Dim urlServicio As String = url_servicio
 
                 ' Crear el objeto del servicio web
                 Dim servicio As New WSFEV1.Service With {
