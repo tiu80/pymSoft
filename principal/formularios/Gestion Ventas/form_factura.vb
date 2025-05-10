@@ -2913,7 +2913,8 @@ Public Class form_factura
                 End If
 
                 If estado = False Then
-                    MessageBox.Show("La Factura no se grabo en el AFIP....Verifique!!", "PyMsoft", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    If fact.usa_pyafipws = "SI" Then MessageBox.Show("La Factura no se grabo en el AFIP....Verifique!!", "PyMsoft", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    If fact.usa_pyafipws = "NO" Then MessageBox.Show(fact_elec.RespuestaAfip, "PyMsoft", MessageBoxButtons.OK, MessageBoxIcon.Error)
                     Me.Close()
                 Else
                     qr = fact_elec.gerena_QR_factura(sel.cuit, QrCodeImgControl1)
