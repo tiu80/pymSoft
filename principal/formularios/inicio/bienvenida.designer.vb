@@ -22,17 +22,17 @@ Partial Class bienvenida
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container
+        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(bienvenida))
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox
-        Me.lbl_menu = New System.Windows.Forms.Label
-        Me.lbl_version = New System.Windows.Forms.Label
-        Me.lbl_version1 = New System.Windows.Forms.Label
-        Me.Label1 = New System.Windows.Forms.Label
-        Me.lbl_version3 = New System.Windows.Forms.Label
-        Me.Label2 = New System.Windows.Forms.Label
-        Me.lbl_copy = New System.Windows.Forms.Label
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.lbl_menu = New System.Windows.Forms.Label()
+        Me.lbl_version = New System.Windows.Forms.Label()
+        Me.lbl_version1 = New System.Windows.Forms.Label()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.lbl_version3 = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.lbl_copy = New System.Windows.Forms.Label()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -44,9 +44,9 @@ Partial Class bienvenida
         '
         Me.PictureBox1.BackgroundImage = CType(resources.GetObject("PictureBox1.BackgroundImage"), System.Drawing.Image)
         Me.PictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.PictureBox1.Location = New System.Drawing.Point(9, 197)
+        Me.PictureBox1.Location = New System.Drawing.Point(4, 24)
         Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(579, 231)
+        Me.PictureBox1.Size = New System.Drawing.Size(579, 303)
         Me.PictureBox1.TabIndex = 0
         Me.PictureBox1.TabStop = False
         '
@@ -97,7 +97,7 @@ Partial Class bienvenida
         'Label2
         '
         Me.Label2.BackColor = System.Drawing.Color.White
-        Me.Label2.Location = New System.Drawing.Point(6, 18)
+        Me.Label2.Location = New System.Drawing.Point(141, 3)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(57, 20)
         Me.Label2.TabIndex = 6
@@ -106,7 +106,7 @@ Partial Class bienvenida
         'lbl_copy
         '
         Me.lbl_copy.BackColor = System.Drawing.Color.White
-        Me.lbl_copy.Location = New System.Drawing.Point(60, 19)
+        Me.lbl_copy.Location = New System.Drawing.Point(195, 4)
         Me.lbl_copy.Name = "lbl_copy"
         Me.lbl_copy.Size = New System.Drawing.Size(46, 20)
         Me.lbl_copy.TabIndex = 7
@@ -117,7 +117,7 @@ Partial Class bienvenida
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
-        Me.ClientSize = New System.Drawing.Size(600, 440)
+        Me.ClientSize = New System.Drawing.Size(586, 330)
         Me.ControlBox = False
         Me.Controls.Add(Me.lbl_copy)
         Me.Controls.Add(Me.Label2)

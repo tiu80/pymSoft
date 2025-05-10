@@ -1,5 +1,6 @@
 Imports System.Data
 Imports System.Data.SqlClient
+Imports CrystalDecisions.Shared
 
 Public Class Form_iva_ventas
 
@@ -67,6 +68,7 @@ Public Class Form_iva_ventas
 
             Dim rep As New iva_vta
             Dim tbl1 As New DataTable
+            Dim selectionFormula As String = ""
 
             conex = conecta()
 
@@ -92,21 +94,86 @@ Public Class Form_iva_ventas
                 If iva = "Total" Then
 
                     If Me.txt_p_venta.Text <> "" Then
-                        comando = New SqlDataAdapter("select fec_emision,tipo_fact,num_fact1,prefijo_fact,letra_fact,nombre,tipo_iva,cuit,ing_bruto1,sub_total,exento,iva_ins,imp_interno1,total from fact_cab inner join fact_tot on fact_cab.fec_emision >= '" & RTrim(Me.dt_fec_desde.Text) & "' and fact_cab.fec_emision <= '" & RTrim(Me.dt_fec_hasta.Text) & "' and fact_cab.id_cli=fact_tot.id_cliente and fact_cab.talon = 1 and fact_cab.talon = fact_tot.talon2 and fact_cab.prefijo_fact = '" & RTrim(Me.txt_p_venta.Text) & "' and fact_cab.num_fact1= fact_tot.num_factura and fact_cab.prefijo_fact = fact_tot.pref and fact_cab.letra_fact = fact_tot.letra and fact_cab.tipo_fact = fact_tot.tipo_factura and fact_cab.tipo_fact <> 'RE' and fact_cab.tipo_fact <> 'RS' and fact_cab.tipo_fact <> 'PD' ORDER BY num_fact1,prefijo_fact,letra_fact,tipo_fact ASC", conex)
-                        comando.Fill(tbl)
+                        'comando = New SqlDataAdapter("select fec_emision,tipo_fact,num_fact1,prefijo_fact,letra_fact,nombre,tipo_iva,cuit,ing_bruto1,sub_total,exento,iva_ins,imp_interno1,total from fact_cab inner join fact_tot on fact_cab.fec_emision >= '" & RTrim(Me.dt_fec_desde.Text) & "' and fact_cab.fec_emision <= '" & RTrim(Me.dt_fec_hasta.Text) & "' and fact_cab.id_cli=fact_tot.id_cliente and fact_cab.talon = 1 and fact_cab.talon = fact_tot.talon2 and fact_cab.prefijo_fact = '" & RTrim(Me.txt_p_venta.Text) & "' and fact_cab.num_fact1= fact_tot.num_factura and fact_cab.prefijo_fact = fact_tot.pref and fact_cab.letra_fact = fact_tot.letra and fact_cab.tipo_fact = fact_tot.tipo_factura and fact_cab.tipo_fact <> 'RE' and fact_cab.tipo_fact <> 'RS' and fact_cab.tipo_fact <> 'PD' ORDER BY num_fact1,prefijo_fact,letra_fact,tipo_fact ASC", conex)
+
+                        'comando.Fill(tbl)
+                        'comando.Dispose()
+
+                        ' Construir la fórmula paso a paso
+                        selectionFormula &= "{fact_cab.fec_emision} >= Date('" & Me.dt_fec_desde.Text & "') AND "
+                        selectionFormula &= "{fact_cab.fec_emision} <= Date('" & Me.dt_fec_hasta.Text & "') AND "
+                        selectionFormula &= "{fact_cab.talon} = 1 AND "
+
+                        If Not String.IsNullOrEmpty(Me.txt_p_venta.Text) Then
+                            selectionFormula &= "{fact_cab.prefijo_fact} = " & RTrim(Me.txt_p_venta.Text) & " AND "
+                        End If
+
+                        selectionFormula &= "{fact_cab.tipo_fact} <> 'RE' AND "
+                        selectionFormula &= "{fact_cab.tipo_fact} <> 'RS' AND "
+                        selectionFormula &= "{fact_cab.tipo_fact} <> 'PD'"
+
+                        ' Asignar la fórmula al reporte
+                        rep.RecordSelectionFormula = selectionFormula
+
                     Else
-                        comando = New SqlDataAdapter("select fec_emision,tipo_fact,num_fact1,prefijo_fact,letra_fact,nombre,tipo_iva,cuit,ing_bruto1,sub_total,exento,iva_ins,imp_interno1,total from fact_cab inner join fact_tot on fact_cab.fec_emision >= '" & RTrim(Me.dt_fec_desde.Text) & "' and fact_cab.fec_emision <= '" & RTrim(Me.dt_fec_hasta.Text) & "' and fact_cab.talon = fact_tot.talon2 and fact_cab.talon = '1' and fact_cab.num_fact1= fact_tot.num_factura and fact_cab.prefijo_fact = fact_tot.pref and fact_cab.letra_fact = fact_tot.letra and fact_cab.tipo_fact = fact_tot.tipo_factura and fact_cab.tipo_fact <> 'RE' and fact_cab.tipo_fact <> 'RS' and fact_cab.tipo_fact <> 'PD' ORDER BY num_fact1,prefijo_fact,letra_fact,tipo_fact ASC", conex)
-                        comando.Fill(tbl)
+                        'comando = New SqlDataAdapter("select fec_emision,tipo_fact,num_fact1,prefijo_fact,letra_fact,nombre,tipo_iva,cuit,ing_bruto1,sub_total,exento,iva_ins,imp_interno1,total from fact_cab inner join fact_tot on fact_cab.fec_emision >= '" & RTrim(Me.dt_fec_desde.Text) & "' and fact_cab.fec_emision <= '" & RTrim(Me.dt_fec_hasta.Text) & "' and fact_cab.talon = fact_tot.talon2 and fact_cab.talon = '1' and fact_cab.num_fact1= fact_tot.num_factura and fact_cab.prefijo_fact = fact_tot.pref and fact_cab.letra_fact = fact_tot.letra and fact_cab.tipo_fact = fact_tot.tipo_factura and fact_cab.tipo_fact <> 'RE' and fact_cab.tipo_fact <> 'RS' and fact_cab.tipo_fact <> 'PD' ORDER BY num_fact1,prefijo_fact,letra_fact,tipo_fact ASC", conex)
+                        'comando.Fill(tbl)
+                        'comando.Dispose()
+
+                        ' Construir la fórmula paso a paso
+                        selectionFormula &= "{fact_cab.fec_emision} >= Date('" & Me.dt_fec_desde.Text & "') AND "
+                        selectionFormula &= "{fact_cab.fec_emision} <= Date('" & Me.dt_fec_hasta.Text & "') AND "
+                        selectionFormula &= "{fact_cab.talon} = 1 AND "
+                        selectionFormula &= "{fact_cab.tipo_fact} <> 'RE' AND "
+                        selectionFormula &= "{fact_cab.tipo_fact} <> 'RS' AND "
+                        selectionFormula &= "{fact_cab.tipo_fact} <> 'PD'"
+
+                        ' Asignar la fórmula al reporte
+                        rep.RecordSelectionFormula = selectionFormula
                     End If
 
                 Else
 
                     If Me.txt_p_venta.Text <> "" Then
-                        comando = New SqlDataAdapter("select fec_emision,tipo_fact,num_fact1,prefijo_fact,letra_fact,nombre,tipo_iva,cuit,ing_bruto1,sub_total,exento,iva_ins,imp_interno1,total from fact_cab inner join fact_tot on fact_cab.fec_emision >= '" & RTrim(Me.dt_fec_desde.Text) & "' and fact_cab.fec_emision <= '" & RTrim(Me.dt_fec_hasta.Text) & "' and fact_cab.talon = 1 and fact_cab.talon = fact_tot.talon2 and fact_cab.prefijo_fact = '" & RTrim(Me.txt_p_venta.Text) & "'and fact_cab.num_fact1= fact_tot.num_factura and fact_cab.prefijo_fact = fact_tot.pref and fact_cab.letra_fact = fact_tot.letra and fact_cab.tipo_fact = fact_tot.tipo_factura and fact_cab.tipo_iva = '" & iva & "' and fact_cab.tipo_fact <> 'RE' and fact_cab.tipo_fact <> 'RS' and fact_cab.tipo_fact <> 'PD' ORDER BY num_fact1,prefijo_fact,letra_fact,tipo_fact ASC", conex)
-                        comando.Fill(tbl)
+
+                        'comando = New SqlDataAdapter("select fec_emision,tipo_fact,num_fact1,prefijo_fact,letra_fact,nombre,tipo_iva,cuit,ing_bruto1,sub_total,exento,iva_ins,imp_interno1,total from fact_cab inner join fact_tot on fact_cab.fec_emision >= '" & RTrim(Me.dt_fec_desde.Text) & "' and fact_cab.fec_emision <= '" & RTrim(Me.dt_fec_hasta.Text) & "' and fact_cab.talon = 1 and fact_cab.talon = fact_tot.talon2 and fact_cab.prefijo_fact = '" & RTrim(Me.txt_p_venta.Text) & "'and fact_cab.num_fact1= fact_tot.num_factura and fact_cab.prefijo_fact = fact_tot.pref and fact_cab.letra_fact = fact_tot.letra and fact_cab.tipo_fact = fact_tot.tipo_factura and fact_cab.tipo_iva = '" & iva & "' and fact_cab.tipo_fact <> 'RE' and fact_cab.tipo_fact <> 'RS' and fact_cab.tipo_fact <> 'PD' ORDER BY num_fact1,prefijo_fact,letra_fact,tipo_fact ASC", conex)
+                        'comando.Fill(tbl)
+                        'comando.Dispose()
+
+                        ' Construir la fórmula paso a paso
+                        selectionFormula &= "{fact_cab.fec_emision} >= Date('" & Me.dt_fec_desde.Text & "') AND "
+                        selectionFormula &= "{fact_cab.fec_emision} <= Date('" & Me.dt_fec_hasta.Text & "') AND "
+                        selectionFormula &= "{fact_cab.talon} = 1 AND "
+
+                        If Not String.IsNullOrEmpty(Me.txt_p_venta.Text) Then
+                            selectionFormula &= "{fact_cab.prefijo_fact} = " & RTrim(Me.txt_p_venta.Text) & " AND "
+                        End If
+
+                        selectionFormula &= "{fact_cab.tipo_iva} = '" & iva & "' AND "
+                        selectionFormula &= "{fact_cab.tipo_fact} <> 'RE' AND "
+                        selectionFormula &= "{fact_cab.tipo_fact} <> 'RS' AND "
+                        selectionFormula &= "{fact_cab.tipo_fact} <> 'PD'"
+
+                        ' Asignar la fórmula al reporte
+                        rep.RecordSelectionFormula = selectionFormula
+
                     Else
-                        comando = New SqlDataAdapter("select fec_emision,tipo_fact,num_fact1,prefijo_fact,letra_fact,nombre,tipo_iva,cuit,ing_bruto1,sub_total,exento,iva_ins,imp_interno1,total from fact_cab inner join fact_tot on fact_cab.fec_emision >= '" & RTrim(Me.dt_fec_desde.Text) & "' and fact_cab.fec_emision <= '" & RTrim(Me.dt_fec_hasta.Text) & "' and fact_cab.talon = fact_tot.talon2 and fact_cab.talon = '1' and fact_cab.num_fact1= fact_tot.num_factura and fact_cab.prefijo_fact = fact_tot.pref and fact_cab.letra_fact = fact_tot.letra and fact_cab.tipo_fact = fact_tot.tipo_factura and fact_cab.tipo_iva = '" & iva & "' and fact_cab.tipo_fact <> 'RE' and fact_cab.tipo_fact <> 'RS' and fact_cab.tipo_fact <> 'PD' ORDER BY num_fact1,prefijo_fact,letra_fact,tipo_fact ASC", conex)
-                        comando.Fill(tbl)
+                        'comando = New SqlDataAdapter("select fec_emision,tipo_fact,num_fact1,prefijo_fact,letra_fact,nombre,tipo_iva,cuit,ing_bruto1,sub_total,exento,iva_ins,imp_interno1,total from fact_cab inner join fact_tot on fact_cab.fec_emision >= '" & RTrim(Me.dt_fec_desde.Text) & "' and fact_cab.fec_emision <= '" & RTrim(Me.dt_fec_hasta.Text) & "' and fact_cab.talon = fact_tot.talon2 and fact_cab.talon = '1' and fact_cab.num_fact1= fact_tot.num_factura and fact_cab.prefijo_fact = fact_tot.pref and fact_cab.letra_fact = fact_tot.letra and fact_cab.tipo_fact = fact_tot.tipo_factura and fact_cab.tipo_iva = '" & iva & "' and fact_cab.tipo_fact <> 'RE' and fact_cab.tipo_fact <> 'RS' and fact_cab.tipo_fact <> 'PD' ORDER BY num_fact1,prefijo_fact,letra_fact,tipo_fact ASC", conex)
+                        'comando.Fill(tbl)
+                        'comando.Dispose()
+
+                        ' Construir la fórmula paso a paso
+                        selectionFormula &= "{fact_cab.fec_emision} >= Date('" & Me.dt_fec_desde.Text & "') AND "
+                        selectionFormula &= "{fact_cab.fec_emision} <= Date('" & Me.dt_fec_hasta.Text & "') AND "
+                        selectionFormula &= "{fact_cab.talon} = 1 AND "
+                        selectionFormula &= "{fact_cab.tipo_iva} = '" & iva & "' AND "
+                        selectionFormula &= "{fact_cab.tipo_fact} <> 'RE' AND "
+                        selectionFormula &= "{fact_cab.tipo_fact} <> 'RS' AND "
+                        selectionFormula &= "{fact_cab.tipo_fact} <> 'PD'"
+
+                        ' Asignar la fórmula al reporte
+                        rep.RecordSelectionFormula = selectionFormula
+
                     End If
 
                 End If
@@ -118,21 +185,81 @@ Public Class Form_iva_ventas
                 If iva = "Total" Then
 
                     If Me.txt_p_venta.Text <> "" Then
-                        comando = New SqlDataAdapter("select fec_emision,tipo_fact,num_fact1,prefijo_fact,letra_fact,nombre,tipo_iva,cuit,ing_bruto1,sub_total,exento,iva_ins,imp_interno1,total from fact_cab inner join fact_tot on fact_cab.fec_emision >= '" & RTrim(Me.dt_fec_desde.Text) & "' and fact_cab.fec_emision <= '" & RTrim(Me.dt_fec_hasta.Text) & "' and fact_cab.talon = 1 and fact_cab.talon = fact_tot.talon2 and fact_cab.prefijo_fact = '" & RTrim(Me.txt_p_venta.Text) & "'and fact_cab.num_fact1= fact_tot.num_factura and fact_cab.prefijo_fact = fact_tot.pref and fact_cab.letra_fact = fact_tot.letra and fact_cab.tipo_fact = fact_tot.tipo_factura and fact_cab.tipo_fact = 'FC' ORDER BY num_fact1,prefijo_fact,letra_fact,tipo_fact ASC", conex)
-                        comando.Fill(tbl)
+                        'comando = New SqlDataAdapter("select fec_emision,tipo_fact,num_fact1,prefijo_fact,letra_fact,nombre,tipo_iva,cuit,ing_bruto1,sub_total,exento,iva_ins,imp_interno1,total from fact_cab inner join fact_tot on fact_cab.fec_emision >= '" & RTrim(Me.dt_fec_desde.Text) & "' and fact_cab.fec_emision <= '" & RTrim(Me.dt_fec_hasta.Text) & "' and fact_cab.talon = 1 and fact_cab.talon = fact_tot.talon2 and fact_cab.prefijo_fact = '" & RTrim(Me.txt_p_venta.Text) & "'and fact_cab.num_fact1= fact_tot.num_factura and fact_cab.prefijo_fact = fact_tot.pref and fact_cab.letra_fact = fact_tot.letra and fact_cab.tipo_fact = fact_tot.tipo_factura and fact_cab.tipo_fact = 'FC' ORDER BY num_fact1,prefijo_fact,letra_fact,tipo_fact ASC", conex)
+                        'comando.Fill(tbl)
+                        'comando.Dispose()
+
+                        ' Construir la fórmula paso a paso
+                        selectionFormula &= "{fact_cab.fec_emision} >= Date('" & Me.dt_fec_desde.Text & "') AND "
+                        selectionFormula &= "{fact_cab.fec_emision} <= Date('" & Me.dt_fec_hasta.Text & "') AND "
+                        selectionFormula &= "{fact_cab.talon} = 1 AND "
+
+                        If Not String.IsNullOrEmpty(Me.txt_p_venta.Text) Then
+                            selectionFormula &= "{fact_cab.prefijo_fact} = " & RTrim(Me.txt_p_venta.Text) & " AND "
+                        End If
+
+                        selectionFormula &= "{fact_cab.tipo_fact} = 'FC'"
+
+                        ' Asignar la fórmula al reporte
+                        rep.RecordSelectionFormula = selectionFormula
+
                     Else
-                        comando = New SqlDataAdapter("select fec_emision,tipo_fact,num_fact1,prefijo_fact,letra_fact,nombre,tipo_iva,cuit,ing_bruto1,sub_total,exento,iva_ins,imp_interno1,total from fact_cab inner join fact_tot on fact_cab.fec_emision >= '" & RTrim(Me.dt_fec_desde.Text) & "' and fact_cab.fec_emision <= '" & RTrim(Me.dt_fec_hasta.Text) & "' and fact_cab.talon = fact_tot.talon2 and fact_cab.talon = '1' and fact_cab.num_fact1= fact_tot.num_factura and fact_cab.prefijo_fact = fact_tot.pref and fact_cab.letra_fact = fact_tot.letra and fact_cab.tipo_fact = fact_tot.tipo_factura and fact_cab.tipo_fact = 'FC' ORDER BY num_fact1,prefijo_fact,letra_fact,tipo_fact ASC", conex)
-                        comando.Fill(tbl)
+                        'comando = New SqlDataAdapter("select fec_emision,tipo_fact,num_fact1,prefijo_fact,letra_fact,nombre,tipo_iva,cuit,ing_bruto1,sub_total,exento,iva_ins,imp_interno1,total from fact_cab inner join fact_tot on fact_cab.fec_emision >= '" & RTrim(Me.dt_fec_desde.Text) & "' and fact_cab.fec_emision <= '" & RTrim(Me.dt_fec_hasta.Text) & "' and fact_cab.talon = fact_tot.talon2 and fact_cab.talon = '1' and fact_cab.num_fact1= fact_tot.num_factura and fact_cab.prefijo_fact = fact_tot.pref and fact_cab.letra_fact = fact_tot.letra and fact_cab.tipo_fact = fact_tot.tipo_factura and fact_cab.tipo_fact = 'FC' ORDER BY num_fact1,prefijo_fact,letra_fact,tipo_fact ASC", conex)
+                        'comando.Fill(tbl)
+                        'comando.Dispose()
+
+                        ' Construir la fórmula paso a paso
+                        selectionFormula &= "{fact_cab.fec_emision} >= Date('" & Me.dt_fec_desde.Text & "') AND "
+                        selectionFormula &= "{fact_cab.fec_emision} <= Date('" & Me.dt_fec_hasta.Text & "') AND "
+                        selectionFormula &= "{fact_cab.talon} = 1 AND "
+                        selectionFormula &= "{fact_cab.tipo_fact} <> 'FC'"
+
+                        ' Asignar la fórmula al reporte
+                        rep.RecordSelectionFormula = selectionFormula
+
                     End If
 
                 Else
 
                     If Me.txt_p_venta.Text <> "" Then
-                        comando = New SqlDataAdapter("select fec_emision,tipo_fact,num_fact1,prefijo_fact,letra_fact,nombre,tipo_iva,cuit,ing_bruto1,sub_total,exento,iva_ins,imp_interno1,total from fact_cab inner join fact_tot on fact_cab.fec_emision >= '" & RTrim(Me.dt_fec_desde.Text) & "' and fact_cab.fec_emision <= '" & RTrim(Me.dt_fec_hasta.Text) & "' and fact_cab.talon = 1 and fact_cab.talon = fact_tot.talon2 and fact_cab.prefijo_fact = '" & RTrim(Me.txt_p_venta.Text) & "'and fact_cab.num_fact1= fact_tot.num_factura and fact_cab.prefijo_fact = fact_tot.pref and fact_cab.letra_fact = fact_tot.letra and fact_cab.tipo_fact = fact_tot.tipo_factura and fact_cab.tipo_iva = '" & iva & "' and fact_cab.tipo_fact = 'FC' ORDER BY num_fact1,prefijo_fact,letra_fact,tipo_fact ASC", conex)
-                        comando.Fill(tbl)
+                        'comando = New SqlDataAdapter("select fec_emision,tipo_fact,num_fact1,prefijo_fact,letra_fact,nombre,tipo_iva,cuit,ing_bruto1,sub_total,exento,iva_ins,imp_interno1,total from fact_cab inner join fact_tot on fact_cab.fec_emision >= '" & RTrim(Me.dt_fec_desde.Text) & "' and fact_cab.fec_emision <= '" & RTrim(Me.dt_fec_hasta.Text) & "' and fact_cab.talon = 1 and fact_cab.talon = fact_tot.talon2 and fact_cab.prefijo_fact = '" & RTrim(Me.txt_p_venta.Text) & "'and fact_cab.num_fact1= fact_tot.num_factura and fact_cab.prefijo_fact = fact_tot.pref and fact_cab.letra_fact = fact_tot.letra and fact_cab.tipo_fact = fact_tot.tipo_factura and fact_cab.tipo_iva = '" & iva & "' and fact_cab.tipo_fact = 'FC' ORDER BY num_fact1,prefijo_fact,letra_fact,tipo_fact ASC", conex)
+                        'comando.Fill(tbl)
+                        'comando.Dispose()
+
+                        ' Construir la fórmula paso a paso
+                        selectionFormula &= "{fact_cab.fec_emision} >= Date('" & Me.dt_fec_desde.Text & "') AND "
+                        selectionFormula &= "{fact_cab.fec_emision} <= Date('" & Me.dt_fec_hasta.Text & "') AND "
+                        selectionFormula &= "{fact_cab.talon} = 1 AND "
+
+                        If Not String.IsNullOrEmpty(Me.txt_p_venta.Text) Then
+                            selectionFormula &= "{fact_cab.prefijo_fact} = " & RTrim(Me.txt_p_venta.Text) & " AND "
+                        End If
+
+                        selectionFormula &= "{fact_cab.tipo_iva} = '" & iva & "' AND "
+                        selectionFormula &= "{fact_cab.tipo_fact} <> 'RE' AND "
+                        selectionFormula &= "{fact_cab.tipo_fact} <> 'RS' AND "
+                        selectionFormula &= "{fact_cab.tipo_fact} <> 'PD'"
+
+                        ' Asignar la fórmula al reporte
+                        rep.RecordSelectionFormula = selectionFormula
+
                     Else
-                        comando = New SqlDataAdapter("select fec_emision,tipo_fact,num_fact1,prefijo_fact,letra_fact,nombre,tipo_iva,cuit,ing_bruto1,sub_total,exento,iva_ins,imp_interno1,total from fact_cab inner join fact_tot on fact_cab.fec_emision >= '" & RTrim(Me.dt_fec_desde.Text) & "' and fact_cab.fec_emision <= '" & RTrim(Me.dt_fec_hasta.Text) & "' and fact_cab.talon = fact_tot.talon2 and fact_cab.talon = '1' and fact_cab.num_fact1= fact_tot.num_factura and fact_cab.prefijo_fact = fact_tot.pref and fact_cab.letra_fact = fact_tot.letra and fact_cab.tipo_fact = fact_tot.tipo_factura and fact_cab.tipo_iva = '" & iva & "' and fact_cab.tipo_fact = 'FC' ORDER BY num_fact1,prefijo_fact,letra_fact,tipo_fact ASC", conex)
-                        comando.Fill(tbl)
+                        'comando = New SqlDataAdapter("select fec_emision,tipo_fact,num_fact1,prefijo_fact,letra_fact,nombre,tipo_iva,cuit,ing_bruto1,sub_total,exento,iva_ins,imp_interno1,total from fact_cab inner join fact_tot on fact_cab.fec_emision >= '" & RTrim(Me.dt_fec_desde.Text) & "' and fact_cab.fec_emision <= '" & RTrim(Me.dt_fec_hasta.Text) & "' and fact_cab.talon = fact_tot.talon2 and fact_cab.talon = '1' and fact_cab.num_fact1= fact_tot.num_factura and fact_cab.prefijo_fact = fact_tot.pref and fact_cab.letra_fact = fact_tot.letra and fact_cab.tipo_fact = fact_tot.tipo_factura and fact_cab.tipo_iva = '" & iva & "' and fact_cab.tipo_fact = 'FC' ORDER BY num_fact1,prefijo_fact,letra_fact,tipo_fact ASC", conex)
+                        'comando.Fill(tbl)
+                        'comando.Dispose()
+
+                        ' Construir la fórmula paso a paso
+                        selectionFormula &= "{fact_cab.fec_emision} >= Date('" & Me.dt_fec_desde.Text & "') AND "
+                        selectionFormula &= "{fact_cab.fec_emision} <= Date('" & Me.dt_fec_hasta.Text & "') AND "
+                        selectionFormula &= "{fact_cab.talon} = 1 AND "
+                        selectionFormula &= "{fact_cab.tipo_iva} = '" & iva & "' AND "
+                        selectionFormula &= "{fact_cab.tipo_fact} <> 'RE' AND "
+                        selectionFormula &= "{fact_cab.tipo_fact} <> 'RS' AND "
+                        selectionFormula &= "{fact_cab.tipo_fact} <> 'PD'"
+
+                        ' Asignar la fórmula al reporte
+                        rep.RecordSelectionFormula = selectionFormula
+
                     End If
 
                 End If
@@ -144,42 +271,84 @@ Public Class Form_iva_ventas
                 If iva = "Total" Then
 
                     If Me.txt_p_venta.Text <> "" Then
-                        comando = New SqlDataAdapter("select fec_emision,tipo_fact,num_fact1,prefijo_fact,letra_fact,nombre,tipo_iva,cuit,ing_bruto1,sub_total,exento,iva_ins,imp_interno1,total from fact_cab inner join fact_tot on fact_cab.fec_emision >= '" & RTrim(Me.dt_fec_desde.Text) & "' and fact_cab.fec_emision <= '" & RTrim(Me.dt_fec_hasta.Text) & "' and fact_cab.talon = 1 and fact_cab.talon = fact_tot.talon2 and fact_cab.prefijo_fact = '" & RTrim(Me.txt_p_venta.Text) & "'and fact_cab.num_fact1= fact_tot.num_factura and fact_cab.prefijo_fact = fact_tot.pref and fact_cab.letra_fact = fact_tot.letra and fact_cab.tipo_fact = fact_tot.tipo_factura and fact_cab.tipo_fact = 'NC' ORDER BY num_fact1,prefijo_fact,letra_fact,tipo_fact ASC", conex)
-                        comando.Fill(tbl)
+                        'comando = New SqlDataAdapter("select fec_emision,tipo_fact,num_fact1,prefijo_fact,letra_fact,nombre,tipo_iva,cuit,ing_bruto1,sub_total,exento,iva_ins,imp_interno1,total from fact_cab inner join fact_tot on fact_cab.fec_emision >= '" & RTrim(Me.dt_fec_desde.Text) & "' and fact_cab.fec_emision <= '" & RTrim(Me.dt_fec_hasta.Text) & "' and fact_cab.talon = 1 and fact_cab.talon = fact_tot.talon2 and fact_cab.prefijo_fact = '" & RTrim(Me.txt_p_venta.Text) & "'and fact_cab.num_fact1= fact_tot.num_factura and fact_cab.prefijo_fact = fact_tot.pref and fact_cab.letra_fact = fact_tot.letra and fact_cab.tipo_fact = fact_tot.tipo_factura and fact_cab.tipo_fact = 'NC' ORDER BY num_fact1,prefijo_fact,letra_fact,tipo_fact ASC", conex)
+                        'comando.Fill(tbl)
+                        'comando.Dispose()
+
+                        ' Construir la fórmula paso a paso
+                        selectionFormula &= "{fact_cab.fec_emision} >= Date('" & Me.dt_fec_desde.Text & "') AND "
+                        selectionFormula &= "{fact_cab.fec_emision} <= Date('" & Me.dt_fec_hasta.Text & "') AND "
+                        selectionFormula &= "{fact_cab.talon} = 1 AND "
+
+                        If Not String.IsNullOrEmpty(Me.txt_p_venta.Text) Then
+                            selectionFormula &= "{fact_cab.prefijo_fact} = " & RTrim(Me.txt_p_venta.Text) & " AND "
+                        End If
+
+                        selectionFormula &= "{fact_cab.tipo_fact} = 'NC'"
+
+                        ' Asignar la fórmula al reporte
+                        rep.RecordSelectionFormula = selectionFormula
+
                     Else
-                        comando = New SqlDataAdapter("select fec_emision,tipo_fact,num_fact1,prefijo_fact,letra_fact,nombre,tipo_iva,cuit,ing_bruto1,sub_total,exento,iva_ins,imp_interno1,total from fact_cab inner join fact_tot on fact_cab.fec_emision >= '" & RTrim(Me.dt_fec_desde.Text) & "' and fact_cab.fec_emision <= '" & RTrim(Me.dt_fec_hasta.Text) & "' and fact_cab.talon = fact_tot.talon2 and fact_cab.talon = '1' and fact_cab.num_fact1= fact_tot.num_factura and fact_cab.prefijo_fact = fact_tot.pref and fact_cab.letra_fact = fact_tot.letra and fact_cab.tipo_fact = fact_tot.tipo_factura and fact_cab.tipo_fact = 'NC' ORDER BY num_fact1,prefijo_fact,letra_fact,tipo_fact ASC", conex)
-                        comando.Fill(tbl)
+                        'comando = New SqlDataAdapter("select fec_emision,tipo_fact,num_fact1,prefijo_fact,letra_fact,nombre,tipo_iva,cuit,ing_bruto1,sub_total,exento,iva_ins,imp_interno1,total from fact_cab inner join fact_tot on fact_cab.fec_emision >= '" & RTrim(Me.dt_fec_desde.Text) & "' and fact_cab.fec_emision <= '" & RTrim(Me.dt_fec_hasta.Text) & "' and fact_cab.talon = fact_tot.talon2 and fact_cab.talon = '1' and fact_cab.num_fact1= fact_tot.num_factura and fact_cab.prefijo_fact = fact_tot.pref and fact_cab.letra_fact = fact_tot.letra and fact_cab.tipo_fact = fact_tot.tipo_factura and fact_cab.tipo_fact = 'NC' ORDER BY num_fact1,prefijo_fact,letra_fact,tipo_fact ASC", conex)
+                        'comando.Fill(tbl)
+                        'comando.Dispose()
+
+                        ' Construir la fórmula paso a paso
+                        selectionFormula &= "{fact_cab.fec_emision} >= Date('" & Me.dt_fec_desde.Text & "') AND "
+                        selectionFormula &= "{fact_cab.fec_emision} <= Date('" & Me.dt_fec_hasta.Text & "') AND "
+                        selectionFormula &= "{fact_cab.talon} = 1 AND "
+                        selectionFormula &= "{fact_cab.tipo_fact} = 'NC'"
+
+                        ' Asignar la fórmula al reporte
+                        rep.RecordSelectionFormula = selectionFormula
+
                     End If
 
                 Else
 
                     If Me.txt_p_venta.Text <> "" Then
-                        comando = New SqlDataAdapter("select fec_emision,tipo_fact,num_fact1,prefijo_fact,letra_fact,nombre,tipo_iva,cuit,ing_bruto1,sub_total,exento,iva_ins,imp_interno1,total from fact_cab inner join fact_tot on fact_cab.fec_emision >= '" & RTrim(Me.dt_fec_desde.Text) & "' and fact_cab.fec_emision <= '" & RTrim(Me.dt_fec_hasta.Text) & "' and fact_cab.talon = 1 and fact_cab.talon = fact_tot.talon2 and fact_cab.prefijo_fact = '" & RTrim(Me.txt_p_venta.Text) & "'and fact_cab.num_fact1= fact_tot.num_factura and fact_cab.prefijo_fact = fact_tot.pref and fact_cab.letra_fact = fact_tot.letra and fact_cab.tipo_fact = fact_tot.tipo_factura and fact_cab.tipo_iva = '" & iva & "' and fact_cab.tipo_fact = 'NC' ORDER BY num_fact1,prefijo_fact,letra_fact,tipo_fact ASC", conex)
-                        comando.Fill(tbl)
+                        'comando = New SqlDataAdapter("select fec_emision,tipo_fact,num_fact1,prefijo_fact,letra_fact,nombre,tipo_iva,cuit,ing_bruto1,sub_total,exento,iva_ins,imp_interno1,total from fact_cab inner join fact_tot on fact_cab.fec_emision >= '" & RTrim(Me.dt_fec_desde.Text) & "' and fact_cab.fec_emision <= '" & RTrim(Me.dt_fec_hasta.Text) & "' and fact_cab.talon = 1 and fact_cab.talon = fact_tot.talon2 and fact_cab.prefijo_fact = '" & RTrim(Me.txt_p_venta.Text) & "'and fact_cab.num_fact1= fact_tot.num_factura and fact_cab.prefijo_fact = fact_tot.pref and fact_cab.letra_fact = fact_tot.letra and fact_cab.tipo_fact = fact_tot.tipo_factura and fact_cab.tipo_iva = '" & iva & "' and fact_cab.tipo_fact = 'NC' ORDER BY num_fact1,prefijo_fact,letra_fact,tipo_fact ASC", conex)
+                        'comando.Fill(tbl)
+                        'comando.Dispose()
+
+                        ' Construir la fórmula paso a paso
+                        selectionFormula &= "{fact_cab.fec_emision} >= Date('" & Me.dt_fec_desde.Text & "') AND "
+                        selectionFormula &= "{fact_cab.fec_emision} <= Date('" & Me.dt_fec_hasta.Text & "') AND "
+                        selectionFormula &= "{fact_cab.talon} = 1 AND "
+
+                        If Not String.IsNullOrEmpty(Me.txt_p_venta.Text) Then
+                            selectionFormula &= "{fact_cab.prefijo_fact} = " & RTrim(Me.txt_p_venta.Text) & " AND "
+                        End If
+
+                        selectionFormula &= "{fact_cab.tipo_iva} = '" & iva & "' AND "
+                        selectionFormula &= "{fact_cab.tipo_fact} = 'NC'"
+
+                        ' Asignar la fórmula al reporte
+                        rep.RecordSelectionFormula = selectionFormula
+
                     Else
-                        comando = New SqlDataAdapter("select fec_emision,tipo_fact,num_fact1,prefijo_fact,letra_fact,nombre,tipo_iva,cuit,ing_bruto1,sub_total,exento,iva_ins,imp_interno1,total from fact_cab inner join fact_tot on fact_cab.fec_emision >= '" & RTrim(Me.dt_fec_desde.Text) & "' and fact_cab.fec_emision <= '" & RTrim(Me.dt_fec_hasta.Text) & "' and fact_cab.talon = fact_tot.talon2 and fact_cab.talon = '1' and fact_cab.num_fact1= fact_tot.num_factura and fact_cab.prefijo_fact = fact_tot.pref and fact_cab.letra_fact = fact_tot.letra and fact_cab.tipo_fact = fact_tot.tipo_factura and fact_cab.tipo_iva = '" & iva & "' and fact_cab.tipo_fact = 'NC' ORDER BY num_fact1,prefijo_fact,letra_fact,tipo_fact ASC", conex)
-                        comando.Fill(tbl)
+                        'comando = New SqlDataAdapter("select fec_emision,tipo_fact,num_fact1,prefijo_fact,letra_fact,nombre,tipo_iva,cuit,ing_bruto1,sub_total,exento,iva_ins,imp_interno1,total from fact_cab inner join fact_tot on fact_cab.fec_emision >= '" & RTrim(Me.dt_fec_desde.Text) & "' and fact_cab.fec_emision <= '" & RTrim(Me.dt_fec_hasta.Text) & "' and fact_cab.talon = fact_tot.talon2 and fact_cab.talon = '1' and fact_cab.num_fact1= fact_tot.num_factura and fact_cab.prefijo_fact = fact_tot.pref and fact_cab.letra_fact = fact_tot.letra and fact_cab.tipo_fact = fact_tot.tipo_factura and fact_cab.tipo_iva = '" & iva & "' and fact_cab.tipo_fact = 'NC' ORDER BY num_fact1,prefijo_fact,letra_fact,tipo_fact ASC", conex)
+                        'comando.Fill(tbl)
+                        'comando.Dispose()
+
+                        ' Construir la fórmula paso a paso
+                        selectionFormula &= "{fact_cab.fec_emision} >= Date('" & Me.dt_fec_desde.Text & "') AND "
+                        selectionFormula &= "{fact_cab.fec_emision} <= Date('" & Me.dt_fec_hasta.Text & "') AND "
+                        selectionFormula &= "{fact_cab.talon} = 1 AND "
+                        selectionFormula &= "{fact_cab.tipo_iva} = '" & iva & "' AND "
+                        selectionFormula &= "{fact_cab.tipo_fact} = 'NC'"
+
+                        ' Asignar la fórmula al reporte
+                        rep.RecordSelectionFormula = selectionFormula
+
                     End If
 
                 End If
 
             End If
 
-            'If Me.txt_p_venta.Text <> "" Then
-
-            'tbl1.Clear()
-
-            'comando = New SqlDataAdapter("select talon from numerador where punto_venta = '" & RTrim(Me.txt_p_venta.Text) & "' and talon = 1", conex)
-            'comando.Fill(tbl1)
-
-            'If tbl1.Rows(0).Item(0) = 2 Then tbl.Clear()
-
-            'End If
-
-            rep.SetDataSource(tbl)
-
-            'rep.DataSourceConnections(0).SetConnection(conexion.server, conexion.db, False)
-            'rep.SetDatabaseLogon(conexion.usuario, "")
+            'rep.SetDataSource(tbl)
 
             Form_repcli_01.CrystalReportViewer1.ReportSource = rep
             Form_repcli_01.CrystalReportViewer1.RefreshReport()
