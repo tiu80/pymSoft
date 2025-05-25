@@ -1,5 +1,7 @@
 Imports System.Data
 Imports System.Data.SqlClient
+Imports CrystalDecisions.CrystalReports.Engine
+Imports CrystalDecisions.Shared
 
 Public Class Form_reporte_precios
 
@@ -173,8 +175,11 @@ Public Class Form_reporte_precios
 
     Private Sub carga_precios()
 
-        Dim rep As Object = Nothing
-        Dim rep1 As Object = Nothing
+        Dim rep As ReportDocument = Nothing
+        Dim rep1 As ReportDocument = Nothing
+        Dim rep2 As ReportDocument = Nothing
+        Dim rep3 As ReportDocument = Nothing
+        Dim rep4 As ReportDocument = Nothing
         Dim x As String
 
         x = reporte.carga_datos("precios")
@@ -210,25 +215,42 @@ Public Class Form_reporte_precios
         tabla = New DataTable
         tabla.Clear()
 
+        ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
         If Me.txt_cod_list.Text <> 0 And Me.txt_cod_prov.Text = 0 And Me.txt_cod_rub.Text = 0 And Me.chk_inluye_rubro.Checked = False Then
 
             If RTrim(Me.cmb_ordena.Text) = "Codigo" Then
 
-                comando = New SqlDataAdapter("select * from precios where id_lista1 = '" & Trim(Me.txt_cod_list.Text) & "' and estado1 ='" & Trim(Me.cmb_estado.Text) & "' ORDER BY CAST(id_art1 AS Integer)", conex)
-                comando.Fill(tabla)
-                comando.Dispose()
+                'comando = New SqlDataAdapter("select * from precios where id_lista1 = '" & Trim(Me.txt_cod_list.Text) & "' and estado1 ='" & Trim(Me.cmb_estado.Text) & "' ORDER BY CAST(id_art1 AS Integer)", conex)
+                'comando.Fill(tabla)
+                'comando.Dispose()
 
-                'rep.RecordSelectionFormula = "{precios.id_lista1} = " & Trim(Me.txt_cod_list.Text) & ""
-                'rep1.RecordSelectionFormula = "{precios.id_lista1} = " & Trim(Me.txt_cod_list.Text) & " and {precios.estado1} ='" & Trim(Me.cmb_estado.Text) & "'"
+                rep2 = New CrystalDecisions.CrystalReports.Engine.ReportDocument()
+                rep3 = New CrystalDecisions.CrystalReports.Engine.ReportDocument()
+                rep4 = New CrystalDecisions.CrystalReports.Engine.ReportDocument()
+
+                rep2.Load(Application.StartupPath & "\reportes\precio_x_rubro_c.rpt")
+                rep3.Load(Application.StartupPath & "\reportes\precio_x_rubro_codigo_c.rpt")
+                rep4.Load(Application.StartupPath & "\reportes\precio_x_rubro_param_c.rpt")
+
+                rep.RecordSelectionFormula = "{precios.id_lista1} = " & Trim(Me.txt_cod_list.Text) & ""
+                rep1.RecordSelectionFormula = "{precios.id_lista1} = " & Trim(Me.txt_cod_list.Text) & " and {precios.estado1} ='" & Trim(Me.cmb_estado.Text) & "'"
+                rep2.RecordSelectionFormula = "{precios.id_lista1} = " & Trim(Me.txt_cod_list.Text) & " and {precios.estado1} ='" & Trim(Me.cmb_estado.Text) & "'"
+                rep3.RecordSelectionFormula = "{precios.id_lista1} = " & Trim(Me.txt_cod_list.Text) & " and {precios.estado1} ='" & Trim(Me.cmb_estado.Text) & "'"
+                rep4.RecordSelectionFormula = "{precios.id_lista1} = " & Trim(Me.txt_cod_list.Text) & " and {precios.estado1} ='" & Trim(Me.cmb_estado.Text) & "'"
 
             Else
 
-                comando = New SqlDataAdapter("select * from precios where id_lista1 = '" & Trim(Me.txt_cod_list.Text) & "' and estado1 ='" & Trim(Me.cmb_estado.Text) & "' ORDER BY nom", conex)
-                comando.Fill(tabla)
-                comando.Dispose()
+                'comando = New SqlDataAdapter("select * from precios where id_lista1 = '" & Trim(Me.txt_cod_list.Text) & "' and estado1 ='" & Trim(Me.cmb_estado.Text) & "' ORDER BY nom", conex)
+                'comando.Fill(tabla)
+                'comando.Dispose()
 
-                'rep.RecordSelectionFormula = "{precios_n.id_lista1} = " & Trim(Me.txt_cod_list.Text) & ""
-                'rep1.RecordSelectionFormula = "{precios_n.id_lista1} = " & Trim(Me.txt_cod_list.Text) & " and {precios_n.estado1} ='" & Trim(Me.cmb_estado.Text) & "'"
+                rep.RecordSelectionFormula = "{precios.id_lista1} = " & Trim(Me.txt_cod_list.Text) & " and {precios.estado1} ='" & Trim(Me.cmb_estado.Text) & "'"
+
+                rep2 = New CrystalDecisions.CrystalReports.Engine.ReportDocument()
+                rep2.Load(Application.StartupPath & "\reportes\precios_n.rpt")
+
+                rep2.RecordSelectionFormula = "{precios.id_lista1} = " & Trim(Me.txt_cod_list.Text) & " and {precios.estado1} ='" & Trim(Me.cmb_estado.Text) & "'"
 
             End If
 
@@ -238,21 +260,30 @@ Public Class Form_reporte_precios
 
             If RTrim(Me.cmb_ordena.Text) = "Codigo" Then
 
-                comando = New SqlDataAdapter("select * from precios where id_lista1 = '" & Trim(Me.txt_cod_list.Text) & "' and id_proveedor = '" & RTrim(Me.txt_cod_prov.Text) & "' and estado1 ='" & Trim(Me.cmb_estado.Text) & "' ORDER BY CAST(id_art1 AS Integer)", conex)
-                comando.Fill(tabla)
-                comando.Dispose()
+                'comando = New SqlDataAdapter("select * from precios where id_lista1 = '" & Trim(Me.txt_cod_list.Text) & "' and id_proveedor = '" & RTrim(Me.txt_cod_prov.Text) & "' and estado1 ='" & Trim(Me.cmb_estado.Text) & "' ORDER BY CAST(id_art1 AS Integer)", conex)
+                'comando.Fill(tabla)
+                'comando.Dispose()
 
-                'rep.RecordSelectionFormula = "{precios.id_lista1} = " & RTrim(Me.txt_cod_list.Text) & " and {precios.id_proveedor} = " & RTrim(Me.txt_cod_prov.Text) & ""
-                'rep1.RecordSelectionFormula = "{precios.id_lista1} = " & RTrim(Me.txt_cod_list.Text) & " and {precios.id_proveedor} = " & RTrim(Me.txt_cod_prov.Text) & " and {precios.estado1} ='" & Trim(Me.cmb_estado.Text) & "'"""
+                rep2 = New CrystalDecisions.CrystalReports.Engine.ReportDocument()
+                rep3 = New CrystalDecisions.CrystalReports.Engine.ReportDocument()
+                rep4 = New CrystalDecisions.CrystalReports.Engine.ReportDocument()
+
+                rep2.Load(Application.StartupPath & "\reportes\precio_x_rubro_c.rpt")
+                rep3.Load(Application.StartupPath & "\reportes\precio_x_rubro_codigo_c.rpt")
+                rep4.Load(Application.StartupPath & "\reportes\precio_x_rubro_param_c.rpt")
+
+                rep.RecordSelectionFormula = "{precios.id_lista1} = " & RTrim(Me.txt_cod_list.Text) & " and {precios.id_proveedor} = " & RTrim(Me.txt_cod_prov.Text) & " and {precios.estado1} ='" & Trim(Me.cmb_estado.Text) & "'"
+                rep2.RecordSelectionFormula = "{precios.id_lista1} = " & RTrim(Me.txt_cod_list.Text) & " and {precios.id_proveedor} = " & RTrim(Me.txt_cod_prov.Text) & " and {precios.estado1} ='" & Trim(Me.cmb_estado.Text) & "'"
+                rep3.RecordSelectionFormula = "{precios.id_lista1} = " & RTrim(Me.txt_cod_list.Text) & " and {precios.id_proveedor} = " & RTrim(Me.txt_cod_prov.Text) & " and {precios.estado1} ='" & Trim(Me.cmb_estado.Text) & "'"
+                rep4.RecordSelectionFormula = "{precios.id_lista1} = " & RTrim(Me.txt_cod_list.Text) & " and {precios.id_proveedor} = " & RTrim(Me.txt_cod_prov.Text) & " and {precios.estado1} ='" & Trim(Me.cmb_estado.Text) & "'"
 
             Else
 
-                comando = New SqlDataAdapter("select * from precios where id_lista1 = '" & Trim(Me.txt_cod_list.Text) & "' and id_proveedor = '" & RTrim(Me.txt_cod_prov.Text) & "' and estado1 ='" & Trim(Me.cmb_estado.Text) & "' ORDER BY nom", conex)
-                comando.Fill(tabla)
-                comando.Dispose()
+                'comando = New SqlDataAdapter("select * from precios where id_lista1 = '" & Trim(Me.txt_cod_list.Text) & "' and id_proveedor = '" & RTrim(Me.txt_cod_prov.Text) & "' and estado1 ='" & Trim(Me.cmb_estado.Text) & "' ORDER BY nom", conex)
+                'comando.Fill(tabla)
+                'comando.Dispose()
 
-                'rep.RecordSelectionFormula = "{precios_n.id_lista1} = " & RTrim(Me.txt_cod_list.Text) & " and {precios_n.id_proveedor} = " & RTrim(Me.txt_cod_prov.Text) & ""
-                'rep1.RecordSelectionFormula = "{precios_n.id_lista1} = " & RTrim(Me.txt_cod_list.Text) & " and {precios_n.id_proveedor} = " & RTrim(Me.txt_cod_prov.Text) & " and {precios_n.estado1} ='" & Trim(Me.cmb_estado.Text) & "'"""
+                rep1.RecordSelectionFormula = "{precios.id_lista1} = " & RTrim(Me.txt_cod_list.Text) & " and {precios.id_proveedor} = " & RTrim(Me.txt_cod_prov.Text) & " and {precios.estado1} ='" & Trim(Me.cmb_estado.Text) & "'"
 
             End If
 
@@ -262,21 +293,31 @@ Public Class Form_reporte_precios
 
             If RTrim(Me.cmb_ordena.Text) = "Codigo" Then
 
-                comando = New SqlDataAdapter("select * from precios where id_lista1 = '" & Trim(Me.txt_cod_list.Text) & "' and id_proveedor = '" & Trim(Me.txt_cod_prov.Text) & "' and id_rubro = '" & Trim(Me.txt_cod_rub.Text) & "' and estado1 ='" & Trim(Me.cmb_estado.Text) & "' ORDER BY CAST(id_art1 AS Integer)", conex)
-                comando.Fill(tabla)
-                comando.Dispose()
+                'comando = New SqlDataAdapter("select * from precios where id_lista1 = '" & Trim(Me.txt_cod_list.Text) & "' and id_proveedor = '" & Trim(Me.txt_cod_prov.Text) & "' and id_rubro = '" & Trim(Me.txt_cod_rub.Text) & "' and estado1 ='" & Trim(Me.cmb_estado.Text) & "' ORDER BY CAST(id_art1 AS Integer)", conex)
+                'comando.Fill(tabla)
+                'comando.Dispose()
 
-                'rep.RecordSelectionFormula = "{precios.id_lista1} = " & RTrim(Me.txt_cod_list.Text) & " and {precios.id_rubro} = " & RTrim(Me.txt_cod_rub.Text) & " and {precios.id_proveedor} = " & RTrim(Me.txt_cod_prov.Text) & ""
-                'rep1.RecordSelectionFormula = "{precios.id_lista1} = " & RTrim(Me.txt_cod_list.Text) & " and {precios.id_rubro} = " & RTrim(Me.txt_cod_rub.Text) & " and {precios.id_proveedor} = " & RTrim(Me.txt_cod_prov.Text) & " and {precios.estado1} ='" & Trim(Me.cmb_estado.Text) & "'"""
+                rep2 = New CrystalDecisions.CrystalReports.Engine.ReportDocument()
+                rep3 = New CrystalDecisions.CrystalReports.Engine.ReportDocument()
+                rep4 = New CrystalDecisions.CrystalReports.Engine.ReportDocument()
+
+                rep2.Load(Application.StartupPath & "\reportes\precio_x_rubro_c.rpt")
+                rep3.Load(Application.StartupPath & "\reportes\precio_x_rubro_codigo_c.rpt")
+                rep4.Load(Application.StartupPath & "\reportes\precio_x_rubro_param_c.rpt")
+
+                rep.RecordSelectionFormula = "{precios.id_lista1} = " & RTrim(Me.txt_cod_list.Text) & " and {precios.id_rubro} = " & RTrim(Me.txt_cod_rub.Text) & " and {precios.id_proveedor} = " & RTrim(Me.txt_cod_prov.Text) & " and {precios.estado1} ='" & Trim(Me.cmb_estado.Text) & "'"
+                rep2.RecordSelectionFormula = "{precios.id_lista1} = " & RTrim(Me.txt_cod_list.Text) & " and {precios.id_rubro} = " & RTrim(Me.txt_cod_rub.Text) & " and {precios.id_proveedor} = " & RTrim(Me.txt_cod_prov.Text) & " and {precios.estado1} ='" & Trim(Me.cmb_estado.Text) & "'"
+                rep3.RecordSelectionFormula = "{precios.id_lista1} = " & RTrim(Me.txt_cod_list.Text) & " and {precios.id_rubro} = " & RTrim(Me.txt_cod_rub.Text) & " and {precios.id_proveedor} = " & RTrim(Me.txt_cod_prov.Text) & " and {precios.estado1} ='" & Trim(Me.cmb_estado.Text) & "'"
+                rep4.RecordSelectionFormula = "{precios.id_lista1} = " & RTrim(Me.txt_cod_list.Text) & " and {precios.id_rubro} = " & RTrim(Me.txt_cod_rub.Text) & " and {precios.id_proveedor} = " & RTrim(Me.txt_cod_prov.Text) & " and {precios.estado1} ='" & Trim(Me.cmb_estado.Text) & "'"
 
             Else
 
-                comando = New SqlDataAdapter("select * from precios where id_lista1 = '" & Trim(Me.txt_cod_list.Text) & "' and id_proveedor = '" & Trim(Me.txt_cod_prov.Text) & "' and and id_rubro ='" & Trim(Me.txt_cod_rub.Text) & "' estado1 ='" & Trim(Me.cmb_estado.Text) & "' ORDER BY nom", conex)
-                comando.Fill(tabla)
-                comando.Dispose()
+                'comando = New SqlDataAdapter("select * from precios where id_lista1 = '" & Trim(Me.txt_cod_list.Text) & "' and id_proveedor = '" & Trim(Me.txt_cod_prov.Text) & "' and and id_rubro ='" & Trim(Me.txt_cod_rub.Text) & "' estado1 ='" & Trim(Me.cmb_estado.Text) & "' ORDER BY nom", conex)
+                'comando.Fill(tabla)
+                'comando.Dispose()
 
-                'rep.RecordSelectionFormula = "{precios_n.id_lista1} = " & RTrim(Me.txt_cod_list.Text) & " and {precios_n.id_rubro} = " & RTrim(Me.txt_cod_rub.Text) & " and {precios_n.id_proveedor} = " & RTrim(Me.txt_cod_prov.Text) & ""
-                'rep1.RecordSelectionFormula = "{precios_n.id_lista1} = " & RTrim(Me.txt_cod_list.Text) & " and {precios_n.id_rubro} = " & RTrim(Me.txt_cod_rub.Text) & " and {precios_n.id_proveedor} = " & RTrim(Me.txt_cod_prov.Text) & " and {precios_n.estado1} ='" & Trim(Me.cmb_estado.Text) & "'"""
+                rep.RecordSelectionFormula = "{precios.id_lista1} = " & RTrim(Me.txt_cod_list.Text) & " and {precios.id_rubro} = " & RTrim(Me.txt_cod_rub.Text) & " and {precios.id_proveedor} = " & RTrim(Me.txt_cod_prov.Text) & ""
+                rep1.RecordSelectionFormula = "{precios.id_lista1} = " & RTrim(Me.txt_cod_list.Text) & " and {precios.id_rubro} = " & RTrim(Me.txt_cod_rub.Text) & " and {precios.id_proveedor} = " & RTrim(Me.txt_cod_prov.Text) & " and {precios.estado1} ='" & Trim(Me.cmb_estado.Text) & "'"
 
 
             End If
@@ -287,21 +328,31 @@ Public Class Form_reporte_precios
 
             If RTrim(Me.cmb_ordena.Text) = "Codigo" Then
 
-                comando = New SqlDataAdapter("select * from precios where id_lista1 = '" & Trim(Me.txt_cod_list.Text) & "' and id_rubro = '" & Trim(Me.txt_cod_rub.Text) & "' and estado1 ='" & Trim(Me.cmb_estado.Text) & "' ORDER BY CAST(id_art1 AS Integer)", conex)
-                comando.Fill(tabla)
-                comando.Dispose()
+                'comando = New SqlDataAdapter("select * from precios where id_lista1 = '" & Trim(Me.txt_cod_list.Text) & "' and id_rubro = '" & Trim(Me.txt_cod_rub.Text) & "' and estado1 ='" & Trim(Me.cmb_estado.Text) & "' ORDER BY CAST(id_art1 AS Integer)", conex)
+                'comando.Fill(tabla)
+                'comando.Dispose()
 
-                'rep.RecordSelectionFormula = "{precios.id_lista1} = " & RTrim(Me.txt_cod_list.Text) & " and {precios.id_rubro} = " & RTrim(Me.txt_cod_rub.Text) & ""
-                'rep1.RecordSelectionFormula = "{precios.id_lista1} = " & RTrim(Me.txt_cod_list.Text) & " and {precios.id_rubro} = " & RTrim(Me.txt_cod_rub.Text) & " and {precios.estado1} ='" & Trim(Me.cmb_estado.Text) & "'"""
+                rep2 = New CrystalDecisions.CrystalReports.Engine.ReportDocument()
+                rep3 = New CrystalDecisions.CrystalReports.Engine.ReportDocument()
+                rep4 = New CrystalDecisions.CrystalReports.Engine.ReportDocument()
+
+                rep2.Load(Application.StartupPath & "\reportes\precio_x_rubro_c.rpt")
+                rep3.Load(Application.StartupPath & "\reportes\precio_x_rubro_codigo_c.rpt")
+                rep4.Load(Application.StartupPath & "\reportes\precio_x_rubro_param_c.rpt")
+
+                rep.RecordSelectionFormula = "{precios.id_lista1} = " & RTrim(Me.txt_cod_list.Text) & " and {precios.id_rubro} = " & RTrim(Me.txt_cod_rub.Text) & " and {precios.estado1} ='" & Trim(Me.cmb_estado.Text) & "'"
+                rep2.RecordSelectionFormula = "{precios.id_lista1} = " & RTrim(Me.txt_cod_list.Text) & " and {precios.id_rubro} = " & RTrim(Me.txt_cod_rub.Text) & " and {precios.estado1} ='" & Trim(Me.cmb_estado.Text) & "'"
+                rep3.RecordSelectionFormula = "{precios.id_lista1} = " & RTrim(Me.txt_cod_list.Text) & " and {precios.id_rubro} = " & RTrim(Me.txt_cod_rub.Text) & " and {precios.estado1} ='" & Trim(Me.cmb_estado.Text) & "'"
+                rep4.RecordSelectionFormula = "{precios.id_lista1} = " & RTrim(Me.txt_cod_list.Text) & " and {precios.id_rubro} = " & RTrim(Me.txt_cod_rub.Text) & " and {precios.estado1} ='" & Trim(Me.cmb_estado.Text) & "'"
 
             Else
 
-                comando = New SqlDataAdapter("select * from precios where id_lista1 = '" & Trim(Me.txt_cod_list.Text) & "' and id_rubro ='" & Trim(Me.txt_cod_rub.Text) & "' estado1 ='" & Trim(Me.cmb_estado.Text) & "' ORDER BY nom", conex)
-                comando.Fill(tabla)
-                comando.Dispose()
+                'comando = New SqlDataAdapter("select * from precios where id_lista1 = '" & Trim(Me.txt_cod_list.Text) & "' and id_rubro ='" & Trim(Me.txt_cod_rub.Text) & "' estado1 ='" & Trim(Me.cmb_estado.Text) & "' ORDER BY nom", conex)
+                'comando.Fill(tabla)
+                'comando.Dispose()
 
-                'rep.RecordSelectionFormula = "{precios_n.id_lista1} = " & RTrim(Me.txt_cod_list.Text) & " and {precios_n.id_rubro} = " & RTrim(Me.txt_cod_rub.Text) & ""
-                'rep1.RecordSelectionFormula = "{precios_n.id_lista1} = " & RTrim(Me.txt_cod_list.Text) & " and {precios_n.id_rubro} = " & RTrim(Me.txt_cod_rub.Text) & " and {precios_n.estado1} ='" & Trim(Me.cmb_estado.Text) & "'"""
+                rep.RecordSelectionFormula = "{precios.id_lista1} = " & RTrim(Me.txt_cod_list.Text) & " and {precios.id_rubro} = " & RTrim(Me.txt_cod_rub.Text) & ""
+                rep1.RecordSelectionFormula = "{precios.id_lista1} = " & RTrim(Me.txt_cod_list.Text) & " and {precios.id_rubro} = " & RTrim(Me.txt_cod_rub.Text) & " and {precios.estado1} ='" & Trim(Me.cmb_estado.Text) & "'"
 
 
             End If
@@ -312,21 +363,32 @@ Public Class Form_reporte_precios
 
             If RTrim(Me.cmb_ordena.Text) = "Codigo" Then
 
-                comando = New SqlDataAdapter("select * from art_01 inner join art_precio on id_lista = id_lista1 and id_art = id_art1 where id_lista = '" & Trim(Me.txt_cod_list.Text) & "' and art_precio.estado1 ='" & Trim(Me.cmb_estado.Text) & "' and art_01.id_rubro in (" & rubros & ") ORDER BY CAST(id_art1 AS Integer)", conex)
-                comando.Fill(tabla)
-                comando.Dispose()
+                'comando = New SqlDataAdapter("select * from art_01 inner join art_precio on id_lista = id_lista1 and id_art = id_art1 where id_lista = '" & Trim(Me.txt_cod_list.Text) & "' and art_precio.estado1 ='" & Trim(Me.cmb_estado.Text) & "' and art_01.id_rubro in (" & rubros & ") ORDER BY CAST(id_art1 AS Integer)", conex)
+                'comando.Fill(tabla)
+                'comando.Dispose()
 
-                'rep.RecordSelectionFormula = "{precios.id_lista1} = " & Trim(Me.txt_cod_list.Text) & ""
-                'rep1.RecordSelectionFormula = "{precios.id_lista1} = " & Trim(Me.txt_cod_list.Text) & " and {precios.estado1} ='" & Trim(Me.cmb_estado.Text) & "'"
+                rep2 = New CrystalDecisions.CrystalReports.Engine.ReportDocument()
+                rep3 = New CrystalDecisions.CrystalReports.Engine.ReportDocument()
+                rep4 = New CrystalDecisions.CrystalReports.Engine.ReportDocument()
+
+                rep2.Load(Application.StartupPath & "\reportes\precio_x_rubro_c.rpt")
+                rep3.Load(Application.StartupPath & "\reportes\precio_x_rubro_codigo_c.rpt")
+                rep4.Load(Application.StartupPath & "\reportes\precio_x_rubro_param_c.rpt")
+
+                rep1.RecordSelectionFormula = "{precios.id_lista1} = " & Trim(Me.txt_cod_list.Text) & " and {precios.estado1} ='" & Trim(Me.cmb_estado.Text) & "' and {precios.id_rubro} IN ([" & rubros & "])"
+                rep2.RecordSelectionFormula = "{precios.id_lista1} = " & Trim(Me.txt_cod_list.Text) & " and {precios.estado1} ='" & Trim(Me.cmb_estado.Text) & "' and {precios.id_rubro} IN ([" & rubros & "])"
+                rep3.RecordSelectionFormula = "{precios.id_lista1} = " & Trim(Me.txt_cod_list.Text) & " and {precios.estado1} ='" & Trim(Me.cmb_estado.Text) & "' and {precios.id_rubro} IN ([" & rubros & "])"
+                rep4.RecordSelectionFormula = "{precios.id_lista1} = " & Trim(Me.txt_cod_list.Text) & " and {precios.estado1} ='" & Trim(Me.cmb_estado.Text) & "' and {precios.id_rubro} IN ([" & rubros & "])"
+
 
             Else
 
-                comando = New SqlDataAdapter("select * from art_01 inner join art_precio on id_lista = id_lista1 and id_art = id_art1 where id_lista1 = '" & Trim(Me.txt_cod_list.Text) & "' and estado1 ='" & Trim(Me.cmb_estado.Text) & "'  and id_rubro in (" & rubros & ")ORDER BY nom", conex)
-                comando.Fill(tabla)
-                comando.Dispose()
+                'comando = New SqlDataAdapter("select * from art_01 inner join art_precio on id_lista = id_lista1 and id_art = id_art1 where id_lista1 = '" & Trim(Me.txt_cod_list.Text) & "' and estado1 ='" & Trim(Me.cmb_estado.Text) & "'  and id_rubro in (" & rubros & ")ORDER BY nom", conex)
+                'comando.Fill(tabla)
+                'comando.Dispose()
 
-                'rep.RecordSelectionFormula = "{precios_n.id_lista1} = " & Trim(Me.txt_cod_list.Text) & ""
-                'rep1.RecordSelectionFormula = "{precios_n.id_lista1} = " & Trim(Me.txt_cod_list.Text) & " and {precios_n.estado1} ='" & Trim(Me.cmb_estado.Text) & "'"
+                rep.RecordSelectionFormula = "{precios.id_lista1} = " & Trim(Me.txt_cod_list.Text) & " and {art_01.id_rubro} IN ([" & rubros & "])"
+                rep1.RecordSelectionFormula = "{precios.id_lista1} = " & Trim(Me.txt_cod_list.Text) & " and {precios.estado1} ='" & Trim(Me.cmb_estado.Text) & "' and {precios.id_rubro} IN ([" & rubros & "])"
 
             End If
 
@@ -337,19 +399,42 @@ Public Class Form_reporte_precios
             rep.DataSourceConnections(0).SetConnection(conexion.server, conexion.db, False)
             rep.SetDatabaseLogon(conexion.usuario, "")
 
-            rep.SetDataSource(tabla)
-            Form_repcli_01.CrystalReportViewer1.ReportSource = rep
+            'rep.SetDataSource(tabla)
+            If RTrim(Me.cmb_ordena.Text) = "Codigo" Then Form_repcli_01.CrystalReportViewer1.ReportSource = rep
+            If RTrim(Me.cmb_ordena.Text) <> "Codigo" Then Form_repcli_01.CrystalReportViewer1.ReportSource = rep2
             Form_repcli_01.CrystalReportViewer1.Refresh()
 
-        End If
+            End If
 
-        If Me.opt_rubro.Checked = True Then
+            If Me.opt_rubro.Checked = True Then
 
             rep1.DataSourceConnections(0).SetConnection(conexion.server, conexion.db, False)
             rep1.SetDatabaseLogon(conexion.usuario, "")
 
-            rep1.SetDataSource(tabla)
-            Form_repcli_01.CrystalReportViewer1.ReportSource = rep1
+            'rep1.SetDataSource(tabla)
+            If RTrim(Me.cmb_ordena.Text) <> "Codigo" Then Form_repcli_01.CrystalReportViewer1.ReportSource = rep1
+
+            If RTrim(Me.cmb_ordena.Text) = "Codigo" Then
+                If x = "precio_x_rubro" Then
+                    rep2.DataSourceConnections(0).SetConnection(conexion.server, conexion.db, False)
+                    rep2.SetDatabaseLogon(conexion.usuario, "")
+
+                    Form_repcli_01.CrystalReportViewer1.ReportSource = rep2
+                End If
+                If x = "precio_x_rubro_codigo" Then
+                    rep3.DataSourceConnections(0).SetConnection(conexion.server, conexion.db, False)
+                    rep3.SetDatabaseLogon(conexion.usuario, "")
+
+                    Form_repcli_01.CrystalReportViewer1.ReportSource = rep3
+                End If
+                If x = "precio_x_rubro_param" Then
+                    rep4.DataSourceConnections(0).SetConnection(conexion.server, conexion.db, False)
+                    rep4.SetDatabaseLogon(conexion.usuario, "")
+
+                    Form_repcli_01.CrystalReportViewer1.ReportSource = rep4
+                End If
+            End If
+
             Form_repcli_01.CrystalReportViewer1.Refresh()
 
         End If

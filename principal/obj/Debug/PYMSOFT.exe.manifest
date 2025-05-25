@@ -115,6 +115,30 @@
     </dependentAssembly>
   </dependency>
   <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="CrystalDecisions.Web.dll" size="323584">
+      <assemblyIdentity name="CrystalDecisions.Web" version="10.2.3600.0" publicKeyToken="692FBEA5521E1304" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>yYN9BvSqUeFUA90sfVwg5/XtzvNWVXgXhmrvXTZ7Nas=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="es\CrystalDecisions.Web.resources.dll" size="32768">
+      <assemblyIdentity name="CrystalDecisions.Web.resources" version="10.2.3600.0" publicKeyToken="692FBEA5521E1304" language="es" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>VeP1ohKcwZ6Idt9JiU5Es5anQUnCo64RamBaIbZ4/ok=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="CrystalDecisions.Windows.Forms.dll" size="245760">
       <assemblyIdentity name="CrystalDecisions.Windows.Forms" version="10.2.3600.0" publicKeyToken="692FBEA5521E1304" language="neutral" processorArchitecture="msil" />
       <hash>
@@ -151,6 +175,18 @@
     </dependentAssembly>
   </dependency>
   <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="log4net.dll" size="270336">
+      <assemblyIdentity name="log4net" version="2.0.12.0" publicKeyToken="669E0DDF0BB1AA2A" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>iWq5ysQeOXd5K6IDTqhzBhDCd5+lG6tr7UJglOqNPs0=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Microsoft.Office.Interop.Excel.dll" size="1276720">
       <assemblyIdentity name="Microsoft.Office.Interop.Excel" version="12.0.0.0" publicKeyToken="71E9BCE111E9429C" language="neutral" />
       <hash>
@@ -175,14 +211,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PYMSOFT.exe" size="8361984">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PYMSOFT.exe" size="8355328">
       <assemblyIdentity name="PYMSOFT" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>85PvReKVN4ikBT/TtctXK2YOczdXp3YgKEKXKqBfYMc=</dsig:DigestValue>
+        <dsig:DigestValue>fLDv1BZbXvs6NVN5J4TCFxKokb1427CK8cM7b0r2Rzg=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -194,7 +230,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>soNiKydmxQ/eLkgLdGO+cFNS6J95gScE+GCuRqdoDNY=</dsig:DigestValue>
+        <dsig:DigestValue>rmvqxr17X8OyjaEidMyecaDhQW7ccIlzNd6uzcqLemA=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -240,13 +276,13 @@
       <dsig:DigestValue>vs8J0bwL2Qq/fXxk+mLVjWJJYSqH7d1ELrznw66a018=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="PYMSOFT.exe.config" size="3371">
+  <file name="PYMSOFT.exe.config" size="3969">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>tsDbuVwU/04zMXo7SHehp2JTJhN1iw7lTbItV2RM8qA=</dsig:DigestValue>
+      <dsig:DigestValue>/axMI6/1K4uxC8i4XNmnCiNylNDcWfO09uWf/G8nIug=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>
