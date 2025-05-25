@@ -7,14 +7,14 @@
     <framework targetVersion="4.8" profile="Full" supportedRuntime="4.0.30319" />
   </compatibleFrameworks>
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="PYMSOFT.exe.manifest" size="14147">
+    <dependentAssembly dependencyType="install" codebase="PYMSOFT.exe.manifest" size="16226">
       <assemblyIdentity name="PYMSOFT.exe" version="1.0.0.0" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="x86" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>9F6RT3KM8q6bsaMxHEPlmUda49cw0r5qRRybr7spuac=</dsig:DigestValue>
+        <dsig:DigestValue>iKlIh6BetrjTP8Hu+7pFxIVKQ75+ioF87XpiPGrOkSQ=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

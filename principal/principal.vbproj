@@ -78,27 +78,27 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=10.2.3600.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
-    <Reference Include="CrystalDecisions.Enterprise.Framework, Version=10.2.3600.0, Culture=neutral, PublicKeyToken=692fbea5521e1304">
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </Reference>
-    <Reference Include="CrystalDecisions.Enterprise.InfoStore, Version=10.2.3600.0, Culture=neutral, PublicKeyToken=692fbea5521e1304">
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </Reference>
     <Reference Include="CrystalDecisions.ReportSource, Version=10.2.3600.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.Shared, Version=10.2.3600.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Web, Version=10.2.3600.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.Windows.Forms, Version=10.2.3600.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="Gma.QrCodeNet.Encoding.Net35, Version=0.4.0.0, Culture=neutral, PublicKeyToken=e8a75d24b142be49, processorArchitecture=MSIL" />
+    <Reference Include="log4net, Version=2.0.12.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.12\lib\net45\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Office.Interop.Excel, Version=12.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c" />
     <Reference Include="mitextbox1, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Release\mitextbox1.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.EnterpriseServices" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
@@ -897,14 +897,14 @@
     <Compile Include="reportes %28rpt%29\fact_B_afip_erica.vb">
       <DependentUpon>fact_B_afip_erica.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
-      <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="reportes %28rpt%29\Fact_A_afip_erica.vb">
       <DependentUpon>Fact_A_afip_erica.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
-      <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="reportes %28rpt%29\precios_desactualizados.vb">
       <AutoGen>True</AutoGen>
@@ -915,20 +915,20 @@
     <Compile Include="reportes %28rpt%29\presupuestoBV.vb">
       <DependentUpon>presupuestoBV.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
-      <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="reportes %28rpt%29\precio_x_rubro_param.vb">
       <DependentUpon>precio_x_rubro_param.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
-      <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="reportes %28rpt%29\fact_c_membrete_mitad_a5.vb">
       <DependentUpon>fact_c_membrete_mitad_a5.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
-      <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="reportes %28rpt%29\Imagen.vb">
       <AutoGen>True</AutoGen>
@@ -939,62 +939,62 @@
     <Compile Include="reportes %28rpt%29\pedido_a5.vb">
       <DependentUpon>pedido_a5.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
-      <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="reportes %28rpt%29\fact_B_afip_congelados.vb">
       <DependentUpon>fact_B_afip_congelados.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
-      <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="reportes %28rpt%29\Fact_A_afip_congelados.vb">
       <DependentUpon>Fact_A_afip_congelados.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
-      <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="reportes %28rpt%29\fact_B_afip_gama.vb">
       <DependentUpon>fact_B_afip_gama.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
-      <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="reportes %28rpt%29\Fact_A_afip_gama.vb">
       <DependentUpon>Fact_A_afip_gama.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
-      <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="reportes %28rpt%29\etiquetas2.vb">
       <DependentUpon>etiquetas2.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
-      <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="reportes %28rpt%29\fact_C_afip.vb">
       <DependentUpon>fact_C_afip.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
-      <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="reportes %28rpt%29\historico_cta_cte.vb">
       <DependentUpon>historico_cta_cte.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
-      <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="reportes %28rpt%29\epson_tm220_afip.vb">
       <DependentUpon>epson_tm220_afip.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
-      <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="reportes %28rpt%29\fact_c_membrete_mitad_bodrito.vb">
       <DependentUpon>fact_c_membrete_mitad_bodrito.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
-      <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="reportes %28rpt%29\Fact_A_afip_bodrito.vb">
       <AutoGen>True</AutoGen>
@@ -1023,8 +1023,8 @@
     <Compile Include="reportes %28rpt%29\rentabilidad_c.vb">
       <DependentUpon>rentabilidad_c.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
-      <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="reportes %28rpt%29\resumen_hist_ctacte.vb">
       <AutoGen>True</AutoGen>
@@ -1041,14 +1041,14 @@
     <Compile Include="reportes %28rpt%29\Saldos_vencidos.vb">
       <DependentUpon>Saldos_vencidos.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
-      <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="reportes %28rpt%29\fact_c_membrete_mitad.vb">
       <DependentUpon>fact_c_membrete_mitad.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
-      <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="reportes %28rpt%29\cta_cte.vb">
       <DependentUpon>cta_cte.rpt</DependentUpon>
@@ -1081,10 +1081,10 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="reportes %28rpt%29\fact_B.vb">
-      <SubType>Component</SubType>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>fact_B.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="reportes %28rpt%29\fact_B_afip.vb">
       <AutoGen>True</AutoGen>
@@ -1258,6 +1258,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
     </Compile>
+    <None Include="packages.config" />
     <None Include="Resources\principal.designer.vb" />
     <None Include="Web References\Wsaa\LoginCms.wsdl" />
     <None Include="Web References\Wsaa\Reference.map">

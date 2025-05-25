@@ -155,11 +155,11 @@ X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\bin\Debug\Crys
 X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\bin\Debug\CrystalDecisions.ReportSource.dll
 X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\bin\Debug\CrystalDecisions.Shared.dll
 X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\bin\Debug\CrystalDecisions.Windows.Forms.dll
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\bin\Debug\log4net.dll
 X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\bin\Debug\mitextbox1.dll
 X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\bin\Debug\text_solo_num.dll
 X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\bin\Debug\stdole.dll
-X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\bin\Debug\Gma.QrCodeNet.Encoding.Net35.pdb
-X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\bin\Debug\Gma.QrCodeNet.Encoding.Net35.xml
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\bin\Debug\log4net.xml
 X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\bin\Debug\ES\CrystalDecisions.CrystalReports.Engine.resources.dll
 X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\bin\Debug\ES\CrystalDecisions.ReportSource.resources.dll
 X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\bin\Debug\ES\CrystalDecisions.Shared.resources.dll
@@ -293,3 +293,5 @@ X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\PYMS
 X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\principal.vbproj.CopyComplete
 X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\PYMSOFT.exe
 X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\PYMSOFT.pdb
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\bin\Debug\CrystalDecisions.Web.dll
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\bin\Debug\ES\CrystalDecisions.Web.resources.dll
