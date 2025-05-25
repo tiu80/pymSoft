@@ -568,7 +568,7 @@ Public Class Form_factura_preventa
 
                 conex = conecta()
 
-                comando = New SqlDataAdapter("select detalle,asterisco,codi_producto,fila from fact_det where num_fact = '" & RTrim(Me.txt_numero.Text) & "' and tipo_fact2 = '" & RTrim(Me.txt_tipo.Text) & "' and prefijo_fact2 = '" & RTrim(Me.txt_prefijo.Text) & "' and letra_fact1 = '" & lt & "' and talon1 = '" & RTrim(Me.txt_talon.Text) & "'", conex)
+                comando = New SqlDataAdapter("select detalle,asterisco,codi_producto,fila,costo from fact_det where num_fact = '" & RTrim(Me.txt_numero.Text) & "' and tipo_fact2 = '" & RTrim(Me.txt_tipo.Text) & "' and prefijo_fact2 = '" & RTrim(Me.txt_prefijo.Text) & "' and letra_fact1 = '" & lt & "' and talon1 = '" & RTrim(Me.txt_talon.Text) & "'", conex)
                 comando.Fill(tb_1)
                 comando.Dispose()
 
@@ -582,18 +582,20 @@ Public Class Form_factura_preventa
 
                         coman = New SqlCommand("update fact_det set detalle = '" & "  **  " & "  " & tb_1.Rows(i).Item(0) & "' where num_fact = '" & RTrim(Me.txt_numero.Text) & "' and tipo_fact2 = '" & RTrim(Me.txt_tipo.Text) & "' and prefijo_fact2 = '" & RTrim(Me.txt_prefijo.Text) & "' and letra_fact1 = '" & lt & "' and talon1 = '" & RTrim(Me.txt_talon.Text) & "' and codi_producto = '" & RTrim(tb_1.Rows(i).Item(2)) & "' and fila = '" & RTrim(tb_1.Rows(i).Item(3)) & "'", conex)
                         coman.ExecuteNonQuery()
-
                         coman.Dispose()
 
                     End If
 
                 Next
 
-                conex.Close()
+                If conex.State = ConnectionState.Open Then
+                    conex.Close()
+                    tb_1.Dispose()
+                End If
 
             End If
 
-            If az <> 2 Then
+                If az <> 2 Then
 
                 Call carga_letra_comprobante()
 
@@ -618,30 +620,32 @@ Public Class Form_factura_preventa
 
             coman = New SqlCommand("update fact_det set asterisco = '*' where num_fact = '" & RTrim(Me.txt_numero.Text) & "' and tipo_fact2 = '" & RTrim(Me.txt_tipo.Text) & "' and prefijo_fact2 = '" & RTrim(Me.txt_prefijo.Text) & "' and letra_fact1 = '" & lt & "' and talon1 = '" & RTrim(Me.txt_talon.Text) & "' and cantidad_sin_stock ='NO'", conex)
             coman.ExecuteNonQuery()
-
             coman.Dispose()
-            conex.Close()
+
+            If conex.State = ConnectionState.Open Then
+                conex.Close()
+            End If
 
             fact.numero_factura = Me.txt_numero.Text
-            fact.letra_fact = lt
-            fact.prefijo_factura = Me.txt_prefijo.Text
-            fact.tipo_fact = Me.txt_tipo.Text
-            fact.cantidad_sin_stock = "NO"
-            fact.form_txt_letra = Me.txt_letra.Text
-            fact.imprimir_pedido()
+                fact.letra_fact = lt
+                fact.prefijo_factura = Me.txt_prefijo.Text
+                fact.tipo_fact = Me.txt_tipo.Text
+                fact.cantidad_sin_stock = "NO"
+                fact.form_txt_letra = Me.txt_letra.Text
+                fact.imprimir_pedido()
 
-            form_factura.borra_tabla_art_act(My.Computer.Name)
+                form_factura.borra_tabla_art_act(My.Computer.Name)
 
-            conex.Close()
-            tabla.Dispose()
-            tabla1.Dispose()
-            Me.Dispose()
-            Form_muestra_cons_comp.carga_seleccion_cosulta()
-            Exit Sub
+                conex.Close()
+                tabla.Dispose()
+                tabla1.Dispose()
+                Me.Dispose()
+                Form_muestra_cons_comp.carga_seleccion_cosulta()
+                Exit Sub
 
-        Else
+            Else
 
-            For i = 0 To Me.DataGridView1.Rows.Count - 1
+                For i = 0 To Me.DataGridView1.Rows.Count - 1
 
                 For j = 0 To tabla_fact.Rows.Count - 1
 
