@@ -112,16 +112,16 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="PictureBox1.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        xAAADsQBlSsOGwAAAfJJREFUeF7tms9LVFEAhb8UWggimkLUNnTjysCI1i5q0SZqESRCC6G1u1oGtZM2
+        wwAADsMBx2+oZAAAAfJJREFUeF7tms9LVFEAhb8UWggimkLUNnTjysCI1i5q0SZqESRCC6G1u1oGtZM2
         rVu3cWERBIIuJNL+hYLUjVQEKaHRLy7MwOV0nXzNfby5cT44MMyZd398DHNneAPGGGOMMeZYnATOAGcL
         yWnghG7iX1kA9oBfheU9MKObqcpl4Gdi8FLyBRjTTVXhsQx4CGxLDqI+PNY+XNPufwA70u8nFp4z13VT
         VXgig93RFwBzUX9bS2A+6h9pCVxMLDpnZnXCKqiAW/oC4FrU39ASuBn197UEJhOLzpmsAt4ADySvov51

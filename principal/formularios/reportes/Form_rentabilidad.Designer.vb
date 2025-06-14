@@ -20,23 +20,23 @@ Partial Class Form_rentabilidad
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form_rentabilidad))
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox
-        Me.Check_talonario = New System.Windows.Forms.CheckBox
-        Me.txt_cod_vendedor = New System.Windows.Forms.TextBox
-        Me.cmb_nombre = New System.Windows.Forms.ComboBox
-        Me.lbl_nom = New System.Windows.Forms.Label
-        Me.cmb_ordena = New System.Windows.Forms.ComboBox
-        Me.Lbl_nombre = New System.Windows.Forms.Label
-        Me.cmb_agrupacion = New System.Windows.Forms.ComboBox
-        Me.Label9 = New System.Windows.Forms.Label
-        Me.dt_fec_hasta = New System.Windows.Forms.DateTimePicker
-        Me.dt_fec_desde = New System.Windows.Forms.DateTimePicker
-        Me.Label8 = New System.Windows.Forms.Label
-        Me.Label7 = New System.Windows.Forms.Label
-        Me.Label2 = New System.Windows.Forms.Label
-        Me.cmd_acepta1 = New System.Windows.Forms.Button
-        Me.cmd_eliminar = New System.Windows.Forms.Button
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.Check_talonario = New System.Windows.Forms.CheckBox()
+        Me.txt_cod_vendedor = New System.Windows.Forms.TextBox()
+        Me.cmb_nombre = New System.Windows.Forms.ComboBox()
+        Me.lbl_nom = New System.Windows.Forms.Label()
+        Me.cmb_ordena = New System.Windows.Forms.ComboBox()
+        Me.Lbl_nombre = New System.Windows.Forms.Label()
+        Me.cmb_agrupacion = New System.Windows.Forms.ComboBox()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.dt_fec_hasta = New System.Windows.Forms.DateTimePicker()
+        Me.dt_fec_desde = New System.Windows.Forms.DateTimePicker()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.cmd_acepta1 = New System.Windows.Forms.Button()
+        Me.cmd_eliminar = New System.Windows.Forms.Button()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.GroupBox1.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -156,7 +156,7 @@ Partial Class Form_rentabilidad
         Me.dt_fec_hasta.Name = "dt_fec_hasta"
         Me.dt_fec_hasta.Size = New System.Drawing.Size(219, 20)
         Me.dt_fec_hasta.TabIndex = 2
-        Me.dt_fec_hasta.Value = New Date(2025, 3, 8, 0, 0, 0, 0)
+        Me.dt_fec_hasta.Value = New Date(2025, 6, 14, 0, 0, 0, 0)
         '
         'dt_fec_desde
         '
@@ -165,7 +165,7 @@ Partial Class Form_rentabilidad
         Me.dt_fec_desde.Name = "dt_fec_desde"
         Me.dt_fec_desde.Size = New System.Drawing.Size(219, 20)
         Me.dt_fec_desde.TabIndex = 1
-        Me.dt_fec_desde.Value = New Date(2025, 3, 8, 0, 0, 0, 0)
+        Me.dt_fec_desde.Value = New Date(2025, 6, 14, 0, 0, 0, 0)
         '
         'Label8
         '
