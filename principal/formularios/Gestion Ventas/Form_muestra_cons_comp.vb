@@ -10,12 +10,10 @@ Public Class Form_muestra_cons_comp
     Dim valida1 As Boolean = True
     Public es_recibo As Boolean = True
     Dim conex As New SqlConnection
-    Dim midataset1 As New DataSet
     Dim tbl As New DataTable, tbl1 As New DataTable
     Public tbl2 As New DataTable
     Dim comando As SqlDataAdapter
     Public recibo As Boolean = True
-    Dim rep As New consulta_comp
     Dim estado_fact As Short = 0, estado_rec As Short = 0
     Dim txt As CrystalDecisions.CrystalReports.Engine.TextObject
     Dim fact As New pymsoft.factura
@@ -1017,9 +1015,11 @@ Public Class Form_muestra_cons_comp
 
     Private Sub Tool_imprime_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Tool_imprime.Click
 
-        Dim PrinterSettings As New System.Drawing.Printing.PrinterSettings()
-        Dim PageSettings As New System.Drawing.Printing.PageSettings(PrinterSettings)
-        Dim pd As New PrintDialog
+        'Dim PrinterSettings As New System.Drawing.Printing.PrinterSettings()
+        'Dim PageSettings As New System.Drawing.Printing.PageSettings(PrinterSettings)
+        'Dim pd As New PrintDialog
+
+        Dim rep As New consulta_comp
 
         txt = rep.Section2.ReportObjects.Item("fec_emi")
         txt.Text = Form_consulta_comprobante.dt_fec_ini.Text
@@ -1050,46 +1050,55 @@ Public Class Form_muestra_cons_comp
 
         If RTrim(Form_consulta_comprobante.cmb_modalidad.Text) = "Total" Then
 
-            rep.SetDataSource(tbl2)
+            rep.RecordSelectionFormula = "{fact_cab.fec_emision} >= date('" & RTrim(Form_consulta_comprobante.dt_fec_ini.Text) & "') and {fact_cab.fec_emision} <= date('" & RTrim(Form_consulta_comprobante.dt_fec_fin.Text) & "') and {fact_cab.talon} = " & RTrim(Form_consulta_comprobante.talonario) & " and {fact_cab.tipo_fact} <> 'PD' and {fact_cab.tipo_fact} <> 'RE' and {fact_cab.tipo_fact} <> 'RS'"
+            'rep.SetDataSource(tbl2)
             Form_repcli_01.CrystalReportViewer1.ReportSource = rep
             Form_repcli_01.CrystalReportViewer1.RefreshReport()
+            Form_repcli_01.Show()
 
         End If
 
         If RTrim(Form_consulta_comprobante.cmb_modalidad.Text) = "Vendedor" Then
 
             rep.RecordSelectionFormula = "{fact_cab.fec_emision} >= date('" & RTrim(Form_consulta_comprobante.dt_fec_ini.Text) & "') and {fact_cab.fec_emision} <= date('" & RTrim(Form_consulta_comprobante.dt_fec_fin.Text) & "') and {fact_cab.nom_vendedor}= '" & RTrim(Form_consulta_comprobante.cmb_cliente_total.Text) & "' and {fact_cab.talon} = " & RTrim(Form_consulta_comprobante.talonario) & " and {fact_cab.tipo_fact} <> 'PD' and {fact_cab.tipo_fact} <> 'RE' and {fact_cab.tipo_fact} <> 'RS'"
+            Form_repcli_01.CrystalReportViewer1.ReportSource = rep
+            Form_repcli_01.CrystalReportViewer1.RefreshReport()
+            Form_repcli_01.Show()
 
         End If
 
         If RTrim(Form_consulta_comprobante.cmb_modalidad.Text) = "Cliente/Proveedor" Then
 
             rep.RecordSelectionFormula = "{fact_cab.fec_emision} >= date('" & RTrim(Form_consulta_comprobante.dt_fec_ini.Text) & "') and {fact_cab.fec_emision} <= date('" & RTrim(Form_consulta_comprobante.dt_fec_fin.Text) & "') and {fact_cab.nombre}= '" & RTrim(Form_consulta_comprobante.cmb_cliente_total.Text) & "' and {fact_cab.talon} = " & RTrim(Form_consulta_comprobante.talonario) & " and {fact_cab.tipo_fact} <> 'PD' and {fact_cab.tipo_fact} <> 'RE' and {fact_cab.tipo_fact} <> 'RS'"
+            Form_repcli_01.CrystalReportViewer1.ReportSource = rep
+            Form_repcli_01.CrystalReportViewer1.RefreshReport()
+            Form_repcli_01.Show()
 
         End If
 
         If RTrim(Form_consulta_comprobante.cmb_modalidad.Text) = "Zona" Then
 
-            rep.SetDataSource(tbl)
-            Form_repcli_01.CrystalReportViewer1.ReportSource = rep
-            Form_repcli_01.CrystalReportViewer1.RefreshReport()
-            'rep.RecordSelectionFormula = "{fact_cab.fec_emision} >= date('" & RTrim(Form_consulta_comprobante.dt_fec_ini.Text) & "') and {fact_cab.fec_emision} <= date('" & RTrim(Form_consulta_comprobante.dt_fec_fin.Text) & "') and  {zona_01.zona} = '" & RTrim(Form_consulta_comprobante.cmb_cliente_total.Text) & "' and {fact_cab.talon} = " & RTrim(Form_consulta_comprobante.talonario) & " and {fact_cab.tipo_fact} <> 'PD' and {fact_cab.tipo_fact} <> 'RE' and {fact_cab.tipo_fact} <> 'RS'"
+            'rep.SetDataSource(tbl)
+            'Form_repcli_01.CrystalReportViewer1.ReportSource = rep
+            'Form_repcli_01.CrystalReportViewer1.RefreshReport()
+            'rep.RecordSelectionFormula = "{fact_cab.fec_emision} >= date('" & RTrim(Form_consulta_comprobante.dt_fec_ini.Text) & "') and {fact_cab.fec_emision} <= date('" & RTrim(Form_consulta_comprobante.dt_fec_fin.Text) & "') and  {cli_01.zona} = '" & RTrim(Form_consulta_comprobante.cmb_cliente_total.Text) & "' and {fact_cab.talon} = " & RTrim(Form_consulta_comprobante.talonario) & " and {fact_cab.tipo_fact} <> 'PD' and {fact_cab.tipo_fact} <> 'RE' and {fact_cab.tipo_fact} <> 'RS'"
 
         End If
 
         'rep.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.PaperLetter
         'rep.PrintOptions.PaperSource = CrystalDecisions.Shared.PaperSource.Upper
 
-        rep.PrintOptions.CopyTo(PrinterSettings, PageSettings)
-        pd.PrinterSettings = PrinterSettings
-        pd.AllowSomePages = True
-        pd.AllowSelection = True
+        'rep.PrintOptions.CopyTo(PrinterSettings, PageSettings)
+        'pd.PrinterSettings = PrinterSettings
+        'pd.AllowSomePages = True
+        'pd.AllowSelection = True
 
-        If pd.ShowDialog = Windows.Forms.DialogResult.OK Then
+        'If pd.ShowDialog = Windows.Forms.DialogResult.OK Then
 
-            rep.PrintToPrinter(pd.PrinterSettings.Copies, pd.PrinterSettings.Collate, pd.PrinterSettings.FromPage, pd.PrinterSettings.ToPage)
+        'rep.PrintOptions.PrinterName = pd.PrinterSettings.PrinterName
+        'rep.PrintToPrinter(pd.PrinterSettings.Copies, pd.PrinterSettings.Collate, pd.PrinterSettings.FromPage, pd.PrinterSettings.ToPage)
 
-        End If
+        'End If
 
     End Sub
 

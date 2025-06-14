@@ -12,7 +12,7 @@ Imports System.Runtime.InteropServices
 <Assembly: AssemblyDescription("sistema")> 
 <Assembly: AssemblyCompany("pym-soft")> 
 <Assembly: AssemblyProduct("")>
-<Assembly: AssemblyCopyright("v533")>
+<Assembly: AssemblyCopyright("v534")>
 <Assembly: AssemblyTrademark("")> 
 
 <Assembly: ComVisible(False)> 
