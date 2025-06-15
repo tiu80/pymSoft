@@ -245,8 +245,8 @@ Public Class Form_muestra_cons_comp
                 Form_factura_preventa.DataGridView1.Columns(10).Visible = False
                 Form_factura_preventa.DataGridView1.Columns(12).Visible = False
                 Form_factura_preventa.DataGridView1.Columns(13).Visible = False
-                Form_factura_preventa.DataGridView1.Columns(14).Visible = False
-                Form_factura_preventa.DataGridView1.Columns(15).Visible = False
+                Form_factura_preventa.DataGridView1.Columns(14).Visible = False ' costo
+                Form_factura_preventa.DataGridView1.Columns(15).Visible = False ' total costo
                 Form_factura_preventa.DataGridView1.Columns(16).Visible = False
                 Form_factura_preventa.DataGridView1.Columns(17).Visible = False
                 Form_factura_preventa.DataGridView1.Columns(19).Visible = False
@@ -279,8 +279,8 @@ Public Class Form_muestra_cons_comp
                     Form_factura_preventa.DataGridView1.Rows(i).Cells(7).Value = midataset.Tables("fact_det").Rows(i).Item(7)
                     Form_factura_preventa.DataGridView1.Rows(i).Cells(8).Value = midataset.Tables("fact_det").Rows(i).Item(8)
                     Form_factura_preventa.DataGridView1.Rows(i).Cells(9).Value = midataset.Tables("fact_det").Rows(i).Item(9)
-                    Form_factura_preventa.DataGridView1.Rows(i).Cells(14).Value = midataset.Tables("fact_det").Rows(i).Item(10)
-                    Form_factura_preventa.DataGridView1.Rows(i).Cells(15).Value = midataset.Tables("fact_det").Rows(i).Item(10) * midataset.Tables("fact_det").Rows(i).Item(2)
+                    Form_factura_preventa.DataGridView1.Rows(i).Cells(14).Value = midataset.Tables("fact_det").Rows(i).Item(10) / midataset.Tables("fact_det").Rows(i).Item(2)
+                    Form_factura_preventa.DataGridView1.Rows(i).Cells(15).Value = midataset.Tables("fact_det").Rows(i).Item(10) '* midataset.Tables("fact_det").Rows(i).Item(2)
                     Form_factura_preventa.DataGridView1.Rows(i).Cells(16).Value = midataset.Tables("fact_det").Rows(i).Item(11)
                     Form_factura_preventa.DataGridView1.Rows(i).Cells(17).Value = midataset.Tables("fact_det").Rows(i).Item(12)
                     Form_factura_preventa.DataGridView1.Rows(i).Cells(18).Value = midataset.Tables("fact_det").Rows(i).Item(13)
