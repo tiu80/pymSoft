@@ -19,6 +19,8 @@ Public Class Form_rentabilidad
     Private Sub Form_rentabilidad_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Me.cmb_agrupacion.Text = Me.cmb_agrupacion.Items(0)
         Me.cmb_ordena.Text = Me.cmb_ordena.Items(0)
+        Me.dt_fec_desde.Value = Date.Now
+        Me.dt_fec_hasta.Value = Date.Now
     End Sub
 
     Private Sub cmb_agrupacion_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmb_agrupacion.SelectedIndexChanged
