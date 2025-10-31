@@ -144,7 +144,7 @@ Public Class Form_reporte_precios
         txt.Text = fecha
 
         rep.DataSourceConnections(0).SetConnection(conexion.server, conexion.db, False)
-        rep.SetDatabaseLogon(conexion.usuario, "")
+        rep.SetDatabaseLogon(conexion.usuario, conexion.contraseña)
 
         barra_carga.Show()
         barra_carga.PictureBox1.Refresh()
@@ -207,7 +207,10 @@ Public Class Form_reporte_precios
         If Me.txt_cod_prov.Text = "" Then Me.txt_cod_prov.Text = 0
         If Me.txt_cod_rub.Text = "" Then Me.txt_cod_rub.Text = 0
 
-        conex = conecta()
+        'conex = conecta()
+
+        rep.DataSourceConnections(0).SetConnection(conexion.server, conexion.db, False)
+        rep.SetDatabaseLogon(conexion.usuario, conexion.contraseña)
 
         barra_carga.Show()
         barra_carga.PictureBox1.Refresh()
@@ -225,6 +228,9 @@ Public Class Form_reporte_precios
                 'comando.Fill(tabla)
                 'comando.Dispose()
 
+                rep1.DataSourceConnections(0).SetConnection(conexion.server, conexion.db, False)
+                rep1.SetDatabaseLogon(conexion.usuario, conexion.contraseña)
+
                 rep2 = New CrystalDecisions.CrystalReports.Engine.ReportDocument()
                 rep3 = New CrystalDecisions.CrystalReports.Engine.ReportDocument()
                 rep4 = New CrystalDecisions.CrystalReports.Engine.ReportDocument()
@@ -232,6 +238,15 @@ Public Class Form_reporte_precios
                 rep2.Load(Application.StartupPath & "\reportes\precio_x_rubro_c.rpt")
                 rep3.Load(Application.StartupPath & "\reportes\precio_x_rubro_codigo_c.rpt")
                 rep4.Load(Application.StartupPath & "\reportes\precio_x_rubro_param_c.rpt")
+
+                rep2.DataSourceConnections(0).SetConnection(conexion.server, conexion.db, False)
+                rep2.SetDatabaseLogon(conexion.usuario, conexion.contraseña)
+
+                rep3.DataSourceConnections(0).SetConnection(conexion.server, conexion.db, False)
+                rep3.SetDatabaseLogon(conexion.usuario, conexion.contraseña)
+
+                rep4.DataSourceConnections(0).SetConnection(conexion.server, conexion.db, False)
+                rep4.SetDatabaseLogon(conexion.usuario, conexion.contraseña)
 
                 rep.RecordSelectionFormula = "{precios.id_lista1} = " & Trim(Me.txt_cod_list.Text) & ""
                 rep1.RecordSelectionFormula = "{precios.id_lista1} = " & Trim(Me.txt_cod_list.Text) & " and {precios.estado1} ='" & Trim(Me.cmb_estado.Text) & "'"
@@ -249,6 +264,9 @@ Public Class Form_reporte_precios
 
                 rep2 = New CrystalDecisions.CrystalReports.Engine.ReportDocument()
                 rep2.Load(Application.StartupPath & "\reportes\precios_n.rpt")
+
+                rep2.DataSourceConnections(0).SetConnection(conexion.server, conexion.db, False)
+                rep2.SetDatabaseLogon(conexion.usuario, conexion.contraseña)
 
                 rep2.RecordSelectionFormula = "{precios.id_lista1} = " & Trim(Me.txt_cod_list.Text) & " and {precios.estado1} ='" & Trim(Me.cmb_estado.Text) & "'"
 
@@ -272,6 +290,15 @@ Public Class Form_reporte_precios
                 rep3.Load(Application.StartupPath & "\reportes\precio_x_rubro_codigo_c.rpt")
                 rep4.Load(Application.StartupPath & "\reportes\precio_x_rubro_param_c.rpt")
 
+                rep2.DataSourceConnections(0).SetConnection(conexion.server, conexion.db, False)
+                rep2.SetDatabaseLogon(conexion.usuario, conexion.contraseña)
+
+                rep3.DataSourceConnections(0).SetConnection(conexion.server, conexion.db, False)
+                rep3.SetDatabaseLogon(conexion.usuario, conexion.contraseña)
+
+                rep4.DataSourceConnections(0).SetConnection(conexion.server, conexion.db, False)
+                rep4.SetDatabaseLogon(conexion.usuario, conexion.contraseña)
+
                 rep.RecordSelectionFormula = "{precios.id_lista1} = " & RTrim(Me.txt_cod_list.Text) & " and {precios.id_proveedor} = " & RTrim(Me.txt_cod_prov.Text) & " and {precios.estado1} ='" & Trim(Me.cmb_estado.Text) & "'"
                 rep2.RecordSelectionFormula = "{precios.id_lista1} = " & RTrim(Me.txt_cod_list.Text) & " and {precios.id_proveedor} = " & RTrim(Me.txt_cod_prov.Text) & " and {precios.estado1} ='" & Trim(Me.cmb_estado.Text) & "'"
                 rep3.RecordSelectionFormula = "{precios.id_lista1} = " & RTrim(Me.txt_cod_list.Text) & " and {precios.id_proveedor} = " & RTrim(Me.txt_cod_prov.Text) & " and {precios.estado1} ='" & Trim(Me.cmb_estado.Text) & "'"
@@ -282,6 +309,9 @@ Public Class Form_reporte_precios
                 'comando = New SqlDataAdapter("select * from precios where id_lista1 = '" & Trim(Me.txt_cod_list.Text) & "' and id_proveedor = '" & RTrim(Me.txt_cod_prov.Text) & "' and estado1 ='" & Trim(Me.cmb_estado.Text) & "' ORDER BY nom", conex)
                 'comando.Fill(tabla)
                 'comando.Dispose()
+
+                rep1.DataSourceConnections(0).SetConnection(conexion.server, conexion.db, False)
+                rep1.SetDatabaseLogon(conexion.usuario, conexion.contraseña)
 
                 rep1.RecordSelectionFormula = "{precios.id_lista1} = " & RTrim(Me.txt_cod_list.Text) & " and {precios.id_proveedor} = " & RTrim(Me.txt_cod_prov.Text) & " and {precios.estado1} ='" & Trim(Me.cmb_estado.Text) & "'"
 
@@ -305,6 +335,15 @@ Public Class Form_reporte_precios
                 rep3.Load(Application.StartupPath & "\reportes\precio_x_rubro_codigo_c.rpt")
                 rep4.Load(Application.StartupPath & "\reportes\precio_x_rubro_param_c.rpt")
 
+                rep2.DataSourceConnections(0).SetConnection(conexion.server, conexion.db, False)
+                rep2.SetDatabaseLogon(conexion.usuario, conexion.contraseña)
+
+                rep3.DataSourceConnections(0).SetConnection(conexion.server, conexion.db, False)
+                rep3.SetDatabaseLogon(conexion.usuario, conexion.contraseña)
+
+                rep4.DataSourceConnections(0).SetConnection(conexion.server, conexion.db, False)
+                rep4.SetDatabaseLogon(conexion.usuario, conexion.contraseña)
+
                 rep.RecordSelectionFormula = "{precios.id_lista1} = " & RTrim(Me.txt_cod_list.Text) & " and {precios.id_rubro} = " & RTrim(Me.txt_cod_rub.Text) & " and {precios.id_proveedor} = " & RTrim(Me.txt_cod_prov.Text) & " and {precios.estado1} ='" & Trim(Me.cmb_estado.Text) & "'"
                 rep2.RecordSelectionFormula = "{precios.id_lista1} = " & RTrim(Me.txt_cod_list.Text) & " and {precios.id_rubro} = " & RTrim(Me.txt_cod_rub.Text) & " and {precios.id_proveedor} = " & RTrim(Me.txt_cod_prov.Text) & " and {precios.estado1} ='" & Trim(Me.cmb_estado.Text) & "'"
                 rep3.RecordSelectionFormula = "{precios.id_lista1} = " & RTrim(Me.txt_cod_list.Text) & " and {precios.id_rubro} = " & RTrim(Me.txt_cod_rub.Text) & " and {precios.id_proveedor} = " & RTrim(Me.txt_cod_prov.Text) & " and {precios.estado1} ='" & Trim(Me.cmb_estado.Text) & "'"
@@ -315,6 +354,9 @@ Public Class Form_reporte_precios
                 'comando = New SqlDataAdapter("select * from precios where id_lista1 = '" & Trim(Me.txt_cod_list.Text) & "' and id_proveedor = '" & Trim(Me.txt_cod_prov.Text) & "' and and id_rubro ='" & Trim(Me.txt_cod_rub.Text) & "' estado1 ='" & Trim(Me.cmb_estado.Text) & "' ORDER BY nom", conex)
                 'comando.Fill(tabla)
                 'comando.Dispose()
+
+                rep1.DataSourceConnections(0).SetConnection(conexion.server, conexion.db, False)
+                rep1.SetDatabaseLogon(conexion.usuario, conexion.contraseña)
 
                 rep.RecordSelectionFormula = "{precios.id_lista1} = " & RTrim(Me.txt_cod_list.Text) & " and {precios.id_rubro} = " & RTrim(Me.txt_cod_rub.Text) & " and {precios.id_proveedor} = " & RTrim(Me.txt_cod_prov.Text) & ""
                 rep1.RecordSelectionFormula = "{precios.id_lista1} = " & RTrim(Me.txt_cod_list.Text) & " and {precios.id_rubro} = " & RTrim(Me.txt_cod_rub.Text) & " and {precios.id_proveedor} = " & RTrim(Me.txt_cod_prov.Text) & " and {precios.estado1} ='" & Trim(Me.cmb_estado.Text) & "'"
@@ -340,6 +382,15 @@ Public Class Form_reporte_precios
                 rep3.Load(Application.StartupPath & "\reportes\precio_x_rubro_codigo_c.rpt")
                 rep4.Load(Application.StartupPath & "\reportes\precio_x_rubro_param_c.rpt")
 
+                rep2.DataSourceConnections(0).SetConnection(conexion.server, conexion.db, False)
+                rep2.SetDatabaseLogon(conexion.usuario, conexion.contraseña)
+
+                rep3.DataSourceConnections(0).SetConnection(conexion.server, conexion.db, False)
+                rep3.SetDatabaseLogon(conexion.usuario, conexion.contraseña)
+
+                rep4.DataSourceConnections(0).SetConnection(conexion.server, conexion.db, False)
+                rep4.SetDatabaseLogon(conexion.usuario, conexion.contraseña)
+
                 rep.RecordSelectionFormula = "{precios.id_lista1} = " & RTrim(Me.txt_cod_list.Text) & " and {precios.id_rubro} = " & RTrim(Me.txt_cod_rub.Text) & " and {precios.estado1} ='" & Trim(Me.cmb_estado.Text) & "'"
                 rep2.RecordSelectionFormula = "{precios.id_lista1} = " & RTrim(Me.txt_cod_list.Text) & " and {precios.id_rubro} = " & RTrim(Me.txt_cod_rub.Text) & " and {precios.estado1} ='" & Trim(Me.cmb_estado.Text) & "'"
                 rep3.RecordSelectionFormula = "{precios.id_lista1} = " & RTrim(Me.txt_cod_list.Text) & " and {precios.id_rubro} = " & RTrim(Me.txt_cod_rub.Text) & " and {precios.estado1} ='" & Trim(Me.cmb_estado.Text) & "'"
@@ -350,6 +401,9 @@ Public Class Form_reporte_precios
                 'comando = New SqlDataAdapter("select * from precios where id_lista1 = '" & Trim(Me.txt_cod_list.Text) & "' and id_rubro ='" & Trim(Me.txt_cod_rub.Text) & "' estado1 ='" & Trim(Me.cmb_estado.Text) & "' ORDER BY nom", conex)
                 'comando.Fill(tabla)
                 'comando.Dispose()
+
+                rep1.DataSourceConnections(0).SetConnection(conexion.server, conexion.db, False)
+                rep1.SetDatabaseLogon(conexion.usuario, conexion.contraseña)
 
                 rep.RecordSelectionFormula = "{precios.id_lista1} = " & RTrim(Me.txt_cod_list.Text) & " and {precios.id_rubro} = " & RTrim(Me.txt_cod_rub.Text) & ""
                 rep1.RecordSelectionFormula = "{precios.id_lista1} = " & RTrim(Me.txt_cod_list.Text) & " and {precios.id_rubro} = " & RTrim(Me.txt_cod_rub.Text) & " and {precios.estado1} ='" & Trim(Me.cmb_estado.Text) & "'"
@@ -375,6 +429,18 @@ Public Class Form_reporte_precios
                 rep3.Load(Application.StartupPath & "\reportes\precio_x_rubro_codigo_c.rpt")
                 rep4.Load(Application.StartupPath & "\reportes\precio_x_rubro_param_c.rpt")
 
+                rep1.DataSourceConnections(0).SetConnection(conexion.server, conexion.db, False)
+                rep1.SetDatabaseLogon(conexion.usuario, conexion.contraseña)
+
+                rep2.DataSourceConnections(0).SetConnection(conexion.server, conexion.db, False)
+                rep2.SetDatabaseLogon(conexion.usuario, conexion.contraseña)
+
+                rep3.DataSourceConnections(0).SetConnection(conexion.server, conexion.db, False)
+                rep3.SetDatabaseLogon(conexion.usuario, conexion.contraseña)
+
+                rep4.DataSourceConnections(0).SetConnection(conexion.server, conexion.db, False)
+                rep4.SetDatabaseLogon(conexion.usuario, conexion.contraseña)
+
                 rep1.RecordSelectionFormula = "{precios.id_lista1} = " & Trim(Me.txt_cod_list.Text) & " and {precios.estado1} ='" & Trim(Me.cmb_estado.Text) & "' and {precios.id_rubro} IN ([" & rubros & "])"
                 rep2.RecordSelectionFormula = "{precios.id_lista1} = " & Trim(Me.txt_cod_list.Text) & " and {precios.estado1} ='" & Trim(Me.cmb_estado.Text) & "' and {precios.id_rubro} IN ([" & rubros & "])"
                 rep3.RecordSelectionFormula = "{precios.id_lista1} = " & Trim(Me.txt_cod_list.Text) & " and {precios.estado1} ='" & Trim(Me.cmb_estado.Text) & "' and {precios.id_rubro} IN ([" & rubros & "])"
@@ -387,6 +453,9 @@ Public Class Form_reporte_precios
                 'comando.Fill(tabla)
                 'comando.Dispose()
 
+                rep1.DataSourceConnections(0).SetConnection(conexion.server, conexion.db, False)
+                rep1.SetDatabaseLogon(conexion.usuario, conexion.contraseña)
+
                 rep.RecordSelectionFormula = "{precios.id_lista1} = " & Trim(Me.txt_cod_list.Text) & " and {art_01.id_rubro} IN ([" & rubros & "])"
                 rep1.RecordSelectionFormula = "{precios.id_lista1} = " & Trim(Me.txt_cod_list.Text) & " and {precios.estado1} ='" & Trim(Me.cmb_estado.Text) & "' and {precios.id_rubro} IN ([" & rubros & "])"
 
@@ -397,7 +466,7 @@ Public Class Form_reporte_precios
         If Me.opt_rubro.Checked = False Then
 
             rep.DataSourceConnections(0).SetConnection(conexion.server, conexion.db, False)
-            rep.SetDatabaseLogon(conexion.usuario, "")
+            rep.SetDatabaseLogon(conexion.usuario, conexion.contraseña)
 
             'rep.SetDataSource(tabla)
             If RTrim(Me.cmb_ordena.Text) = "Codigo" Then Form_repcli_01.CrystalReportViewer1.ReportSource = rep
@@ -409,7 +478,7 @@ Public Class Form_reporte_precios
             If Me.opt_rubro.Checked = True Then
 
             rep1.DataSourceConnections(0).SetConnection(conexion.server, conexion.db, False)
-            rep1.SetDatabaseLogon(conexion.usuario, "")
+            rep1.SetDatabaseLogon(conexion.usuario, conexion.contraseña)
 
             'rep1.SetDataSource(tabla)
             If RTrim(Me.cmb_ordena.Text) <> "Codigo" Then Form_repcli_01.CrystalReportViewer1.ReportSource = rep1
@@ -417,19 +486,19 @@ Public Class Form_reporte_precios
             If RTrim(Me.cmb_ordena.Text) = "Codigo" Then
                 If x = "precio_x_rubro" Then
                     rep2.DataSourceConnections(0).SetConnection(conexion.server, conexion.db, False)
-                    rep2.SetDatabaseLogon(conexion.usuario, "")
+                    rep2.SetDatabaseLogon(conexion.usuario, conexion.contraseña)
 
                     Form_repcli_01.CrystalReportViewer1.ReportSource = rep2
                 End If
                 If x = "precio_x_rubro_codigo" Then
                     rep3.DataSourceConnections(0).SetConnection(conexion.server, conexion.db, False)
-                    rep3.SetDatabaseLogon(conexion.usuario, "")
+                    rep3.SetDatabaseLogon(conexion.usuario, conexion.contraseña)
 
                     Form_repcli_01.CrystalReportViewer1.ReportSource = rep3
                 End If
                 If x = "precio_x_rubro_param" Then
                     rep4.DataSourceConnections(0).SetConnection(conexion.server, conexion.db, False)
-                    rep4.SetDatabaseLogon(conexion.usuario, "")
+                    rep4.SetDatabaseLogon(conexion.usuario, conexion.contraseña)
 
                     Form_repcli_01.CrystalReportViewer1.ReportSource = rep4
                 End If

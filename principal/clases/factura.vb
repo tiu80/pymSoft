@@ -1756,7 +1756,8 @@ Namespace pymsoft
             rep.RecordSelectionFormula = "{recibo_det.id_det}= " & numero & " and {recibo_det.pre1} = " & prefijo & " and {recibo_det.tc1}= 'RC' and {recibo_det.letra_01}= '" & letra & "' and {recibo_det.talon1}= " & talon & ""
 
             rep.DataSourceConnections(0).SetConnection(conexion.server, conexion.db, False)
-            rep.SetDatabaseLogon(conexion.usuario, "")
+            rep.SetDatabaseLogon(conexion.usuario, conexion.contraseña)
+
             rep.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.PaperLetter
             rep.PrintOptions.PaperSource = CrystalDecisions.Shared.PaperSource.Upper
             If reporte.impresora <> "" Then rep.PrintOptions.PrinterName = reporte.impresora
@@ -1782,7 +1783,8 @@ Namespace pymsoft
             rep.RecordSelectionFormula = "{recibo_det.id_det}= " & numero & " and {recibo_det.pre1} = " & prefijo & " and {recibo_det.tc1}= 'OP' and {recibo_det.letra_01}= '" & letra & "' and {recibo_det.talon1}= " & talon & ""
 
             rep.DataSourceConnections(0).SetConnection(conexion.server, conexion.db, False)
-            rep.SetDatabaseLogon(conexion.usuario, "")
+            rep.SetDatabaseLogon(conexion.usuario, conexion.contraseña)
+
             'rep.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.PaperLetter
             'rep.PrintOptions.PaperSource = CrystalDecisions.Shared.PaperSource.Upper
             If reporte.impresora <> "" Then rep.PrintOptions.PrinterName = reporte.impresora
@@ -1819,7 +1821,8 @@ Namespace pymsoft
                 'rep.PrintToPrinter(1, False, 0, 0)
 
                 rep.DataSourceConnections(0).SetConnection(conexion.server, conexion.db, False)
-                rep.SetDatabaseLogon(conexion.usuario, "")
+                rep.SetDatabaseLogon(conexion.usuario, conexion.contraseña)
+
                 Form_repcli_01.CrystalReportViewer1.ReportSource = rep
                 Form_repcli_01.CrystalReportViewer1.RefreshReport()
                 Form_repcli_01.Show()
@@ -1844,7 +1847,8 @@ Namespace pymsoft
                 rep.RecordSelectionFormula = "{fact_det.num_fact}= " & Me.numero_factura & " and {fact_det.letra_fact1} = '" & Me.letra_fact & "' and {fact_det.tipo_fact2}= '" & Me.tipo_fact & "'"
 
                 rep.DataSourceConnections(0).SetConnection(conexion.server, conexion.db, False)
-                rep.SetDatabaseLogon(conexion.usuario, "")
+                rep.SetDatabaseLogon(conexion.usuario, conexion.contraseña)
+
                 Form_repcli_01.CrystalReportViewer1.ReportSource = rep
                 Form_repcli_01.CrystalReportViewer1.RefreshReport()
                 Form_repcli_01.Show()
@@ -1872,7 +1876,8 @@ Namespace pymsoft
             rep.RecordSelectionFormula = "{fact_det.num_fact}= " & Me.numero_factura & " and {fact_det.letra_fact1} = '" & Me.letra_fact & "' and {fact_det.tipo_fact2}= '" & Me.tipo_fact & "' and {fact_det.prefijo_fact2}= " & Me.prefijo_factura & ""
 
             rep.DataSourceConnections(0).SetConnection(conexion.server, conexion.db, False)
-            rep.SetDatabaseLogon(conexion.usuario, "")
+            rep.SetDatabaseLogon(conexion.usuario, conexion.contraseña)
+
             rep.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.PaperLetter
             rep.PrintOptions.PaperSource = CrystalDecisions.Shared.PaperSource.Upper
             If reporte.impresora <> "" Then rep.PrintOptions.PrinterName = reporte.impresora

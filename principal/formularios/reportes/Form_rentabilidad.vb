@@ -69,7 +69,7 @@ Public Class Form_rentabilidad
             End If
 
             rep.DataSourceConnections(0).SetConnection(conexion.server, conexion.db, False)
-            rep.SetDatabaseLogon(conexion.usuario, "")
+            rep.SetDatabaseLogon(conexion.usuario, conexion.contraseña)
 
             Dim tb As New DataTable
             Dim txt As CrystalDecisions.CrystalReports.Engine.TextObject

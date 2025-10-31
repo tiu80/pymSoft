@@ -154,6 +154,7 @@ X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\bin\Debug\af\P
 X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\bin\Debug\CrystalDecisions.CrystalReports.Engine.dll
 X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\bin\Debug\CrystalDecisions.ReportSource.dll
 X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\bin\Debug\CrystalDecisions.Shared.dll
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\bin\Debug\CrystalDecisions.Web.dll
 X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\bin\Debug\CrystalDecisions.Windows.Forms.dll
 X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\bin\Debug\log4net.dll
 X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\bin\Debug\mitextbox1.dll
@@ -163,6 +164,7 @@ X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\bin\Debug\log4
 X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\bin\Debug\ES\CrystalDecisions.CrystalReports.Engine.resources.dll
 X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\bin\Debug\ES\CrystalDecisions.ReportSource.resources.dll
 X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\bin\Debug\ES\CrystalDecisions.Shared.resources.dll
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\bin\Debug\ES\CrystalDecisions.Web.resources.dll
 X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\bin\Debug\ES\CrystalDecisions.Windows.Forms.resources.dll
 X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\principal.vbproj.AssemblyReference.cache
 X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\principal.vbproj.SuggestedBindingRedirects.cache
@@ -293,5 +295,3 @@ X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\PYMS
 X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\principal.vbproj.CopyComplete
 X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\PYMSOFT.exe
 X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\PYMSOFT.pdb
-X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\bin\Debug\CrystalDecisions.Web.dll
-X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\bin\Debug\ES\CrystalDecisions.Web.resources.dll

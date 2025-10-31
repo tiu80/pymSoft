@@ -47,7 +47,7 @@ Public Class Form_resumen_cta
             barra_carga.PictureBox1.Refresh()
 
             rep.DataSourceConnections(0).SetConnection(conexion.server, conexion.db, False)
-            rep.SetDatabaseLogon(conexion.usuario, "")
+            rep.SetDatabaseLogon(conexion.usuario, conexion.contraseña)
 
             rep.SetParameterValue("saldo", saldo)
 
