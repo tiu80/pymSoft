@@ -1,0 +1,53 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "X:\\Visual Studio\\pymSoft\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{F37542DC-DAB7-4700-9CFC-419335638A33}|principal\\principal.vbproj|x:\\visual studio\\pymsoft\\principal\\formularios\\stock\\form_muestra_pedido_prov.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
+      "RelativeMoniker": "D:0:0:{F37542DC-DAB7-4700-9CFC-419335638A33}|principal\\principal.vbproj|solutionrelative:principal\\formularios\\stock\\form_muestra_pedido_prov.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 4,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Form_muestra_pedido_prov.vb",
+              "DocumentMoniker": "X:\\Visual Studio\\pymSoft\\principal\\formularios\\stock\\Form_muestra_pedido_prov.vb",
+              "RelativeDocumentMoniker": "principal\\formularios\\stock\\Form_muestra_pedido_prov.vb",
+              "ToolTip": "X:\\Visual Studio\\pymSoft\\principal\\formularios\\stock\\Form_muestra_pedido_prov.vb",
+              "RelativeToolTip": "principal\\formularios\\stock\\Form_muestra_pedido_prov.vb",
+              "ViewState": "AgIAAEQAAAAAAAAAAAAIwEwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2025-11-01T12:46:51.845Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

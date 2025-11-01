@@ -1,0 +1,437 @@
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.busc_carga.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.form_empleado.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.Form_moneda.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.Form_carga.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.Form_busc_empleados.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.Form_actualizador.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.Form_lista_oferta.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.form_config_rep.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.Form_alta_movimiento.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.Form_alta_planilla.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.Form_cartera.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.Form_cartera_valores.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.form_consulta_planilla.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.Form_detalle_planilla.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.Form_empresa.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.Form_mayor_planilla.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.Form_muestra_cartera.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.Form_muestra_mayor.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.Form_muestra_planilla.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.Form_planilla.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.Form_plan_cuenta.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.Form_ingreso_egreso.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.Form_trans_pda.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.Form_consulta_compras_det.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.Form_cambia_articulo.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.Form_consulta_art_sinstock.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.Form_exporta.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.Form_pendiente.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.Form_presupuesto.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.Form_reimpresion.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.principal.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.Form_concilia_saldos_ctacte_historico.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.Form_repfact.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.Form_edita_horario.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.Form_movimiento.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.Form_res_3685.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.Form_rotulo_balanza.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.Form_muestra_reportes.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.Form_resumen_cta.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.Form_tipo_comprobante.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.acerca_de.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.barra_carga.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.busc_imp_interno.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.Form_zona.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.Form_balance_saldo.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.Form_cierre_fiscal.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.Form_comentario.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.Form_iva_ventas.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.Form_modifica_fecha.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.Form_muestra_opcion_pago.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.Form_muestra_saldo.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.bienvenida.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.Form_rentabilidad.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.Form_repcta_cte.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.Form_rep_cliente.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.Form_rep_etiquetas.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.Form_variacion_precios.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.Form_ventas_agrupacion.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.Form_reporte_precios.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.Form_consulta_compras.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.Form_login.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.Form_periodo_carga.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.busc_articulos.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.busc_bancos.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.busc_cuenta.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.busc_iva.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.busc_lista.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.busc_rubro.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.busc_sucursal.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.busc_proveedor.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.busc_zona.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.Form_actualiza_grilla.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.form_lista.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.Form_cantidad.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.Form_consulta_rem_cli.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.Form_defasajes.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.Form_inventario.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.Form_muestra_pedido_prov.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.Form_muestra_rem_cli.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.Form_muestra_seguim.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.Form_muestra_stock.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.Form_parte_carga.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.Form_pedido_proveedor.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.Form_seguimiento_art.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.Form_stock.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.Form_asigna.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.form_menu.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.Form_muestra_asignacion.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.Form_compras.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.Form_arqueo_caja.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.Form_cantidad_pedido.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.Form_consul_cta_cte.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.Form_factura_preventa.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.Form_tipo_pago.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.Form_visualiza.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.form_parametros.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.Form_usuario.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.Form_cta_cte.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.Form_recibos.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.Form_consulta_comprobante.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.Form_muestra_cons_comp.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.Form_muestra_factura.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.Form_numerador.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.Form_articulos.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.form_tipo_iva.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.busc_cliente.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.busc_localidad.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.busc_provincia.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.busc_vendedor.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.Form_banco.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.form_factura.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.Form_cliente.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.Form_localidad.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.Form_repcli_01.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.Form_rubro.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.form_vendedor.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.provincia.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.Resources.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\pym.principal.af.resources
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\principal.vbproj.GenerateResource.Cache
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\bin\Debug\PYMSOFT.exe.config
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\bin\Debug\PYMSOFT.exe.manifest
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\bin\Debug\PYMSOFT.application
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\bin\Debug\PYMSOFT.exe
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\bin\Debug\PYMSOFT.pdb
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\bin\Debug\af\PYMSOFT.resources.dll
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\bin\Debug\mitextbox1.dll
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\bin\Debug\text_solo_num.dll
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\bin\Debug\Gma.QrCodeNet.Encoding.Net35.pdb
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\bin\Debug\Gma.QrCodeNet.Encoding.Net35.xml
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\af\PYMSOFT.resources.dll
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\PYMSOFT.exe.manifest
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\PYMSOFT.application
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\PYMSOFT.exe
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\PYMSOFT.pdb
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\bin\Debug\CrystalDecisions.CrystalReports.Engine.dll
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\bin\Debug\CrystalDecisions.ReportSource.dll
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\bin\Debug\CrystalDecisions.Shared.dll
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\bin\Debug\CrystalDecisions.Windows.Forms.dll
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\bin\Debug\stdole.dll
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\bin\Debug\ES\CrystalDecisions.CrystalReports.Engine.resources.dll
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\bin\Debug\ES\CrystalDecisions.ReportSource.resources.dll
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\bin\Debug\ES\CrystalDecisions.Shared.resources.dll
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\bin\Debug\ES\CrystalDecisions.Windows.Forms.resources.dll
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\principal.vbproj.AssemblyReference.cache
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\principal.vbproj.CoreCompileInputs.cache
+D:\Visual Studio 2012\Projects\PROYECTO PYM SOFT 2005_NUEVO\principal\obj\Debug\principal.vbproj.Up2Date
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\bin\Debug\PYMSOFT.exe.config
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\bin\Debug\PYMSOFT.exe.manifest
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\bin\Debug\PYMSOFT.application
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\bin\Debug\PYMSOFT.exe
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\bin\Debug\PYMSOFT.pdb
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\bin\Debug\af\PYMSOFT.resources.dll
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\bin\Debug\CrystalDecisions.CrystalReports.Engine.dll
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\bin\Debug\CrystalDecisions.ReportSource.dll
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\bin\Debug\CrystalDecisions.Shared.dll
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\bin\Debug\CrystalDecisions.Web.dll
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\bin\Debug\CrystalDecisions.Windows.Forms.dll
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\bin\Debug\log4net.dll
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\bin\Debug\mitextbox1.dll
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\bin\Debug\text_solo_num.dll
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\bin\Debug\stdole.dll
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\bin\Debug\log4net.xml
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\bin\Debug\ES\CrystalDecisions.CrystalReports.Engine.resources.dll
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\bin\Debug\ES\CrystalDecisions.ReportSource.resources.dll
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\bin\Debug\ES\CrystalDecisions.Shared.resources.dll
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\bin\Debug\ES\CrystalDecisions.Web.resources.dll
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\bin\Debug\ES\CrystalDecisions.Windows.Forms.resources.dll
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\principal.vbproj.AssemblyReference.cache
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\principal.vbproj.SuggestedBindingRedirects.cache
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.busc_carga.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.form_empleado.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.Form_moneda.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.Form_carga.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.Form_busc_empleados.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.Form_actualizador.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.Form_lista_oferta.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.form_config_rep.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.Form_alta_movimiento.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.Form_alta_planilla.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.Form_cartera.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.Form_cartera_valores.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.form_consulta_planilla.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.Form_detalle_planilla.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.Form_empresa.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.Form_mayor_planilla.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.Form_muestra_cartera.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.Form_muestra_mayor.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.Form_muestra_planilla.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.Form_planilla.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.Form_plan_cuenta.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.Form_ingreso_egreso.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.Form_trans_pda.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.Form_consulta_compras_det.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.Form_cambia_articulo.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.Form_consulta_art_sinstock.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.Form_exporta.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.Form_pendiente.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.Form_presupuesto.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.Form_reimpresion.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.principal.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.Form_concilia_saldos_ctacte_historico.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.Form_repfact.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.Form_edita_horario.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.Form_movimiento.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.Form_res_3685.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.Form_rotulo_balanza.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.Form_muestra_reportes.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.Form_resumen_cta.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.Form_tipo_comprobante.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.acerca_de.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.barra_carga.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.busc_imp_interno.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.Form_zona.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.Form_balance_saldo.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.Form_cierre_fiscal.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.Form_comentario.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.Form_iva_ventas.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.Form_modifica_fecha.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.Form_muestra_opcion_pago.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.Form_muestra_saldo.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.bienvenida.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.Form_rentabilidad.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.Form_repcta_cte.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.Form_rep_cliente.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.Form_rep_etiquetas.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.Form_variacion_precios.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.Form_ventas_agrupacion.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.Form_reporte_precios.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.Form_consulta_compras.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.Form_login.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.Form_periodo_carga.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.busc_articulos.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.busc_bancos.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.busc_cuenta.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.busc_iva.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.busc_lista.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.busc_rubro.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.busc_sucursal.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.busc_proveedor.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.busc_zona.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.Form_actualiza_grilla.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.form_lista.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.Form_cantidad.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.Form_consulta_rem_cli.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.Form_defasajes.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.Form_inventario.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.Form_muestra_pedido_prov.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.Form_muestra_rem_cli.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.Form_muestra_seguim.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.Form_muestra_stock.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.Form_parte_carga.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.Form_pedido_proveedor.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.Form_seguimiento_art.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.Form_stock.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.Form_asigna.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.form_menu.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.Form_muestra_asignacion.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.Form_compras.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.Form_arqueo_caja.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.Form_cantidad_pedido.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.Form_consul_cta_cte.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.Form_factura_preventa.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.Form_tipo_pago.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.Form_visualiza.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.form_parametros.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.Form_usuario.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.Form_cta_cte.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.Form_recibos.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.Form_consulta_comprobante.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.Form_muestra_cons_comp.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.Form_muestra_factura.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.Form_numerador.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.Form_articulos.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.form_tipo_iva.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.busc_cliente.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.busc_localidad.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.busc_provincia.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.busc_vendedor.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.Form_banco.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.form_factura.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.Form_cliente.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.Form_localidad.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.Form_repcli_01.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.Form_rubro.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.form_vendedor.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.provincia.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.Resources.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\pym.principal.af.resources
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\principal.vbproj.GenerateResource.cache
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\principal.vbproj.CoreCompileInputs.cache
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\af\PYMSOFT.resources.dll
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\PYMSOFT.exe.manifest
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\PYMSOFT.application
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\principal.vbproj.CopyComplete
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\PYMSOFT.exe
+X:\PROYECTOS VISUAL STUDIO\PROYECTO PYM SOFT 2022_NUEVO\principal\obj\Debug\PYMSOFT.pdb
+X:\Visual Studio\pymSoft\principal\bin\Debug\PYMSOFT.exe.config
+X:\Visual Studio\pymSoft\principal\bin\Debug\PYMSOFT.exe.manifest
+X:\Visual Studio\pymSoft\principal\bin\Debug\PYMSOFT.application
+X:\Visual Studio\pymSoft\principal\bin\Debug\PYMSOFT.exe
+X:\Visual Studio\pymSoft\principal\bin\Debug\PYMSOFT.pdb
+X:\Visual Studio\pymSoft\principal\bin\Debug\af\PYMSOFT.resources.dll
+X:\Visual Studio\pymSoft\principal\bin\Debug\log4net.dll
+X:\Visual Studio\pymSoft\principal\bin\Debug\mitextbox1.dll
+X:\Visual Studio\pymSoft\principal\bin\Debug\text_solo_num.dll
+X:\Visual Studio\pymSoft\principal\bin\Debug\log4net.xml
+X:\Visual Studio\pymSoft\principal\obj\Debug\principal.vbproj.AssemblyReference.cache
+X:\Visual Studio\pymSoft\principal\obj\Debug\PYMSOFT.exe.config
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.busc_carga.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.form_empleado.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.Form_moneda.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.Form_carga.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.Form_busc_empleados.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.Form_actualizador.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.Form_lista_oferta.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.form_config_rep.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.Form_alta_movimiento.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.Form_alta_planilla.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.Form_cartera.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.Form_cartera_valores.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.form_consulta_planilla.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.Form_detalle_planilla.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.Form_empresa.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.Form_mayor_planilla.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.Form_muestra_cartera.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.Form_muestra_mayor.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.Form_muestra_planilla.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.Form_planilla.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.Form_plan_cuenta.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.Form_ingreso_egreso.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.Form_trans_pda.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.Form_consulta_compras_det.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.Form_cambia_articulo.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.Form_consulta_art_sinstock.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.Form_exporta.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.Form_pendiente.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.Form_presupuesto.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.Form_reimpresion.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.principal.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.Form_concilia_saldos_ctacte_historico.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.Form_repfact.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.Form_edita_horario.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.Form_movimiento.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.Form_res_3685.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.Form_rotulo_balanza.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.Form_muestra_reportes.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.Form_resumen_cta.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.Form_tipo_comprobante.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.acerca_de.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.barra_carga.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.busc_imp_interno.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.Form_zona.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.Form_balance_saldo.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.Form_cierre_fiscal.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.Form_comentario.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.Form_iva_ventas.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.Form_modifica_fecha.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.Form_muestra_opcion_pago.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.Form_muestra_saldo.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.bienvenida.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.Form_rentabilidad.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.Form_repcta_cte.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.Form_rep_cliente.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.Form_rep_etiquetas.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.Form_variacion_precios.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.Form_ventas_agrupacion.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.Form_reporte_precios.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.Form_consulta_compras.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.Form_login.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.Form_periodo_carga.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.busc_articulos.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.busc_bancos.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.busc_cuenta.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.busc_iva.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.busc_lista.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.busc_rubro.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.busc_sucursal.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.busc_proveedor.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.busc_zona.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.Form_actualiza_grilla.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.form_lista.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.Form_cantidad.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.Form_consulta_rem_cli.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.Form_defasajes.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.Form_inventario.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.Form_muestra_pedido_prov.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.Form_muestra_rem_cli.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.Form_muestra_seguim.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.Form_muestra_stock.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.Form_parte_carga.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.Form_pedido_proveedor.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.Form_seguimiento_art.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.Form_stock.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.Form_asigna.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.form_menu.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.Form_muestra_asignacion.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.Form_compras.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.Form_arqueo_caja.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.Form_cantidad_pedido.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.Form_consul_cta_cte.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.Form_factura_preventa.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.Form_tipo_pago.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.Form_visualiza.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.form_parametros.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.Form_usuario.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.Form_cta_cte.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.Form_recibos.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.Form_consulta_comprobante.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.Form_muestra_cons_comp.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.Form_muestra_factura.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.Form_numerador.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.Form_articulos.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.form_tipo_iva.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.busc_cliente.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.busc_localidad.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.busc_provincia.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.busc_vendedor.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.Form_banco.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.form_factura.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.Form_cliente.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.Form_localidad.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.Form_repcli_01.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.Form_rubro.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.form_vendedor.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.provincia.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.Resources.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\pym.principal.af.resources
+X:\Visual Studio\pymSoft\principal\obj\Debug\principal.vbproj.GenerateResource.cache
+X:\Visual Studio\pymSoft\principal\obj\Debug\principal.vbproj.CoreCompileInputs.cache
+X:\Visual Studio\pymSoft\principal\obj\Debug\af\PYMSOFT.resources.dll
+X:\Visual Studio\pymSoft\principal\obj\Debug\PYMSOFT.exe.manifest
+X:\Visual Studio\pymSoft\principal\obj\Debug\PYMSOFT.application
+X:\Visual Studio\pymSoft\principal\obj\Debug\principal.vbproj.Up2Date
+X:\Visual Studio\pymSoft\principal\obj\Debug\PYMSOFT.exe
+X:\Visual Studio\pymSoft\principal\obj\Debug\PYMSOFT.pdb
+X:\Visual Studio\pymSoft\principal\bin\Debug\stdole.dll
